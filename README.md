@@ -28,3 +28,9 @@ Proyecto listo para Vercel con:
 Pega tus variables en Vercel → Settings → Environments → Production → Import .env.
 
 No subas `.env` a GitHub.
+
+
+## Actualización contacto clickeable
+- Las tarjetas de WhatsApp y Ubicación ahora son clickeables.
+- Si no pegas Link Google Maps, la web abre Google Maps buscando la dirección.
+- En /admin → Negocio puedes agregar Instagram, Facebook, TikTok, YouTube, Telegram, X/Twitter, Threads y web extra.
