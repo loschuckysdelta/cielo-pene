@@ -1,0 +1,17 @@
+{
+  "name": "antoja2-api-admin-corregido",
+  "version": "3.0.0",
+  "private": true,
+  "description": "Catalogo Antoja2 con API Vercel, MongoDB, Cloudinary, stock real, pedidos y delivery por zonas.",
+  "scripts": {
+    "build": "echo \"Proyecto HTML + API Vercel listo\"",
+    "start": "echo \"Usa Vercel para desplegar este proyecto\""
+  },
+  "dependencies": {
+    "cloudinary": "^2.5.1",
+    "mongodb": "^6.12.0"
+  },
+  "engines": {
+    "node": "24.x"
+  }
+}

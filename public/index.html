@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Antoja2 · Catálogo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Nunito+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{--pink:#c23d73;--pink2:#ef8fb3;--soft:#fff4f8;--cream:#fffaf6;--dark:#352822;--muted:#756760;--gold:#f2a65a;--green:#25d366;--red:#ef4444;--line:rgba(194,61,115,.18)}
+    *{box-sizing:border-box}body{margin:0;background:linear-gradient(180deg,#fff4f8,#fffaf6);font-family:'Nunito Sans',Arial,sans-serif;color:var(--dark);padding-bottom:110px}.hero{min-height:54vh;background:radial-gradient(circle at 30% 20%,#fff 0 10%,transparent 11%),linear-gradient(135deg,#f8b6cf,#ef8fb3 45%,#fce7ef);display:grid;place-items:center;text-align:center;padding:40px 18px;position:relative;overflow:hidden}.hero:before,.hero:after{content:"";position:absolute;border-radius:999px;background:white;opacity:.7;filter:blur(.2px)}.hero:before{width:190px;height:58px;left:5%;top:14%;box-shadow:42px -22px 0 3px #fff,80px -8px 0 -4px #fff}.hero:after{width:150px;height:45px;right:8%;bottom:18%;box-shadow:35px -18px 0 2px #fff}.brand{position:relative;z-index:2}.eyebrow{display:inline-block;background:rgba(255,255,255,.65);color:var(--pink);font-weight:800;letter-spacing:.08em;text-transform:uppercase;border-radius:999px;padding:8px 18px;font-size:.82rem}.brand h1{font-family:'Baloo 2';font-size:clamp(3.4rem,10vw,6.8rem);line-height:.85;margin:22px 0 8px;color:#fff;text-shadow:0 8px 0 rgba(194,61,115,.22),0 20px 36px rgba(194,61,115,.18)}.brand h1 span{color:var(--gold);-webkit-text-stroke:2px #fff}.brand p{max-width:620px;margin:12px auto 0;color:#81224b;font-weight:800;font-size:1.08rem}.btn{border:0;border-radius:999px;padding:13px 20px;font-weight:900;cursor:pointer;font-family:'Baloo 2';font-size:1rem;transition:.2s}.btn:hover{transform:translateY(-2px)}.btn-primary{background:var(--gold);color:white;box-shadow:0 10px 22px rgba(242,166,90,.36)}.btn-green{background:var(--green);color:white}.btn-outline{background:#fff;color:var(--pink);border:2px solid var(--line)}.wrap{max-width:1160px;margin:auto;padding:34px 18px}.title{text-align:center;margin:20px 0 34px}.title h2{font-family:'Baloo 2';font-size:clamp(2rem,5vw,3rem);margin:0;color:var(--pink)}.title p{color:var(--muted);font-weight:800}.cat{margin:36px 0}.cat-head{display:flex;align-items:center;gap:14px;margin-bottom:18px}.cat-head strong{font-family:'Baloo 2';font-size:1.6rem}.cat-head .line{flex:1;border-top:3px dashed var(--line)}.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:20px}.card{background:white;border:1px solid var(--line);border-radius:26px;overflow:hidden;box-shadow:0 14px 34px rgba(194,61,115,.09);display:flex;flex-direction:column}.imgbox{height:210px;background:linear-gradient(135deg,#ffd7e5,#fff);display:grid;place-items:center;position:relative;overflow:hidden;font-size:3rem}.imgbox img{width:100%;height:100%;object-fit:cover;display:block}.slideBtn{position:absolute;top:50%;transform:translateY(-50%);width:34px;height:34px;border-radius:50%;border:0;background:rgba(255,255,255,.86);color:var(--pink);font-weight:900;cursor:pointer}.slidePrev{left:8px}.slideNext{right:8px}.dots{position:absolute;bottom:9px;left:0;right:0;text-align:center}.dots span{display:inline-block;width:7px;height:7px;background:rgba(255,255,255,.75);border-radius:50%;margin:0 3px}.dots span.on{background:var(--pink)}.body{padding:18px;display:flex;flex:1;flex-direction:column}.top{display:flex;gap:10px;align-items:flex-start;justify-content:space-between}.name{font-family:'Baloo 2';font-size:1.18rem;line-height:1.08;font-weight:800;max-width:170px;word-break:normal}.price{font-family:'Baloo 2';font-size:1.15rem;font-weight:900;color:#d9822f;white-space:nowrap}.desc{color:var(--muted);font-weight:700;line-height:1.45;margin:8px 0 14px;flex:1}.stock{display:flex;align-items:center;gap:8px;margin-bottom:14px}.pill{display:inline-flex;align-items:center;gap:6px;border-radius:999px;padding:7px 10px;font-weight:900;font-size:.8rem;background:#f1f5f9;color:#334155}.pill.ok{background:#dcfce7;color:#166534}.pill.low{background:#fef3c7;color:#92400e}.pill.no{background:#fee2e2;color:#991b1b}.qty{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:auto}.qtybox{display:flex;align-items:center;background:var(--soft);border-radius:999px;padding:5px;gap:10px}.qtybox button{width:32px;height:32px;border:0;border-radius:50%;background:#fff;color:var(--pink);font-size:1.2rem;font-weight:900;cursor:pointer}.qtybox span{font-weight:900;min-width:24px;text-align:center}.cartbar{position:fixed;left:14px;right:14px;bottom:14px;z-index:50;background:#fff;border:1px solid var(--line);border-radius:28px;box-shadow:0 20px 48px rgba(80,30,55,.22);padding:14px;display:none;align-items:center;justify-content:space-between;gap:12px}.cartbar.show{display:flex}.cartbar strong{font-family:'Baloo 2';font-size:1.25rem}.drawer{position:fixed;inset:0;background:rgba(20,10,16,.52);z-index:100;display:none;align-items:center;justify-content:center;padding:16px}.drawer.show{display:flex}.panel{background:#fff;border-radius:28px;max-width:780px;width:100%;max-height:92vh;overflow:auto;padding:22px;box-shadow:0 30px 70px rgba(0,0,0,.25)}.panel h3{font-family:'Baloo 2';font-size:2rem;margin:0 0 8px;color:var(--pink)}.row{display:grid;grid-template-columns:1fr 1fr;gap:12px}.field{display:flex;flex-direction:column;gap:6px;margin:10px 0}.field label{font-weight:900;font-size:.9rem}.field input,.field select,.field textarea{border:2px solid #f0d4df;border-radius:16px;padding:12px;font-family:inherit;font-weight:700;outline:0}.field input:focus,.field select:focus,.field textarea:focus{border-color:var(--pink2)}.items{border:1px solid var(--line);border-radius:18px;overflow:hidden;margin:14px 0}.items div{display:flex;justify-content:space-between;gap:8px;padding:10px 12px;border-bottom:1px solid var(--line);font-weight:800}.items div:last-child{border-bottom:0}.totals{background:var(--soft);border-radius:18px;padding:14px;margin:12px 0;font-weight:900}.totals p{display:flex;justify-content:space-between;margin:7px 0}.warning{background:#fff7ed;border:1px solid #fed7aa;color:#9a3412;border-radius:18px;padding:12px;font-weight:800;margin:12px 0}.empty{text-align:center;color:var(--muted);font-weight:900;padding:40px}.footer{padding:40px 18px 130px;text-align:center;color:var(--muted);font-weight:800}@media(max-width:700px){.row{grid-template-columns:1fr}.cartbar{flex-direction:column;align-items:stretch}.btn{width:100%}.grid{grid-template-columns:1fr}.imgbox{height:240px}}
+  </style>
+</head>
+<body>
+  <section class="hero"><div class="brand"><span class="eyebrow" id="eyebrow">Repostería casera</span><h1 id="brandTitle">Antoja<span>2</span></h1><p id="slogan">Postres que caen de un cielo rosado, hechos con antojo y cariño.</p><p><button class="btn btn-primary" onclick="document.getElementById('catalogo').scrollIntoView({behavior:'smooth'})">Ver catálogo</button></p></div></section>
+  <main class="wrap" id="catalogo"><div class="title"><h2>Nuestro menú</h2><p>Elige tus productos. El pedido se guarda antes de abrir WhatsApp.</p></div><div id="catalog"></div></main>
+  <section class="footer"><div id="businessInfo"></div></section>
+
+  <div class="cartbar" id="cartbar"><div><strong id="cartCount">0 productos</strong><br><span id="cartTotalBar">Total: S/ 0.00</span></div><button class="btn btn-green" onclick="openCheckout()">Enviar pedido por WhatsApp</button></div>
+
+  <div class="drawer" id="checkout"><div class="panel"><button class="btn btn-outline" style="float:right;width:auto" onclick="closeCheckout()">Cerrar</button><h3>Finalizar pedido</h3><p style="font-weight:800;color:var(--muted)">Llena tus datos sí o sí para guardar el pedido.</p><div id="checkoutItems" class="items"></div><div class="row"><div class="field"><label>Nombre completo *</label><input id="cNombre" placeholder="Tu nombre"></div><div class="field"><label>Teléfono / WhatsApp *</label><input id="cTelefono" placeholder="Ej. 999999999"></div></div><div class="row"><div class="field"><label>Tipo de entrega *</label><select id="cEntrega" onchange="toggleDelivery()"><option value="recojo">Recojo</option><option value="delivery">Delivery</option></select></div><div class="field"><label>Cupón</label><input id="cCupon" placeholder="ANTOJO10" oninput="renderCheckout()"></div></div><div id="deliveryFields" style="display:none"><div class="row"><div class="field"><label>Zona de delivery *</label><select id="cZona" onchange="renderCheckout()"></select></div><div class="field"><label>Dirección exacta *</label><input id="cDireccion" placeholder="Calle, número, referencia"></div></div></div><div class="field"><label>Nota opcional</label><textarea id="cNota" rows="2" placeholder="Ej. sin maní, entregar 6pm..."></textarea></div><div id="checkoutTotals" class="totals"></div><div id="checkoutWarn"></div><button class="btn btn-green" onclick="crearPedido()">Guardar pedido y abrir WhatsApp</button></div></div>
+
+<script>
+const $ = s => document.querySelector(s);
+const api = async (url, opts={}) => {
+  const res = await fetch(url, {headers:{'Content-Type':'application/json'}, ...opts});
+  const data = await res.json().catch(()=>({ok:false,error:'Respuesta inválida'}));
+  if(!res.ok || data.ok === false) throw new Error(data.error || 'Error API');
+  return data.data ?? data;
+};
+const money = n => 'S/ ' + (Number(n)||0).toFixed(2);
+let config = {}, cats = [], productos = [], zonas = [], cupones = [], cart = {};
+let slideIndex = {};
+
+async function init(){
+  try{
+    [config, cats, productos, zonas, cupones] = await Promise.all([
+      api('/api/configuracion'), api('/api/categorias'), api('/api/productos'), api('/api/delivery'), api('/api/cupones')
+    ]);
+    renderHero(); renderCatalog(); renderCart(); renderBusiness(); fillZones();
+  }catch(e){
+    $('#catalog').innerHTML = `<div class="warning">Error cargando catálogo: ${e.message}</div>`;
+  }
+}
+function renderHero(){
+  $('#brandTitle').innerHTML = `${config.negocio || 'Antoja<span>2</span>'}`.replace('2','<span>2</span>');
+  $('#slogan').textContent = config.slogan || 'Postres hechos con cariño.';
+}
+function imgFor(p){ const arr=p.imagenes||[]; const i=slideIndex[p.id]||0; return arr[i] || ''; }
+function moveSlide(id, dir){ const p=productos.find(x=>x.id===id); if(!p||!p.imagenes||p.imagenes.length<2)return; slideIndex[id]=((slideIndex[id]||0)+dir+p.imagenes.length)%p.imagenes.length; renderCatalog(); }
+function renderCatalog(){
+  if(!productos.length){ $('#catalog').innerHTML='<div class="empty">Aún no hay productos. Agrega productos desde /admin.</div>'; return; }
+  const grupos = [];
+  for(const c of cats.filter(x=>x.activo!==false)){
+    const ps = productos.filter(p => p.categoriaId===c.id || p.categoriaNombre===c.nombre);
+    if(ps.length) grupos.push({cat:c, ps});
+  }
+  const sin = productos.filter(p => !grupos.some(g=>g.ps.includes(p)));
+  if(sin.length) grupos.push({cat:{nombre:'Otros',icono:'✨'},ps:sin});
+  $('#catalog').innerHTML = grupos.map(g => `<section class="cat"><div class="cat-head"><strong>${g.cat.icono||'🍰'} ${g.cat.nombre}</strong><span class="line"></span></div><div class="grid">${g.ps.map(card).join('')}</div></section>`).join('');
+}
+function card(p){
+  const stock=Number(p.stock)||0, q=cart[p.id]||0, imgs=p.imagenes||[], img=imgFor(p);
+  const stockClass = stock<=0?'no':stock<=5?'low':'ok';
+  return `<article class="card"><div class="imgbox">${img?`<img src="${img}" alt="${p.nombre}">`:'🍰'}${imgs.length>1?`<button class="slideBtn slidePrev" onclick="moveSlide('${p.id}',-1)">‹</button><button class="slideBtn slideNext" onclick="moveSlide('${p.id}',1)">›</button><div class="dots">${imgs.map((_,i)=>`<span class="${i===(slideIndex[p.id]||0)?'on':''}"></span>`).join('')}</div>`:''}</div><div class="body"><div class="top"><span class="name">${p.nombre}</span><span class="price">${money(p.precio)}</span></div><p class="desc">${p.descripcion||''}</p><div class="stock"><span class="pill ${stockClass}">Stock: ${stock}</span>${p.descuento?`<span class="pill low">-${p.descuento}%</span>`:''}</div><div class="qty"><div class="qtybox"><button onclick="add('${p.id}',-1)">−</button><span>${q}</span><button onclick="add('${p.id}',1)" ${stock<=0?'disabled':''}>+</button></div><strong>${money(q*(Number(p.precio)||0))}</strong></div></div></article>`;
+}
+function add(id,delta){ const p=productos.find(x=>x.id===id); if(!p)return; const next=Math.max(0,(cart[id]||0)+delta); if(next>(Number(p.stock)||0)){alert('No hay más stock disponible');return;} cart[id]=next; if(!next) delete cart[id]; renderCatalog(); renderCart(); }
+function cartItems(){ return Object.entries(cart).map(([id,cantidad])=>{ const p=productos.find(x=>x.id===id); return p?{...p,cantidad}:null }).filter(Boolean); }
+function subtotal(){ return cartItems().reduce((s,i)=>s+i.cantidad*(Number(i.precio)||0),0); }
+function currentCoupon(){ const code=$('#cCupon')?.value?.trim().toUpperCase(); return code ? cupones.find(c=>c.codigo===code && c.activo) : null; }
+function discount(){ const c=currentCoupon(); const sub=subtotal(); if(!c)return 0; return Math.min(sub, c.tipo==='monto'?Number(c.valor)||0:sub*(Number(c.valor)||0)/100); }
+function currentZone(){ const id=$('#cZona')?.value; return zonas.find(z=>z.id===id); }
+function deliveryPrice(){ if($('#cEntrega')?.value!=='delivery')return 0; const z=currentZone(); if(!z || z.tipoPrecio==='coordinar') return 0; return Number(z.precio)||0; }
+function renderCart(){ const count=cartItems().reduce((s,i)=>s+i.cantidad,0); $('#cartbar').classList.toggle('show',count>0); $('#cartCount').textContent=`${count} producto${count===1?'':'s'}`; $('#cartTotalBar').textContent=`Total: ${money(subtotal())}`; }
+function openCheckout(){ if(!cartItems().length)return alert('Elige productos primero'); $('#checkout').classList.add('show'); renderCheckout(); }
+function closeCheckout(){ $('#checkout').classList.remove('show'); }
+function toggleDelivery(){ $('#deliveryFields').style.display=$('#cEntrega').value==='delivery'?'block':'none'; renderCheckout(); }
+function fillZones(){ $('#cZona').innerHTML = `<option value="">Selecciona zona</option>` + zonas.filter(z=>z.activo).map(z=>`<option value="${z.id}" ${z.disponible===false?'disabled':''}>${z.nombre} ${z.disponible===false?'(no llega)':z.tipoPrecio==='coordinar'?'(coordinar)':money(z.precio)}</option>`).join(''); }
+function renderCheckout(){ const items=cartItems(); $('#checkoutItems').innerHTML=items.map(i=>`<div><span>${i.nombre} x${i.cantidad}</span><b>${money(i.cantidad*i.precio)}</b></div>`).join(''); const sub=subtotal(), del=deliveryPrice(), desc=discount(), total=sub+del-desc; const zone=currentZone(); $('#checkoutTotals').innerHTML=`<p><span>Subtotal</span><span>${money(sub)}</span></p><p><span>Delivery</span><span>${$('#cEntrega')?.value==='delivery' && zone?.tipoPrecio==='coordinar'?'Por coordinar':money(del)}</span></p><p><span>Descuento</span><span>-${money(desc)}</span></p><p style="font-size:1.2rem"><span>Total</span><span>${money(total)}</span></p>`; $('#checkoutWarn').innerHTML = $('#cEntrega')?.value==='delivery' && zone?.tipoPrecio==='coordinar'?'<div class="warning">El delivery de esta zona se coordina por WhatsApp.</div>':''; }
+async function crearPedido(){
+  try{
+    const entrega=$('#cEntrega').value;
+    const payload={cliente:{nombre:$('#cNombre').value,telefono:$('#cTelefono').value,entrega,direccion:$('#cDireccion').value,zonaId:$('#cZona').value,nota:$('#cNota').value},cupon:$('#cCupon').value,items:cartItems().map(i=>({productoId:i.id,cantidad:i.cantidad}))};
+    const pedido=await api('/api/pedidos',{method:'POST',body:JSON.stringify(payload)});
+    const lines=[`Hola ${config.negocio||'Antoja2'}! 👋 Quiero confirmar este pedido:`, `Código: ${pedido.codigo}`, '', ...pedido.items.map(i=>`• ${i.nombre} x${i.cantidad} = ${money(i.subtotal)}`), '', `Subtotal: ${money(pedido.subtotal)}`, `Delivery: ${pedido.delivery.porCoordinar?'Por coordinar':money(pedido.delivery.precio)}`, pedido.descuento?`Descuento: -${money(pedido.descuento)}`:'', `Total: ${money(pedido.total)}`, '', `Cliente: ${pedido.cliente.nombre}`, `Teléfono: ${pedido.cliente.telefono}`, `Entrega: ${pedido.cliente.entrega}`, pedido.cliente.direccion?`Dirección: ${pedido.cliente.direccion}`:'', pedido.cliente.zonaNombre?`Zona: ${pedido.cliente.zonaNombre}`:'', pedido.cliente.nota?`Nota: ${pedido.cliente.nota}`:''].filter(Boolean);
+    const number=(config.whatsapp||'').replace(/\D/g,'');
+    cart={}; renderCart(); renderCatalog(); closeCheckout();
+    if(number) window.open(`https://wa.me/${number}?text=${encodeURIComponent(lines.join('\n'))}`,'_blank');
+    alert('Pedido guardado. Ahora aparece en el panel admin en Pedidos.');
+  }catch(e){ alert(e.message); }
+}
+function renderBusiness(){ $('#businessInfo').innerHTML=`<b>${config.negocio||'Antoja2'}</b><br>${config.direccion||''}<br>${config.horario||''}`; }
+init();
+</script>
+</body>
+</html>
