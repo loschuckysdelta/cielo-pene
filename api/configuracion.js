@@ -4,7 +4,7 @@ const { collection, publicDoc, memory } = require('./_lib/db');
 const DEFAULT_CONFIG = {
   negocio: 'Antoja2',
   slogan: 'Postres bajo un cielo rosado',
-  whatsapp: '51999999999',
+  whatsapp: '51992855508',
   direccion: 'Trujillo, Perú',
   maps: '',
   instagram: '',
