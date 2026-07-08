@@ -1,8 +1,8 @@
 {
-  "name": "antoja2-api-admin-corregido",
-  "version": "3.0.0",
+  "name": "antoja2-api-admin-cupones-apis-final",
+  "version": "4.0.0",
   "private": true,
-  "description": "Catalogo Antoja2 con API Vercel, MongoDB, Cloudinary, stock real, pedidos y delivery por zonas.",
+  "description": "Antoja2 con panel admin, APIs visibles, cupones limitados/ilimitados, pedidos, stock real, delivery, MongoDB y Cloudinary.",
   "scripts": {
     "build": "echo \"Proyecto HTML + API Vercel listo\"",
     "start": "echo \"Usa Vercel para desplegar este proyecto\""
