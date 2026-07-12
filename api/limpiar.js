@@ -8,7 +8,7 @@ module.exports = async function handler(req, res) {
     const body = await readBody(req);
     if (normalizeText(body.confirmacion) !== 'BORRAR') return error(res, 400, 'Para borrar debes enviar confirmacion: BORRAR.');
     const target = normalizeText(body.target);
-    const permitidos = ['productos','pedidos','categorias','delivery','cupones'];
+    const permitidos = ['productos','pedidos','categorias','delivery','cupones','resenas'];
     if (!permitidos.includes(target)) return error(res, 400, 'Target inválido.');
     const col = await collection(target);
     if (col) await col.deleteMany({});

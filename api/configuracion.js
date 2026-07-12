@@ -2,10 +2,10 @@ const { setCors, send, error, readBody, normalizeText, toBool, toNumber } = requ
 const { collection, publicDoc, memory } = require('./_lib/db');
 
 const DEFAULT_CONFIG = {
-  negocio: 'Antoja2',
-  slogan: 'Postres bajo un cielo rosado',
+  negocio: 'Cielo Postres',
+  slogan: 'Cada postre cuenta una historia',
   whatsapp: '51992855508',
-  direccion: 'Trujillo, Perú',
+  direccion: 'Perú',
   maps: '',
   instagram: '',
   facebook: '',

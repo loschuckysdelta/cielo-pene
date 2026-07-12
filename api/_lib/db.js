@@ -9,7 +9,8 @@ if (!memory) {
     configuracion: null,
     delivery: [],
     cupones: [],
-    pedidos: []
+    pedidos: [],
+    resenas: []
   };
 }
 
@@ -70,7 +71,9 @@ async function ensureIndexes() {
     database.collection('productos').createIndex({ categoriaId: 1 }),
     database.collection('productos').createIndex({ nombre: 1, categoriaNombre: 1 }),
     database.collection('pedidos').createIndex({ createdAt: -1 }),
-    database.collection('cupones').createIndex({ codigo: 1 }, { unique: true })
+    database.collection('cupones').createIndex({ codigo: 1 }, { unique: true }),
+    database.collection('resenas').createIndex({ createdAt: -1 }),
+    database.collection('resenas').createIndex({ estado: 1, createdAt: -1 })
   ]).catch(() => null);
 }
 

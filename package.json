@@ -1,8 +1,8 @@
 {
-  "name": "antoja2-api-admin-cupones-apis-final",
+  "name": "cielo-postres-api-admin",
   "version": "4.0.0",
   "private": true,
-  "description": "Antoja2 con panel admin, APIs visibles, cupones limitados/ilimitados, pedidos, stock real, delivery, MongoDB y Cloudinary.",
+  "description": "Cielo Postres con panel admin, APIs visibles, cupones limitados/ilimitados, pedidos, stock real, delivery, MongoDB y Cloudinary.",
   "scripts": {
     "build": "echo \"Proyecto HTML + API Vercel listo\"",
     "start": "echo \"Usa Vercel para desplegar este proyecto\""
