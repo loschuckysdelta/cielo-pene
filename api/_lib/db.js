@@ -11,7 +11,9 @@ if (!memory) {
     cupones: [],
     pedidos: [],
     resenas: [],
-    usuarios: []
+    usuarios: [],
+    clientes: [],
+    notificaciones: []
   };
 }
 
@@ -76,7 +78,12 @@ async function ensureIndexes() {
     database.collection('resenas').createIndex({ createdAt: -1 }),
     database.collection('resenas').createIndex({ estado: 1, createdAt: -1 }),
     database.collection('usuarios').createIndex({ email: 1 }, { unique: true }),
-    database.collection('usuarios').createIndex({ role: 1, activo: 1 })
+    database.collection('usuarios').createIndex({ role: 1, activo: 1 }),
+    database.collection('clientes').createIndex({ email: 1 }, { unique: true }),
+    database.collection('clientes').createIndex({ activo: 1, createdAt: -1 }),
+    database.collection('notificaciones').createIndex({ clienteId: 1, createdAt: -1 }),
+    database.collection('notificaciones').createIndex({ clienteId: 1, read: 1 }),
+    database.collection('notificaciones').createIndex({ orderId: 1, status: 1 })
   ]).catch(() => null);
 }
 

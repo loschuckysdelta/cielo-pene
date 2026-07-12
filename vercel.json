@@ -2,7 +2,8 @@
   "version": 2,
   "rewrites": [
     { "source": "/admin", "destination": "/admin.html" },
-    { "source": "/catalogo", "destination": "/index.html" }
+    { "source": "/catalogo", "destination": "/index.html" },
+    { "source": "/cuenta", "destination": "/cuenta.html" }
   ],
   "headers": [
     {

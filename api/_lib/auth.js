@@ -3,12 +3,12 @@ const { collection, oid, publicDoc, memory, memoryId } = require('./db');
 
 const ALL_PERMISSIONS = [
   'dashboard','productos','categorias','pedidos','resenas','cupones',
-  'delivery','configuracion','usuarios','reportes','herramientas','apis'
+  'delivery','configuracion','usuarios','clientes','reportes','herramientas','apis'
 ];
 
 const ROLE_DEFAULTS = {
   principal: [...ALL_PERMISSIONS],
-  admin: ['dashboard','productos','categorias','pedidos','resenas','cupones','delivery','configuracion','reportes','apis'],
+  admin: ['dashboard','productos','categorias','pedidos','resenas','cupones','delivery','configuracion','clientes','reportes','apis'],
   gestor: ['dashboard']
 };
 

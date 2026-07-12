@@ -1,43 +1,57 @@
-# Cielo Postres · Catálogo, API y panel administrador
+# Cielo Postres · Tienda, panel administrador y panel del cliente
 
-Proyecto listo para Vercel con catálogo público, panel administrativo, MongoDB, Cloudinary, reseñas, usuarios, administradores y gestores.
+Proyecto listo para Vercel con catálogo público, panel administrativo, MongoDB, Cloudinary, reseñas, administradores, gestores, cuentas de clientes y notificaciones de pedidos.
 
-## Accesos iniciales
+## Accesos
 
-- Catálogo público: `/` o `/catalogo`
+- Tienda pública: `/` o `/catalogo`
 - Panel administrador: `/admin`
-- Correo inicial: `admin@cielopostres.com`
+- Panel del cliente: `/cuenta`
+- Correo inicial del administrador: `admin@cielopostres.com`
 - Contraseña inicial: `Chucky123`
 
-El primer acceso crea automáticamente la cuenta de **Administrador principal**. En producción cambia el correo, la contraseña y el secreto mediante variables de entorno.
+En producción cambia la cuenta inicial y los secretos desde las variables de entorno.
 
-## Novedades incluidas
+## Funciones principales
 
-- Vista previa en tiempo real al editar un producto.
-- Vista de imagen principal y miniaturas.
-- Posibilidad de quitar imágenes antiguas y agregar nuevas, hasta un máximo de cinco.
-- Usuarios con inicio de sesión por correo y contraseña.
-- Administrador principal con acceso total.
-- Administradores con permisos configurables.
-- Gestores con acceso únicamente a las áreas seleccionadas.
-- Permiso especial **Usuarios y administradores**, para crear otro administrador que pueda registrar admins y gestores.
-- Activar, desactivar, editar y eliminar usuarios.
-- Contraseñas almacenadas con hash `scrypt`.
-- Sesiones firmadas con vencimiento de 12 horas.
+- Vista previa en tiempo real al crear o editar productos.
+- Hasta cinco imágenes por producto, con imagen principal y miniaturas.
+- Productos, categorías, pedidos, delivery, cupones y reseñas.
+- Administrador principal, administradores y gestores con permisos.
+- Permiso **Usuarios y administradores** para crear otros admins y gestores.
+- Sección administrativa de clientes registrados.
+- Registro e inicio de sesión para clientes.
+- Panel del cliente con pedidos, perfil y notificaciones.
+- Notificaciones automáticas por estado:
+  - Pedido recibido.
+  - Pedido confirmado.
+  - Preparando.
+  - Listo para recoger o listo para delivery.
+  - En camino.
+  - Entregado.
+  - Cancelado.
+- Mensajes personalizados enviados desde cada pedido.
+- El panel del cliente se actualiza automáticamente cada 30 segundos.
+- Descuento y restauración automática del stock al confirmar o cancelar.
+- Contraseñas protegidas con `scrypt`.
 
-## Roles
+No se agregó control de ingredientes por postre.
 
-### Administrador principal
+## Flujo de notificaciones
 
-Existe una sola cuenta principal. Tiene acceso total y no puede ser eliminada por otro usuario.
+1. El cliente crea su cuenta en `/cuenta`.
+2. Inicia sesión antes de finalizar su compra.
+3. El pedido queda vinculado a su cuenta.
+4. Desde `/admin`, el administrador cambia el estado del pedido.
+5. El cliente recibe el aviso en su panel.
 
-### Administrador
+Ejemplo para recojo:
 
-Puede recibir permisos amplios. Para permitirle crear usuarios, activa el permiso **Usuarios y administradores**.
+> Juanito, tu pedido ya está listo. Ya puedes venir a recogerlo.
 
-### Gestor
+Ejemplo para delivery:
 
-Tiene permisos específicos, por ejemplo solo productos, pedidos, reseñas o delivery.
+> Juanito, tu pedido ya salió y está en camino.
 
 ## Variables de entorno en Vercel
 
@@ -50,21 +64,22 @@ CLOUDINARY_API_SECRET=...
 
 ADMIN_EMAIL=admin@cielopostres.com
 ADMIN_PASSWORD=UnaClaveSegura123
-AUTH_SECRET=un_secreto_largo_y_aleatorio
+AUTH_SECRET=un_secreto_largo_para_administradores
+CLIENT_AUTH_SECRET=otro_secreto_largo_para_clientes
 ```
 
-`ADMIN_EMAIL` y `ADMIN_PASSWORD` se usan únicamente cuando todavía no existe el administrador principal.
+Si `MONGO_URI` no está configurado, el proyecto usa memoria temporal y los datos pueden desaparecer cuando Vercel reinicie la función.
 
-Si `MONGO_URI` no está configurado, el proyecto funciona en memoria temporal. Los productos, usuarios y demás cambios pueden desaparecer cuando Vercel reinicie la función.
+## APIs de clientes y notificaciones
 
-## APIs nuevas
-
-- `POST /api/auth` — iniciar sesión.
-- `GET /api/auth` — obtener la cuenta de la sesión.
-- `GET /api/usuarios` — listar usuarios autorizados.
-- `POST /api/usuarios` — crear administrador o gestor.
-- `PUT /api/usuarios?id=ID` — editar usuario, permisos o contraseña.
-- `DELETE /api/usuarios?id=ID` — eliminar usuario.
+- `POST /api/clientes-auth` — registro o inicio de sesión.
+- `GET /api/clientes-auth` — perfil del cliente autenticado.
+- `PUT /api/clientes-auth` — actualizar perfil.
+- `GET /api/mis-pedidos` — pedidos vinculados a la cuenta.
+- `GET /api/notificaciones` — notificaciones del cliente.
+- `PUT /api/notificaciones` — marcar una o todas como leídas.
+- `GET /api/clientes` — lista administrativa de clientes.
+- `PUT /api/clientes?id=ID` — activar o bloquear un cliente.
 
 ## Despliegue
 
