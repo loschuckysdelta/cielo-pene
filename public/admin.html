@@ -471,10 +471,14 @@ body.unlocked .loginScreen{
 
 /* Loader de carga suave sobre el panel */
 #loadOverlay{
-  position:fixed;inset:0;z-index:99998;display:none;place-items:center;
+  position:fixed;inset:0;z-index:99998;display:grid;place-items:center;
   background:rgba(255,247,251,.72);backdrop-filter:blur(3px);
+  opacity:0;visibility:hidden;pointer-events:none;
+  transition:opacity .2s ease,visibility .2s ease;
 }
-#loadOverlay.show{display:grid}
+#loadOverlay.show{
+  opacity:1;visibility:visible;pointer-events:auto;
+}
 .loaderRing{width:52px;height:52px;border-radius:50%;border:3px solid rgba(190,24,93,.15);border-top-color:var(--pink,#c23d73);border-right-color:var(--gold);animation:spin .8s linear infinite}
 @keyframes spin{to{transform:rotate(360deg)}}
 
@@ -498,6 +502,75 @@ body.unlocked .loginScreen{
 /* Respeta accesibilidad de movimiento */
 @media (prefers-reduced-motion: reduce){
   *{animation-duration:.001ms !important;animation-iteration-count:1 !important;transition-duration:.001ms !important}
+}
+
+
+/* ===== MODO ESTABLE: SIN ANIMACIONES · ANDROID + PC ===== */
+*,*::before,*::after{
+  animation:none !important;
+  transition:none !important;
+}
+html,body,button,input,select,textarea,a{
+  touch-action:manipulation;
+}
+button,.btn,.copy,.nav button,.menuBtn,.logoutNav{
+  -webkit-tap-highlight-color:transparent;
+}
+/* La capa de carga queda totalmente anulada para que jamás capture toques. */
+#loadOverlay,
+#loadOverlay.show{
+  display:none !important;
+  opacity:0 !important;
+  visibility:hidden !important;
+  pointer-events:none !important;
+}
+/* Evita movimientos inesperados al tocar o pasar el mouse. */
+.card:hover,.item:hover,.order:hover,.btn:hover,.copy:hover,.menuBtn:hover,.loginBtn:hover,
+.nav button:hover,.nav button.active{
+  transform:none !important;
+}
+@media(max-width:900px){
+  .topbar{
+    display:flex !important;
+    align-items:center;
+    justify-content:space-between;
+  }
+  .topbarLeft{
+    min-width:0;
+    flex:1;
+  }
+  .topbar h1{
+    font-size:clamp(1.55rem,7vw,2rem) !important;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+  }
+  .side{
+    height:100vh !important;
+    height:100dvh !important;
+    overflow-y:auto;
+    overscroll-behavior:contain;
+    transform:translateX(-105%);
+  }
+  .side.openMenu{
+    transform:translateX(0) !important;
+  }
+  .menuOverlay{
+    display:none;
+    opacity:1 !important;
+  }
+  .menuOverlay.show{
+    display:block !important;
+  }
+  .menuBtn{
+    display:inline-flex !important;
+    position:relative;
+    z-index:1001;
+  }
+  .nav button,
+  .logoutNav{
+    min-height:48px;
+  }
 }
 </style>
 </head>
@@ -550,15 +623,37 @@ function toast(m){
   setTimeout(()=>{ el.classList.add('out'); setTimeout(()=>el.remove(),320); },3200);
 }
 function setTab(id){ $$('.section').forEach(s=>s.classList.toggle('active',s.id===id)); $$('#nav button').forEach(b=>b.classList.toggle('active',b.dataset.tab===id)); $('#pageTitle').textContent=$(`#nav button[data-tab="${id}"]`).textContent.replace(/^[^A-Za-zÁÉÍÓÚÑáéíóúñ]+/,'').trim(); if(id==='pedidos') loadAll(); }
-$('#nav').onclick=e=>{ if(e.target.matches('button')) setTab(e.target.dataset.tab); };
 function toggleMenu(){ $('#sideNav').classList.toggle('openMenu'); $('#menuOverlay').classList.toggle('show'); }
 function closeMenu(){ $('#sideNav').classList.remove('openMenu'); $('#menuOverlay').classList.remove('show'); }
-$('#nav').addEventListener('click',e=>{ if(e.target.matches('button') && window.innerWidth<=900) closeMenu(); });
+window.addEventListener('resize',()=>{ if(window.innerWidth>900) closeMenu(); });
+window.addEventListener('orientationchange',closeMenu);
+// Un solo evento click funciona en PC y Android sin bloquear los toques.
+$('#nav').addEventListener('click',e=>{
+  const btn=e.target.closest('button[data-tab]');
+  if(!btn) return;
+  setTab(btn.dataset.tab);
+  if(window.innerWidth<=900) closeMenu();
+});
 async function loadAll(){
-  $('#loadOverlay')?.classList.add('show');
-  try{ [statusData, config, categorias, productos, pedidos, zonas, cupones] = await Promise.all([api('/api/status'),api('/api/configuracion'),api('/api/categorias'),api('/api/productos?admin=1'),api('/api/pedidos'),api('/api/delivery?admin=1'),api('/api/cupones?admin=1')]); renderAll(); }
-  catch(e){ $('#status').innerHTML=`<span class="badge no">Error: ${e.message}</span>`; }
-  finally{ $('#loadOverlay')?.classList.remove('show'); }
+  // El overlay animado fue desactivado para que nunca bloquee botones en Android o PC.
+  const overlay=$('#loadOverlay');
+  overlay?.classList.remove('show');
+  try{
+    [statusData, config, categorias, productos, pedidos, zonas, cupones] = await Promise.all([
+      api('/api/status'),
+      api('/api/configuracion'),
+      api('/api/categorias'),
+      api('/api/productos?admin=1'),
+      api('/api/pedidos'),
+      api('/api/delivery?admin=1'),
+      api('/api/cupones?admin=1')
+    ]);
+    renderAll();
+  }catch(e){
+    $('#status').innerHTML=`<span class="badge no">Error: ${e.message}</span>`;
+  }finally{
+    overlay?.classList.remove('show');
+  }
 }
 function renderAll(){ renderStatus(); renderMetrics(); fillProductCats(); renderProducts(); renderCats(); renderOrders(); renderDelivery(); renderCoupons(); fillConfig(); renderApis(); }
 function renderStatus(){ $('#status').innerHTML=`<span class="badge ${statusData.mongoConectado?'ok':'no'}">Mongo: ${statusData.mongoConectado?'conectado':'no conectado'}</span><span class="badge ${statusData.cloudinaryConfigurado?'ok':'no'}">Cloudinary: ${statusData.cloudinaryConfigurado?'ok':'falta'}</span>`; $('#dashInfo').innerHTML=`<div class="${statusData.mongoConectado?'okmsg':'warn'}">${statusData.mensaje||''}${statusData.mongoError?'<br>'+statusData.mongoError:''}</div>`; }
@@ -659,7 +754,7 @@ function initAccess(){
         msg.classList.add('ok');
       }
       sessionStorage.setItem('antoja2_panel_ok','1');
-      setTimeout(entrarPanel,450);
+      entrarPanel();
       return;
     }
 
@@ -676,18 +771,10 @@ function initAccess(){
     input.focus();
   });
 }
+window.addEventListener('pageshow',()=>{
+  document.getElementById('loadOverlay')?.classList.remove('show');
+});
 initAccess();
-
-/* ===== Bloquear zoom táctil (pellizcar con dos dedos) en Android, sin afectar los toques normales ===== */
-(function(){
-  document.addEventListener('touchmove',function(e){
-    if(e.touches && e.touches.length > 1) e.preventDefault();
-  },{passive:false});
-
-  document.addEventListener('gesturestart',function(e){
-    e.preventDefault();
-  });
-})();
 </script>
 </body>
 </html>
