@@ -141,3 +141,8 @@ Puedes comprobarlo con:
 npm run check:functions
 ```
 
+
+
+## PWA instalable
+
+El proyecto incluye `manifest.webmanifest`, service worker, iconos, pantalla sin conexión y botón de instalación. Las rutas `/api/*` se excluyen del caché para proteger información dinámica y privada.

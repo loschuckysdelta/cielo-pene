@@ -4,6 +4,14 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#f43f7d">
+<meta name="application-name" content="Cielo Postres">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="Cielo Postres">
+<link rel="manifest" href="/manifest.webmanifest">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="icon" type="image/png" sizes="64x64" href="/icons/favicon-64.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/icons/apple-touch-icon.png">
 <title>Mi cuenta · Cielo Postres</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -111,5 +119,6 @@ function logout(){localStorage.removeItem(tokenKey);client=null;orders=[];notifi
 $$('[data-auth-tab]').forEach(b=>b.onclick=()=>switchAuth(b.dataset.authTab));$$('.side-nav button').forEach(b=>b.onclick=()=>goPage(b.dataset.page));$$('[data-page-jump]').forEach(b=>b.onclick=()=>goPage(b.dataset.pageJump));$('#loginForm').addEventListener('submit',login);$('#registerForm').addEventListener('submit',register);$('#profileForm').addEventListener('submit',updateProfile);$('#readAllBtn').onclick=readAll;$('#refreshBtn').onclick=()=>loadAccount(false).then(()=>toast('Información actualizada.'));$('#logoutBtn').onclick=logout;
 if(localStorage.getItem(tokenKey))loadAccount();else showAuth();initGoogle();setInterval(()=>{if(localStorage.getItem(tokenKey))loadAccount(false)},30000);
 </script>
+<script src="/pwa.js" defer></script>
 </body>
 </html>

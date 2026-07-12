@@ -4,6 +4,14 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
 <meta name="theme-color" content="#111322">
+<meta name="application-name" content="Cielo Postres">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="Cielo Postres">
+<link rel="manifest" href="/manifest.webmanifest">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="icon" type="image/png" sizes="64x64" href="/icons/favicon-64.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/icons/apple-touch-icon.png">
 <title>Panel administrador · Cielo Postres</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -282,5 +290,6 @@ $('#configForm').onsubmit=async e=>{e.preventDefault();try{setLoading(true);awai
 $('#newUserBtn').onclick=()=>{resetUser();$('#userFormCard').scrollIntoView({behavior:'smooth'})};$('#resetUserBtn').onclick=()=>{resetUser();$('#uRole').disabled=false;$('#uActivo').disabled=false;$$('#permissionGrid input').forEach(x=>x.disabled=false)};$('#uRole').onchange=applyRoleDefaults;$('#toggleUserPass').onclick=()=>{const x=$('#uPassword');x.type=x.type==='password'?'text':'password'};$('#userForm').onsubmit=async e=>{e.preventDefault();try{setLoading(true);const id=$('#uId').value;const payload={nombre:$('#uNombre').value,email:$('#uEmail').value,password:$('#uPassword').value,role:$('#uRole').value,activo:$('#uActivo').value,permissions:selectedUserPermissions()};if(!payload.password)delete payload.password;await api('/api/usuarios'+(id?'?id='+id:''),{method:id?'PUT':'POST',body:JSON.stringify(payload)});resetUser();$('#uRole').disabled=false;$('#uActivo').disabled=false;$$('#permissionGrid input').forEach(x=>x.disabled=false);await loadAll(false);toast(id?'Usuario actualizado.':'Usuario creado.')}catch(err){toast(err.message,'bad')}finally{setLoading(false)}};
 $$('[data-clean]').forEach(b=>b.onclick=()=>cleanData(b.dataset.clean));
 </script>
+<script src="/pwa.js" defer></script>
 </body>
 </html>
