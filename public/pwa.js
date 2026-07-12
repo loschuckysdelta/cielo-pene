@@ -4,6 +4,53 @@
   const isStandalone = () => window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true;
   const isIOS = /iphone|ipad|ipod/i.test(navigator.userAgent);
 
+
+  function lockPageZoom() {
+    const prevent = event => {
+      if (event.cancelable) event.preventDefault();
+    };
+
+    // Mantiene el desplazamiento normal, pero bloquea el gesto de pellizcar.
+    document.documentElement.style.touchAction = 'pan-x pan-y';
+    const applyBodyRule = () => {
+      if (document.body) document.body.style.touchAction = 'pan-x pan-y';
+    };
+    applyBodyRule();
+    document.addEventListener('DOMContentLoaded', applyBodyRule, { once: true });
+
+    // Safari/iPhone/iPad.
+    ['gesturestart', 'gesturechange', 'gestureend'].forEach(type => {
+      document.addEventListener(type, prevent, { passive: false });
+    });
+
+    // Pellizco con dos o más dedos.
+    document.addEventListener('touchmove', event => {
+      if (event.touches && event.touches.length > 1) prevent(event);
+    }, { passive: false });
+
+    // Evita el zoom por doble toque sin bloquear un toque normal.
+    let lastTouchEnd = 0;
+    document.addEventListener('touchend', event => {
+      const now = Date.now();
+      if (now - lastTouchEnd <= 300) prevent(event);
+      lastTouchEnd = now;
+    }, { passive: false });
+
+    document.addEventListener('dblclick', prevent, { passive: false });
+
+    // También bloquea Ctrl/Cmd + rueda y los atajos de zoom en computadora.
+    window.addEventListener('wheel', event => {
+      if (event.ctrlKey || event.metaKey) prevent(event);
+    }, { passive: false });
+    window.addEventListener('keydown', event => {
+      if ((event.ctrlKey || event.metaKey) && ['+', '-', '=', '0'].includes(event.key)) {
+        prevent(event);
+      }
+    }, { passive: false });
+  }
+
+  lockPageZoom();
+
   function addStyles() {
     const style = document.createElement('style');
     style.textContent = `

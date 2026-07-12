@@ -1,0 +1,10 @@
+ZOOM BLOQUEADO
+
+Se bloqueó el zoom por:
+- Pellizco con dos dedos.
+- Doble toque.
+- Ctrl/Cmd + rueda del mouse.
+- Ctrl/Cmd +, -, = y 0.
+
+El desplazamiento vertical y horizontal sigue funcionando normalmente.
+El Service Worker usa una versión nueva para que la PWA cargue el cambio.

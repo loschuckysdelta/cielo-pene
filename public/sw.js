@@ -1,4 +1,4 @@
-const CACHE_NAME = 'cielo-postres-pwa-v3';
+const CACHE_NAME = 'cielo-postres-pwa-v4-nozoom';
 const APP_SHELL = [
   '/', '/index.html', '/catalogo', '/cuenta', '/cuenta.html', '/admin', '/admin.html',
   '/offline.html', '/manifest.webmanifest', '/pwa.js', '/favicon.svg',
