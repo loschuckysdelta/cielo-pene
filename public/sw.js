@@ -1,4 +1,4 @@
-const CACHE_NAME = 'cielo-postres-pwa-v5-android';
+const CACHE_NAME = 'cielo-postres-pwa-v6-product-images';
 const APP_SHELL = [
   '/', '/index.html', '/catalogo', '/cuenta', '/cuenta.html', '/admin', '/admin.html',
   '/offline.html', '/manifest.webmanifest', '/pwa.js', '/android.css', '/favicon.svg',

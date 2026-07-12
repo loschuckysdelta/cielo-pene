@@ -16,6 +16,51 @@ function orderCode() {
 }
 
 function money(n) { return Math.round((Number(n) || 0) * 100) / 100; }
+function productImage(product) {
+  if (!product) return '';
+  const images = Array.isArray(product.imagenes) ? product.imagenes : [];
+  const value = images.find(Boolean) || product.imagen || product.image || product.foto || '';
+  return normalizeText(value);
+}
+
+async function enrichOrderProductImages(orderDocs) {
+  const docs = Array.isArray(orderDocs) ? orderDocs : [];
+  if (!docs.length) return docs;
+
+  const missingIds = [...new Set(docs.flatMap(order =>
+    (order.items || [])
+      .filter(item => !item.imagen && item.productoId)
+      .map(item => String(item.productoId))
+  ))];
+
+  if (!missingIds.length) return docs;
+  const productosCol = await collection('productos');
+  const productMap = new Map();
+
+  if (productosCol) {
+    const objectIds = missingIds.map(oid).filter(Boolean);
+    if (objectIds.length) {
+      const products = await productosCol.find({ _id: { $in: objectIds } }).toArray();
+      for (const product of products) productMap.set(String(product._id), product);
+    }
+  } else {
+    for (const product of memory.productos || []) {
+      productMap.set(String(product.id || product._id || ''), product);
+    }
+  }
+
+  return docs.map(order => ({
+    ...order,
+    items: (order.items || []).map(item => {
+      const product = productMap.get(String(item.productoId || ''));
+      return {
+        ...item,
+        nombre: item.nombre || product?.nombre || 'Producto',
+        imagen: item.imagen || productImage(product)
+      };
+    })
+  }));
+}
 function actorInfo(actor) {
   return actor ? { id: String(actor._id || actor.id || ''), nombre: actor.nombre || actor.email || 'Administrador' } : { id: '', nombre: 'Sistema' };
 }
@@ -127,7 +172,10 @@ async function buildPedido(body) {
     const sub = money(precio * cantidad);
     subtotal = money(subtotal + sub);
     items.push({
-      productoId: String(prod._id || prod.id), nombre: prod.nombre, categoriaNombre: prod.categoriaNombre || '',
+      productoId: String(prod._id || prod.id),
+      nombre: prod.nombre,
+      categoriaNombre: prod.categoriaNombre || '',
+      imagen: productImage(prod),
       cantidad, precio, subtotal: sub, stockAlCrear: Number(prod.stock) || 0
     });
   }
@@ -376,12 +424,13 @@ async function handleMyOrders(req, res) {
   const col = await collection('pedidos');
   if (col) {
     const docs = await col.find({ clienteId }).sort({ createdAt: -1 }).limit(100).toArray();
-    return send(res, 200, { ok: true, data: publicList(docs) });
+    const publicDocs = publicList(docs);
+    return send(res, 200, { ok: true, data: await enrichOrderProductImages(publicDocs) });
   }
   const docs = (memory.pedidos || [])
     .filter(p => String(p.clienteId || '') === clienteId)
     .sort((a, b) => String(b.createdAt).localeCompare(String(a.createdAt)));
-  return send(res, 200, { ok: true, data: docs });
+  return send(res, 200, { ok: true, data: await enrichOrderProductImages(docs) });
 }
 
 module.exports = async function handler(req, res) {
@@ -423,10 +472,10 @@ module.exports = async function handler(req, res) {
     if (req.method === 'GET') {
       if (pedidosCol) {
         const docs = await pedidosCol.find({}).sort({ createdAt: -1 }).limit(300).toArray();
-        return send(res, 200, { ok: true, data: publicList(docs) });
+        return send(res, 200, { ok: true, data: await enrichOrderProductImages(publicList(docs)) });
       }
       const docs = [...memory.pedidos].sort((a,b) => String(b.createdAt).localeCompare(String(a.createdAt)));
-      return send(res, 200, { ok: true, data: docs });
+      return send(res, 200, { ok: true, data: await enrichOrderProductImages(docs) });
     }
 
     if (req.method === 'PUT') {
