@@ -784,3 +784,55 @@ canvas {
     min-width: 36px;
   }
 }
+
+
+/* =========================================================
+   CORRECCIÓN DE DESPLAZAMIENTO TÁCTIL
+   Permite subir y bajar normalmente en Android/PWA sin
+   reactivar el zoom de la página.
+   ========================================================= */
+html,
+body {
+  height: auto !important;
+  min-height: 100%;
+  overflow-x: hidden !important;
+  overflow-y: auto !important;
+  touch-action: auto !important;
+  overscroll-behavior-y: auto !important;
+  -webkit-overflow-scrolling: touch;
+}
+
+body.account-open {
+  position: static !important;
+  height: auto !important;
+  min-height: 100dvh;
+  overflow-y: auto !important;
+}
+
+body.account-open .shell,
+body.account-open .dashboard,
+body.account-open .main {
+  height: auto !important;
+  overflow-y: visible !important;
+}
+
+@media (max-width: 820px) {
+  body.account-open .shell,
+  body.account-open .dashboard,
+  body.account-open .main {
+    min-height: 100dvh;
+    overflow: visible !important;
+  }
+
+  body.account-open .main {
+    touch-action: pan-y !important;
+  }
+
+  body.account-open .notification-card,
+  body.account-open .content-card,
+  body.account-open .order,
+  body.account-open .notif,
+  body.account-open .rail-card {
+    touch-action: pan-y !important;
+  }
+}
