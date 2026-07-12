@@ -1,0 +1,22 @@
+CIELO POSTRES - NOTIFICACIONES REALES Y SESIONES GUARDADAS
+
+NUEVO:
+- Notificaciones push reales aunque la página esté cerrada.
+- Avisos automáticos: confirmado, preparando, listo para recoger, en camino, entregado y cancelado.
+- Avisos personalizados enviados desde el panel administrador.
+- Cuenta de cliente guardada mediante cookie HttpOnly segura.
+- El cliente puede mantener su sesión durante 30 días.
+- El administrador mantiene su sesión durante 7 días.
+
+VARIABLES QUE DEBES AGREGAR EN VERCEL:
+VAPID_PUBLIC_KEY=TU_CLAVE_PUBLICA
+VAPID_PRIVATE_KEY=TU_CLAVE_PRIVADA
+VAPID_SUBJECT=mailto:tu-correo@gmail.com
+
+IMPORTANTE:
+- Las claves reales se entregan en un TXT separado. No subas ese TXT a GitHub.
+- Conserva MONGO_URI, GOOGLE_CLIENT_ID y CLIENT_AUTH_SECRET en Vercel.
+- Después de agregar las variables, realiza un Redeploy.
+- En Android: entra a Mi cuenta y pulsa "Activar avisos".
+- En iPhone/iPad: primero instala la PWA con Compartir > Agregar a pantalla de inicio; luego abre la app y activa los avisos.
+- El navegador siempre pedirá permiso al cliente antes de mostrar notificaciones.

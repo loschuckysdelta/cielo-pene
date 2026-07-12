@@ -1,4 +1,4 @@
-const CACHE_NAME = 'cielo-postres-pwa-v1';
+const CACHE_NAME = 'cielo-postres-pwa-v2';
 const APP_SHELL = [
   '/', '/index.html', '/catalogo', '/cuenta', '/cuenta.html', '/admin', '/admin.html',
   '/offline.html', '/manifest.webmanifest', '/pwa.js', '/favicon.svg',
@@ -40,6 +40,48 @@ self.addEventListener('fetch', event => {
       }
       return response;
     }))
+  );
+});
+
+self.addEventListener('push', event => {
+  let data = {};
+  try { data = event.data ? event.data.json() : {}; } catch (_) { data = { body: event.data?.text() || '' }; }
+  const title = data.title || 'Cielo Postres';
+  const options = {
+    body: data.body || 'Tienes una nueva actualización de tu pedido.',
+    icon: data.icon || '/icons/icon-192.png',
+    badge: data.badge || '/icons/favicon-64.png',
+    tag: data.tag || 'cielo-postres',
+    renotify: true,
+    vibrate: [180, 90, 180],
+    data: {
+      url: data.url || '/cuenta?seccion=notificaciones',
+      notificationId: data.notificationId || '',
+      orderCode: data.orderCode || ''
+    },
+    actions: [
+      { action: 'ver', title: 'Ver pedido' },
+      { action: 'cerrar', title: 'Cerrar' }
+    ]
+  };
+  event.waitUntil(self.registration.showNotification(title, options));
+});
+
+self.addEventListener('notificationclick', event => {
+  event.notification.close();
+  if (event.action === 'cerrar') return;
+  const target = new URL(event.notification.data?.url || '/cuenta?seccion=notificaciones', self.location.origin).href;
+  event.waitUntil(
+    self.clients.matchAll({ type: 'window', includeUncontrolled: true }).then(async windows => {
+      for (const client of windows) {
+        if (client.url.startsWith(self.location.origin) && 'focus' in client) {
+          await client.focus();
+          if ('navigate' in client) await client.navigate(target);
+          return;
+        }
+      }
+      if (self.clients.openWindow) return self.clients.openWindow(target);
+    })
   );
 });
 

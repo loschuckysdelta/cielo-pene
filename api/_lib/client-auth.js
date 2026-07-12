@@ -1,6 +1,9 @@
 const crypto = require('crypto');
 const { collection, oid, publicDoc, memory } = require('./db');
 const { hashPassword, verifyPassword, normalizeEmail } = require('./auth');
+const { parseCookies } = require('./cookies');
+
+const CLIENT_COOKIE = 'cielo_cliente_sesion';
 
 function clientSecret() {
   return process.env.CLIENT_AUTH_SECRET || `${process.env.AUTH_SECRET || process.env.ADMIN_PASSWORD || 'cielo-postres'}-clientes`;
@@ -66,7 +69,8 @@ async function findClientByEmail(email) {
 }
 
 async function currentClient(req) {
-  const payload = verifyClientToken(bearer(req));
+  const token = bearer(req) || parseCookies(req)[CLIENT_COOKIE] || '';
+  const payload = verifyClientToken(token);
   if (!payload) return null;
   const client = await findClientById(payload.sub);
   if (!client || client.activo === false) return null;
@@ -93,5 +97,6 @@ module.exports = {
   findClientById,
   findClientByEmail,
   currentClient,
-  requireClient
+  requireClient,
+  CLIENT_COOKIE
 };

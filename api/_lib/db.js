@@ -13,7 +13,8 @@ if (!memory) {
     resenas: [],
     usuarios: [],
     clientes: [],
-    notificaciones: []
+    notificaciones: [],
+    pushSubscriptions: []
   };
 }
 
@@ -83,7 +84,9 @@ async function ensureIndexes() {
     database.collection('clientes').createIndex({ activo: 1, createdAt: -1 }),
     database.collection('notificaciones').createIndex({ clienteId: 1, createdAt: -1 }),
     database.collection('notificaciones').createIndex({ clienteId: 1, read: 1 }),
-    database.collection('notificaciones').createIndex({ orderId: 1, status: 1 })
+    database.collection('notificaciones').createIndex({ orderId: 1, status: 1 }),
+    database.collection('pushSubscriptions').createIndex({ endpoint: 1 }, { unique: true }),
+    database.collection('pushSubscriptions').createIndex({ clienteId: 1, activo: 1 })
   ]).catch(() => null);
 }
 

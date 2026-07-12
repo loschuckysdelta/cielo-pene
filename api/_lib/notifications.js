@@ -1,4 +1,5 @@
-const { collection, oid, publicDoc, memory, memoryId } = require('./db');
+const { collection, publicDoc, memory, memoryId } = require('./db');
+const { sendPushToClient } = require('./push');
 
 function firstName(value) {
   return String(value || 'Cliente').trim().split(/\s+/)[0] || 'Cliente';
@@ -44,6 +45,27 @@ function notificationContent(order, status) {
   return map[status] || { title: 'Actualización de pedido', message: `${name}, tu pedido ${code} cambió de estado.` };
 }
 
+function pushPayload(notification) {
+  return {
+    title: notification.title || 'Cielo Postres',
+    body: notification.message || 'Tienes una nueva notificación.',
+    icon: '/icons/icon-192.png',
+    badge: '/icons/favicon-64.png',
+    url: '/cuenta?seccion=notificaciones',
+    tag: notification.orderId ? `pedido-${notification.orderId}` : `notificacion-${notification.id || Date.now()}`,
+    orderCode: notification.orderCode || '',
+    notificationId: notification.id || ''
+  };
+}
+
+async function deliverPush(notification) {
+  try {
+    await sendPushToClient(notification.clienteId, pushPayload(notification));
+  } catch (e) {
+    console.warn('No se pudo enviar la notificación push:', e?.message || e);
+  }
+}
+
 async function createNotification({ clienteId, orderId = '', orderCode = '', status = '', title, message, type = 'pedido' }) {
   if (!clienteId) return null;
   const col = await collection('notificaciones');
@@ -61,22 +83,25 @@ async function createNotification({ clienteId, orderId = '', orderCode = '', sta
     updatedAt: now
   };
 
+  let saved;
   if (col) {
     if (doc.orderId && doc.status) {
       const exists = await col.findOne({ clienteId: doc.clienteId, orderId: doc.orderId, status: doc.status, type: doc.type });
       if (exists) return publicDoc(exists);
     }
     const result = await col.insertOne(doc);
-    return publicDoc({ ...doc, _id: result.insertedId });
+    saved = publicDoc({ ...doc, _id: result.insertedId });
+  } else {
+    if (!Array.isArray(memory.notificaciones)) memory.notificaciones = [];
+    if (doc.orderId && doc.status) {
+      const exists = memory.notificaciones.find(n => n.clienteId === doc.clienteId && n.orderId === doc.orderId && n.status === doc.status && n.type === doc.type);
+      if (exists) return exists;
+    }
+    saved = { ...doc, id: memoryId() };
+    memory.notificaciones.push(saved);
   }
 
-  if (!Array.isArray(memory.notificaciones)) memory.notificaciones = [];
-  if (doc.orderId && doc.status) {
-    const exists = memory.notificaciones.find(n => n.clienteId === doc.clienteId && n.orderId === doc.orderId && n.status === doc.status && n.type === doc.type);
-    if (exists) return exists;
-  }
-  const saved = { ...doc, id: memoryId() };
-  memory.notificaciones.push(saved);
+  await deliverPush(saved);
   return saved;
 }
 

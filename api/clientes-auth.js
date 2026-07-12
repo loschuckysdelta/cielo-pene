@@ -2,8 +2,22 @@ const { setCors, send, error, readBody, normalizeText } = require('./_lib/http')
 const { collection, memory, memoryId, ensureIndexes } = require('./_lib/db');
 const {
   hashPassword, verifyPassword, normalizeEmail, signClientToken,
-  publicClient, findClientByEmail, currentClient, requireClient
+  publicClient, findClientByEmail, currentClient, requireClient, CLIENT_COOKIE
 } = require('./_lib/client-auth');
+const { setHttpOnlyCookie, clearCookie, parseCookies } = require('./_lib/cookies');
+
+
+const CLIENT_COOKIE_AGE = 60 * 60 * 24 * 30;
+
+function rememberSession(body) {
+  return body.remember !== false && body.remember !== 'false';
+}
+
+function setClientSession(req, res, client, remember = true) {
+  const token = signClientToken(client);
+  setHttpOnlyCookie(req, res, CLIENT_COOKIE, token, remember ? { maxAge: CLIENT_COOKIE_AGE } : {});
+  return token;
+}
 
 function requestAction(req) {
   if (req.query && req.query.action) return String(req.query.action).toLowerCase();
@@ -118,12 +132,18 @@ module.exports = async function handler(req, res) {
       const body = await readBody(req);
       const accion = normalizeText(body.accion || 'login').toLowerCase();
 
+      if (accion === 'logout') {
+        clearCookie(req, res, CLIENT_COOKIE);
+        return send(res, 200, { ok: true });
+      }
+
       if (accion === 'google') {
         const profile = await verifyGoogleCredential(String(body.credential || ''));
         const saved = await saveGoogleClient(col, profile);
+        setClientSession(req, res, saved, rememberSession(body));
         return send(res, 200, {
           ok: true,
-          data: { token: signClientToken(saved), client: publicClient(saved) }
+          data: { client: publicClient(saved), sessionSaved: true }
         });
       }
 
@@ -160,7 +180,8 @@ module.exports = async function handler(req, res) {
           if (!Array.isArray(memory.clientes)) memory.clientes = [];
           memory.clientes.push(saved);
         }
-        return send(res, 201, { ok: true, data: { token: signClientToken(saved), client: publicClient(saved) } });
+        setClientSession(req, res, saved, rememberSession(body));
+        return send(res, 201, { ok: true, data: { client: publicClient(saved), sessionSaved: true } });
       }
 
       const email = normalizeEmail(body.email);
@@ -176,12 +197,16 @@ module.exports = async function handler(req, res) {
       if (col) await col.updateOne({ _id: client._id }, { $set: { lastAccess, updatedAt: lastAccess } });
       else client.lastAccess = lastAccess;
       client.lastAccess = lastAccess;
-      return send(res, 200, { ok: true, data: { token: signClientToken(client), client: publicClient(client) } });
+      setClientSession(req, res, client, rememberSession(body));
+      return send(res, 200, { ok: true, data: { client: publicClient(client), sessionSaved: true } });
     }
 
     if (req.method === 'GET') {
       const client = await currentClient(req);
       if (!client) return error(res, 401, 'Sesión vencida. Inicia sesión nuevamente.');
+      const hasCookie = Boolean(parseCookies(req)[CLIENT_COOKIE]);
+      const hasLegacyBearer = String(req.headers.authorization || '').startsWith('Bearer ');
+      if (!hasCookie && hasLegacyBearer) setClientSession(req, res, client, true);
       return send(res, 200, { ok: true, data: publicClient(client) });
     }
 

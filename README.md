@@ -146,3 +146,21 @@ npm run check:functions
 ## PWA instalable
 
 El proyecto incluye `manifest.webmanifest`, service worker, iconos, pantalla sin conexión y botón de instalación. Las rutas `/api/*` se excluyen del caché para proteger información dinámica y privada.
+
+## Notificaciones push reales
+
+La versión 6.2 incluye Web Push. Cuando el administrador cambia un pedido a `confirmado`, `preparando`, `listo`, `en_camino`, `entregado` o `cancelado`, el cliente recibe una notificación del sistema aunque la página esté cerrada.
+
+Variables necesarias en Vercel:
+
+```env
+VAPID_PUBLIC_KEY=TU_CLAVE_PUBLICA
+VAPID_PRIVATE_KEY=TU_CLAVE_PRIVADA
+VAPID_SUBJECT=mailto:tu-correo@gmail.com
+```
+
+También deben continuar configuradas `MONGO_URI`, `CLIENT_AUTH_SECRET` y `GOOGLE_CLIENT_ID`.
+
+Las cuentas de clientes se conservan mediante una cookie `HttpOnly`, `SameSite=Lax` y `Secure` en producción. La sesión recordada dura 30 días. La sesión del panel administrador dura 7 días.
+
+En iOS, las notificaciones push web requieren instalar primero la PWA desde **Compartir → Agregar a pantalla de inicio**.

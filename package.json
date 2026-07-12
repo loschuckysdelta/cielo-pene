@@ -1,16 +1,18 @@
 {
   "name": "cielo-postres-api-admin",
-  "version": "6.1.0",
+  "version": "6.2.0",
   "private": true,
-  "description": "Cielo Postres con panel administrador, gestores, cuentas de clientes, seguimiento de pedidos y notificaciones.",
+  "description": "Cielo Postres PWA con notificaciones push reales, cookies seguras, panel administrador, clientes y seguimiento de pedidos.",
   "scripts": {
     "build": "echo \"Proyecto HTML + API Vercel listo\"",
     "start": "echo \"Usa Vercel para desplegar este proyecto\"",
-    "check:functions": "node scripts/verificar-funciones.js"
+    "check:functions": "node scripts/verificar-funciones.js",
+    "generate:vapid": "node scripts/generar-vapid.js"
   },
   "dependencies": {
     "cloudinary": "^2.5.1",
-    "mongodb": "^6.12.0"
+    "mongodb": "^6.12.0",
+    "web-push": "^3.6.7"
   },
   "engines": {
     "node": "24.x"

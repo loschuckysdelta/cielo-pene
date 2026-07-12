@@ -147,7 +147,7 @@ const $ = s => document.querySelector(s);
 const esc = v => String(v ?? '').replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m]));
 const money = n => 'S/ ' + (Number(n)||0).toFixed(2);
 const toast = msg => { const el=$('#toast'); el.textContent=msg; el.classList.add('show'); setTimeout(()=>el.classList.remove('show'),3200); };
-async function api(url, opts={}){ const token=localStorage.getItem('cielo_cliente_token')||''; const headers={'Content-Type':'application/json',...(token?{'Authorization':'Bearer '+token}:{}),...(opts.headers||{})}; const res=await fetch(url,{...opts,headers}); const data=await res.json().catch(()=>({ok:false,error:'Respuesta inválida'})); if(!res.ok || data.ok===false) throw new Error(data.error || 'Error API'); return data.data ?? data; }
+async function api(url, opts={}){ const token=localStorage.getItem('cielo_cliente_token')||''; const headers={'Content-Type':'application/json',...(token?{'Authorization':'Bearer '+token}:{}),...(opts.headers||{})}; const res=await fetch(url,{...opts,headers,credentials:'same-origin'}); const data=await res.json().catch(()=>({ok:false,error:'Respuesta inválida'})); if(!res.ok || data.ok===false) throw new Error(data.error || 'Error API'); return data.data ?? data; }
 
 let config={}, cats=[], productos=[], zonas=[], resenas=[], cart={}, slideIndex={}, cuponAplicado=null, clienteActual=null;
 let filtros={texto:'',stock:false,oferta:false,destacado:false};
@@ -163,7 +163,7 @@ async function init(){
 }
 function whatsappNumber(){ return String(config.whatsapp || DEFAULT_WA).replace(/\D/g,'') || DEFAULT_WA; }
 function whatsappLink(text='Hola Cielo Postres 👋 Quiero hacer un pedido.'){ return `https://wa.me/${whatsappNumber()}?text=${encodeURIComponent(text)}`; }
-async function loadClientSession(){ const token=localStorage.getItem('cielo_cliente_token'); if(!token){clienteActual=null;updateAccountBadge([]);return;} try{clienteActual=await api('/api/clientes-auth');const notifs=await api('/api/notificaciones');updateAccountBadge(Array.isArray(notifs)?notifs:[]);}catch(_){localStorage.removeItem('cielo_cliente_token');clienteActual=null;updateAccountBadge([]);} }
+async function loadClientSession(){ try{clienteActual=await api('/api/clientes-auth');localStorage.removeItem('cielo_cliente_token');const notifs=await api('/api/notificaciones');updateAccountBadge(Array.isArray(notifs)?notifs:[]);}catch(_){localStorage.removeItem('cielo_cliente_token');clienteActual=null;updateAccountBadge([]);} }
 function updateAccountBadge(list){const count=(list||[]).filter(n=>!n.read).length;const badge=$('#accountBadge');if(!badge)return;badge.textContent=count;badge.classList.toggle('hidden',count===0)}
 function prefillCheckout(){if(!clienteActual)return;$('#cNombre').value=clienteActual.nombre||$('#cNombre').value;$('#cTelefono').value=clienteActual.telefono||$('#cTelefono').value;$('#cEmail').value=clienteActual.email||$('#cEmail').value;$('#cEmail').readOnly=true;const hint=$('#accountCheckoutHint');if(hint){hint.textContent='Este pedido quedará guardado en Mi cuenta y recibirás notificaciones.';hint.style.color='var(--pink)';}}
 function cleanUrl(url){ const u=String(url||'').trim(); if(!u) return ''; if(/^(https?:\/\/|mailto:|tel:)/i.test(u)) return u; return 'https://' + u; }

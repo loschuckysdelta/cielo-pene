@@ -1,5 +1,8 @@
 const crypto = require('crypto');
 const { collection, oid, publicDoc, memory, memoryId } = require('./db');
+const { parseCookies } = require('./cookies');
+
+const ADMIN_COOKIE = 'cielo_admin_sesion';
 
 const ALL_PERMISSIONS = [
   'dashboard','productos','categorias','pedidos','resenas','cupones',
@@ -163,7 +166,8 @@ function bearer(req) {
 
 async function currentUser(req) {
   await ensureBootstrapUser();
-  const payload = verifyToken(bearer(req));
+  const token = bearer(req) || parseCookies(req)[ADMIN_COOKIE] || '';
+  const payload = verifyToken(token);
   if (!payload) return null;
   const user = await findUserById(payload.sub);
   if (!user || user.activo === false) return null;
@@ -202,5 +206,6 @@ module.exports = {
   findUserByEmail,
   updateLastAccess,
   currentUser,
-  requireAuth
+  requireAuth,
+  ADMIN_COOKIE
 };
