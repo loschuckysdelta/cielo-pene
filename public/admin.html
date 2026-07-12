@@ -41,14 +41,29 @@
 </head>
 <body>
 <div class="login-screen" id="loginScreen">
-  <form class="login-card" id="loginForm">
+  <form class="login-card" id="loginForm" autocomplete="off" novalidate>
     <div class="cake-logo">🍰</div>
     <div class="brand-script">Cielo <span>Postres</span></div>
     <p>Panel privado de administración</p>
-    <div class="login-field"><label>Correo</label><input class="input" id="accessEmail" type="email" value="admin@cielopostres.com" placeholder="admin@cielopostres.com" autocomplete="username" required></div>
-    <div class="login-field"><label>Contraseña</label><div class="password-wrap"><input class="input" id="accessPass" type="password" placeholder="Escribe tu contraseña" autocomplete="current-password" required><button class="eye" type="button" id="togglePass">👁</button></div></div>
+
+    <!-- Campos señuelo fuera de pantalla para evitar que el navegador rellene los campos reales. -->
+    <div aria-hidden="true" style="position:fixed;left:-10000px;top:-10000px;width:1px;height:1px;overflow:hidden;opacity:0;pointer-events:none">
+      <input type="text" name="fake_admin_user" autocomplete="username" tabindex="-1">
+      <input type="password" name="fake_admin_password" autocomplete="current-password" tabindex="-1">
+    </div>
+
+    <div class="login-field">
+      <label for="accessEmail">Correo</label>
+      <input class="input" id="accessEmail" name="cielo_private_email" type="email" value="" placeholder="Escribe tu correo" autocomplete="off" autocapitalize="none" autocorrect="off" spellcheck="false" data-lpignore="true" data-1p-ignore="true" data-bwignore="true" readonly required>
+    </div>
+    <div class="login-field">
+      <label for="accessPass">Contraseña</label>
+      <div class="password-wrap">
+        <input class="input" id="accessPass" name="cielo_private_password" type="password" value="" placeholder="Escribe tu contraseña" autocomplete="new-password" data-lpignore="true" data-1p-ignore="true" data-bwignore="true" readonly required>
+        <button class="eye" type="button" id="togglePass" aria-label="Mostrar u ocultar contraseña">👁</button>
+      </div>
+    </div>
     <button class="btn btn-primary btn-block" type="submit">Entrar al panel</button>
-    <div class="login-help">Acceso inicial: admin@cielopostres.com · Chucky123</div>
     <div class="login-error" id="loginError"></div>
   </form>
 </div>
@@ -345,7 +360,60 @@ function copyUrl(url){navigator.clipboard?.writeText(location.origin+url);toast(
 async function deleteRecord(url,label){if(!confirm('¿Eliminar '+label+'?'))return;try{setLoading(true);await api(url,{method:'DELETE'});await loadAll(false);toast('Eliminado correctamente.')}catch(e){toast(e.message,'bad')}finally{setLoading(false)}}
 async function cleanData(target){const isAll=target==='todo';const required=isAll?'BORRAR TODO':'BORRAR';const labels={productos:'productos',pedidos:'pedidos',resenas:'reseñas',categorias:'categorías',delivery:'zonas de delivery',cupones:'cupones',clientes:'cuentas de clientes',notificaciones:'notificaciones',pushsubscriptions:'dispositivos de notificaciones',usuarios:'administradores y gestores',todo:'todos los datos operativos'};const confirmText=prompt(`Escribe ${required} para eliminar ${labels[target]||target}`);if(confirmText!==required)return;try{setLoading(true);await api('/api/limpiar',{method:'DELETE',body:JSON.stringify({target,confirmacion:required})});state.reportOrders=[];await loadAll(false);toast(isAll?'Datos operativos eliminados. Se conservó el admin principal.':'Datos eliminados.')}catch(e){toast(e.message,'bad')}finally{setLoading(false)}}
 function applySearch(){const q=$('#globalSearch').value.toLowerCase().trim();state.search=q;renderProducts();renderCategories();renderOrders();renderReviews();renderCoupons();renderDelivery();renderClients();renderUsers()}
-$('#loginForm').addEventListener('submit',async e=>{e.preventDefault();try{setLoading(true);$('#loginError').textContent='';const data=await api('/api/auth',{method:'POST',body:JSON.stringify({email:$('#accessEmail').value,password:$('#accessPass').value})});sessionStorage.removeItem('cielo_admin_token');state.authUser=data.user;$('#loginScreen').classList.add('hidden');await loadAll(false)}catch(err){$('#loginError').textContent=err.message;$('#accessPass').value='';$('#accessPass').focus()}finally{setLoading(false)}});$('#togglePass').onclick=()=>{const x=$('#accessPass');x.type=x.type==='password'?'text':'password'};loadAll();
+const loginEmail=$('#accessEmail');
+const loginPassword=$('#accessPass');
+let loginWasTouched=false;
+
+function unlockPrivateLoginField(event){
+  event.currentTarget.removeAttribute('readonly');
+}
+
+[loginEmail,loginPassword].forEach(input=>{
+  ['pointerdown','touchstart','focus','keydown'].forEach(eventName=>input.addEventListener(eventName,unlockPrivateLoginField,{once:false}));
+  input.addEventListener('input',()=>{loginWasTouched=true});
+});
+
+function clearPrivateLoginFields(){
+  if(loginWasTouched||$('#loginScreen').classList.contains('hidden'))return;
+  loginEmail.value='';
+  loginPassword.value='';
+}
+
+window.addEventListener('pageshow',()=>{loginWasTouched=false;clearPrivateLoginFields()});
+clearPrivateLoginFields();
+setTimeout(clearPrivateLoginFields,120);
+setTimeout(clearPrivateLoginFields,700);
+
+$('#loginForm').addEventListener('submit',async e=>{
+  e.preventDefault();
+  const email=loginEmail.value.trim().toLowerCase();
+  const password=loginPassword.value;
+  if(!email||!password){
+    $('#loginError').textContent='Escribe tu correo y contraseña.';
+    return;
+  }
+  try{
+    setLoading(true);
+    $('#loginError').textContent='';
+    const data=await api('/api/auth',{method:'POST',body:JSON.stringify({email,password})});
+    sessionStorage.removeItem('cielo_admin_token');
+    state.authUser=data.user;
+    loginEmail.value='';
+    loginPassword.value='';
+    $('#loginScreen').classList.add('hidden');
+    await loadAll(false)
+  }catch(err){
+    $('#loginError').textContent=err.message;
+    loginPassword.value='';
+    loginPassword.removeAttribute('readonly');
+    loginPassword.focus()
+  }finally{setLoading(false)}
+});
+$('#togglePass').onclick=()=>{
+  loginPassword.removeAttribute('readonly');
+  loginPassword.type=loginPassword.type==='password'?'text':'password'
+};
+loadAll();
 $('#logoutBtn').onclick=async()=>{try{await api('/api/auth',{method:'POST',body:JSON.stringify({accion:'logout'})})}catch(_){}sessionStorage.removeItem('cielo_admin_token');location.reload()};$('#menuBtn').onclick=openMenu;$('#menuOverlay').onclick=closeMenu;$$('#nav button').forEach(b=>b.onclick=()=>goPage(b.dataset.page));$$('[data-go]').forEach(b=>b.onclick=()=>goPage(b.dataset.go));$('#notificationBtn').onclick=()=>goPage('resenas');$('#globalSearch').addEventListener('input',applySearch);$('#orderFilter').onchange=renderOrders;window.addEventListener('resize',()=>{if(state.page==='dashboard')renderChart()});
 $('#pImagenes').addEventListener('change',async e=>{try{const available=Math.max(0,5-existingProductImages.length);newProductImages=(await filesToDataUrls([...e.target.files].slice(0,available))).slice(0,available);renderProductImages()}catch(_){toast('No se pudo leer la imagen.','bad')}});['pNombre','pCategoria','pPrecio','pStock','pDescuento','pDescripcion'].forEach(id=>$('#'+id).addEventListener('input',updateProductLivePreview));$('#resetProductBtn').onclick=resetProduct;$('#focusProductForm').onclick=()=>{resetProduct();$('#productFormCard').scrollIntoView({behavior:'smooth'})};$('#productForm').onsubmit=async e=>{e.preventDefault();try{setLoading(true);const id=$('#pId').value;await api('/api/productos'+(id?'?id='+id:''),{method:id?'PUT':'POST',body:JSON.stringify({nombre:$('#pNombre').value,categoriaId:$('#pCategoria').value,precio:$('#pPrecio').value,stock:$('#pStock').value,descuento:$('#pDescuento').value,descripcion:$('#pDescripcion').value,activo:$('#pActivo').checked,destacado:$('#pDestacado').checked,imagenes:existingProductImages,imagenesNuevas:newProductImages})});resetProduct();await loadAll(false);toast(id?'Producto actualizado.':'Producto creado.')}catch(e){toast(e.message,'bad')}finally{setLoading(false)}};
 $('#resetCategoryBtn').onclick=resetCategory;$('#categoryForm').onsubmit=async e=>{e.preventDefault();try{setLoading(true);const id=$('#catId').value;await api('/api/categorias'+(id?'?id='+id:''),{method:id?'PUT':'POST',body:JSON.stringify({nombre:$('#catNombre').value,icono:$('#catIcono').value,orden:$('#catOrden').value,activo:$('#catActivo').value})});resetCategory();await loadAll(false);toast('Categoría guardada.')}catch(e){toast(e.message,'bad')}finally{setLoading(false)}};
