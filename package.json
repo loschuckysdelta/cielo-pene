@@ -1,6 +1,6 @@
 {
   "name": "cielo-postres-api-admin",
-  "version": "6.2.0",
+  "version": "6.3.0",
   "private": true,
   "description": "Cielo Postres PWA con notificaciones push reales, cookies seguras, panel administrador, clientes y seguimiento de pedidos.",
   "scripts": {
