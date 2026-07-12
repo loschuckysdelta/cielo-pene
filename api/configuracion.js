@@ -1,5 +1,6 @@
 const { setCors, send, error, readBody, normalizeText, toBool, toNumber } = require('./_lib/http');
-const { collection, publicDoc, memory } = require('./_lib/db');
+const { collection, publicDoc, memory, hasMongo } = require('./_lib/db');
+const cloud = require('./_lib/cloudinary');
 
 const DEFAULT_CONFIG = {
   negocio: 'Cielo Postres',
@@ -46,9 +47,67 @@ function clean(body) {
   };
 }
 
+
+function actionFrom(req) {
+  if (req.query && req.query.action) return normalizeText(req.query.action).toLowerCase();
+  try {
+    const url = new URL(req.url || '', 'http://localhost');
+    return normalizeText(url.searchParams.get('action')).toLowerCase();
+  } catch (_) {
+    return '';
+  }
+}
+
+async function handleStatus(req, res) {
+  if (req.method !== 'GET') return error(res, 405, 'Método no permitido.');
+  let mongoOk = false;
+  let mongoError = null;
+  if (hasMongo()) {
+    try {
+      const col = await collection('productos');
+      await col.findOne({}, { projection: { _id: 1 } });
+      mongoOk = true;
+    } catch (e) {
+      mongoError = e.message;
+    }
+  }
+  return send(res, 200, {
+    ok: true,
+    mongoConfigurado: hasMongo(),
+    mongoConectado: mongoOk,
+    mongoError,
+    cloudinaryConfigurado: cloud.configured(),
+    modo: mongoOk ? 'mongo' : 'memoria_temporal',
+    mensaje: mongoOk
+      ? 'Conectado a MongoDB.'
+      : 'No hay conexión MongoDB. El panel funciona en memoria temporal y no persiste cambios.'
+  });
+}
+
+async function handleLimpiar(req, res) {
+  if (req.method !== 'DELETE' && req.method !== 'POST') {
+    return error(res, 405, 'Método no permitido.');
+  }
+  const body = await readBody(req);
+  if (normalizeText(body.confirmacion) !== 'BORRAR') {
+    return error(res, 400, 'Para borrar debes enviar confirmacion: BORRAR.');
+  }
+  const target = normalizeText(body.target);
+  const permitidos = ['productos', 'pedidos', 'categorias', 'delivery', 'cupones', 'resenas'];
+  if (!permitidos.includes(target)) return error(res, 400, 'Target inválido.');
+  const col = await collection(target);
+  if (col) await col.deleteMany({});
+  else memory[target] = [];
+  return send(res, 200, { ok: true, mensaje: `${target} borrado.` });
+}
+
 module.exports = async function handler(req, res) {
   if (setCors(req, res)) return;
   try {
+    const action = actionFrom(req);
+    if (action === 'status') return await handleStatus(req, res);
+    if (action === 'limpiar') return await handleLimpiar(req, res);
+
     const col = await collection('configuracion');
     if (req.method === 'GET') {
       if (col) {

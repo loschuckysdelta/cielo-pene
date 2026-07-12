@@ -1,7 +1,7 @@
 const { setCors, send, error, readBody, normalizeText, toNumber } = require('./_lib/http');
 const { collection, oid, publicDoc, publicList, memory, memoryId, ensureIndexes } = require('./_lib/db');
 const { requireAuth } = require('./_lib/auth');
-const { currentClient } = require('./_lib/client-auth');
+const { currentClient, requireClient } = require('./_lib/client-auth');
 const { createOrderNotification, createNotification } = require('./_lib/notifications');
 
 const ORDER_STATUSES = ['pendiente', 'confirmado', 'preparando', 'listo', 'en_camino', 'entregado', 'cancelado'];
@@ -357,10 +357,41 @@ async function sendCustomNotice(id, title, message) {
   });
 }
 
+
+function actionFrom(req) {
+  if (req.query && req.query.action) return normalizeText(req.query.action).toLowerCase();
+  try {
+    const url = new URL(req.url || '', 'http://localhost');
+    return normalizeText(url.searchParams.get('action')).toLowerCase();
+  } catch (_) {
+    return '';
+  }
+}
+
+async function handleMyOrders(req, res) {
+  if (req.method !== 'GET') return error(res, 405, 'Método no permitido.');
+  const client = await requireClient(req, res);
+  if (!client) return;
+  const clienteId = String(client._id || client.id);
+  const col = await collection('pedidos');
+  if (col) {
+    const docs = await col.find({ clienteId }).sort({ createdAt: -1 }).limit(100).toArray();
+    return send(res, 200, { ok: true, data: publicList(docs) });
+  }
+  const docs = (memory.pedidos || [])
+    .filter(p => String(p.clienteId || '') === clienteId)
+    .sort((a, b) => String(b.createdAt).localeCompare(String(a.createdAt)));
+  return send(res, 200, { ok: true, data: docs });
+}
+
 module.exports = async function handler(req, res) {
   if (setCors(req, res)) return;
   try {
     await ensureIndexes();
+
+    const action = actionFrom(req);
+    if (action === 'mis-pedidos') return await handleMyOrders(req, res);
+
     const pedidosCol = await collection('pedidos');
     const id = req.query.id;
 

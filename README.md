@@ -123,3 +123,21 @@ https://antoja2.vercel.app
 
 Nunca subas `client_secret`, `.env` ni `.env.local` a GitHub.
 
+
+
+## Corrección del error `Deploying outputs...`
+
+El plan Hobby de Vercel permite un máximo de 12 funciones directas por deployment.
+Esta versión consolida tres rutas sin cambiar sus URL públicas:
+
+- `/api/status` se ejecuta dentro de `api/configuracion.js`.
+- `/api/limpiar` se ejecuta dentro de `api/configuracion.js`.
+- `/api/mis-pedidos` se ejecuta dentro de `api/pedidos.js`.
+
+El proyecto queda exactamente con 12 archivos de función en la carpeta `api`.
+Puedes comprobarlo con:
+
+```bash
+npm run check:functions
+```
+

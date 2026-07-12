@@ -2,6 +2,18 @@
   "version": 2,
   "rewrites": [
     {
+      "source": "/api/status",
+      "destination": "/api/configuracion?action=status"
+    },
+    {
+      "source": "/api/limpiar",
+      "destination": "/api/configuracion?action=limpiar"
+    },
+    {
+      "source": "/api/mis-pedidos",
+      "destination": "/api/pedidos?action=mis-pedidos"
+    },
+    {
       "source": "/admin",
       "destination": "/admin.html"
     },
