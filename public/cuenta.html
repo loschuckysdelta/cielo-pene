@@ -132,7 +132,7 @@ body.account-open .eyebrow{display:none}
 @media(max-width:560px){.metrics{grid-template-columns:1fr 1fr}.metric{display:flex;text-align:left;min-height:95px;padding:14px}.metric strong{font-size:22px}.metric em{display:none}.metric-icon{width:43px;height:43px}.tracking-line{overflow-x:auto;grid-template-columns:repeat(5,minmax(68px,1fr));padding-bottom:5px}.welcome-actions{flex-direction:row}.welcome h1{font-size:26px!important}.premium-grid{gap:12px}.rail-card{padding:15px}.notification-card .notification-toolbar{display:block}.notification-count{display:block;margin-top:8px}.push-actions .btn{width:100%}}
 
 </style>
-<link rel="stylesheet" href="/android.css?v=8-scroll">
+<link rel="stylesheet" href="/android.css?v=9-reportes">
 </head>
 <body>
 <div class="shell">
@@ -348,6 +348,6 @@ async function logout(){try{await disablePush(true);await api('/api/clientes-aut
 $$('[data-auth-tab]').forEach(b=>b.onclick=()=>switchAuth(b.dataset.authTab));$$('.page-nav button').forEach(b=>b.onclick=()=>goPage(b.dataset.page));$$('[data-page-jump]').forEach(b=>b.onclick=()=>goPage(b.dataset.pageJump));$$('[data-notif-filter]').forEach(b=>b.onclick=()=>{notificationFilter=b.dataset.notifFilter;renderNotifications()});$('#loginForm').addEventListener('submit',login);$('#registerForm').addEventListener('submit',register);$('#profileForm').addEventListener('submit',updateProfile);$('#readAllBtn').onclick=readAll;const refreshAccount=()=>loadAccount(false).then(()=>toast('Información actualizada.'));$('#refreshBtn').onclick=refreshAccount;$('#quickRefreshBtn').onclick=refreshAccount;$('#logoutBtn').onclick=logout;$('#enablePushBtn').onclick=enablePush;$('#disablePushBtn').onclick=()=>disablePush(false);
 loadAccount();initGoogle();setInterval(()=>{if(client)loadAccount(false)},30000);if(new URLSearchParams(location.search).get('seccion')==='notificaciones')goPage('notificaciones');
 </script>
-<script src="/pwa.js?v=8-scroll" defer></script>
+<script src="/pwa.js?v=9-reportes" defer></script>
 </body>
 </html>

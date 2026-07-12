@@ -433,6 +433,65 @@ async function handleMyOrders(req, res) {
   return send(res, 200, { ok: true, data: await enrichOrderProductImages(docs) });
 }
 
+function queryParam(req, name) {
+  if (req.query && req.query[name] !== undefined) return normalizeText(req.query[name]);
+  try {
+    return normalizeText(new URL(req.url || '', 'http://localhost').searchParams.get(name));
+  } catch (_) {
+    return '';
+  }
+}
+
+function reportDateRange(req) {
+  const desde = queryParam(req, 'desde');
+  const hasta = queryParam(req, 'hasta');
+  const start = desde ? new Date(`${desde}T00:00:00-05:00`) : null;
+  const end = hasta ? new Date(`${hasta}T23:59:59.999-05:00`) : null;
+  return {
+    desde, hasta,
+    start: start && !Number.isNaN(start.getTime()) ? start : null,
+    end: end && !Number.isNaN(end.getTime()) ? end : null
+  };
+}
+
+function matchesReportOrder(order, range, estado) {
+  const created = new Date(order.createdAt || order.updatedAt || 0);
+  if (range.start && created < range.start) return false;
+  if (range.end && created > range.end) return false;
+  const value = normalizeText(estado || 'ventas').toLowerCase();
+  if (value === 'todos') return true;
+  if (value === 'ventas') return ['confirmado', 'preparando', 'listo', 'en_camino', 'entregado'].includes(order.estado);
+  return order.estado === value;
+}
+
+async function handleReportOrders(req, res) {
+  if (req.method !== 'GET') return error(res, 405, 'Método no permitido.');
+  const auth = await requireAuth(req, res, 'reportes');
+  if (!auth) return;
+  const range = reportDateRange(req);
+  const estado = queryParam(req, 'estado') || 'ventas';
+  const col = await collection('pedidos');
+  let docs;
+  if (col) {
+    const query = {};
+    if (range.start || range.end) {
+      query.createdAt = {};
+      if (range.start) query.createdAt.$gte = range.start.toISOString();
+      if (range.end) query.createdAt.$lte = range.end.toISOString();
+    }
+    if (estado === 'ventas') query.estado = { $in: ['confirmado', 'preparando', 'listo', 'en_camino', 'entregado'] };
+    else if (estado !== 'todos') query.estado = estado;
+    docs = await col.find(query).sort({ createdAt: -1 }).limit(5000).toArray();
+    docs = publicList(docs);
+  } else {
+    docs = [...(memory.pedidos || [])]
+      .filter(order => matchesReportOrder(order, range, estado))
+      .sort((a, b) => String(b.createdAt).localeCompare(String(a.createdAt)))
+      .slice(0, 5000);
+  }
+  return send(res, 200, { ok: true, data: await enrichOrderProductImages(docs) });
+}
+
 module.exports = async function handler(req, res) {
   if (setCors(req, res)) return;
   try {
@@ -440,6 +499,7 @@ module.exports = async function handler(req, res) {
 
     const action = actionFrom(req);
     if (action === 'mis-pedidos') return await handleMyOrders(req, res);
+    if (action === 'reporte') return await handleReportOrders(req, res);
 
     const pedidosCol = await collection('pedidos');
     const id = req.query.id;
