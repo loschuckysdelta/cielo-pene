@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Admin · Antoja2</title>
-<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Inter:wght@400;500;600;700;800;900&family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&display=swap" rel="stylesheet">
 <style>
 :root{--bg:#fff5f8;--card:#fff;--pink:#c23d73;--pink2:#ef8fb3;--dark:#25131b;--muted:#75656d;--line:#f0d2dd;--green:#16a34a;--red:#dc2626;--orange:#f59e0b;--blue:#2563eb;--shadow:0 20px 46px rgba(194,61,115,.12)}*{box-sizing:border-box}body{margin:0;background:linear-gradient(135deg,#fff5f8,#fffaf6);font-family:Inter,Arial,sans-serif;color:var(--dark)}.app{display:grid;grid-template-columns:280px 1fr;min-height:100vh}.side{background:#2b1020;color:white;padding:22px;position:sticky;top:0;height:100vh}.logo{font-family:'Baloo 2';font-size:2rem;font-weight:900;margin-bottom:8px}.logo span{color:#f2a65a}.small{font-size:.85rem;color:#f9c8da;font-weight:800;line-height:1.4}.nav{display:grid;gap:10px;margin-top:28px}.nav button{background:rgba(255,255,255,.08);color:white;border:1px solid rgba(255,255,255,.12);padding:13px 14px;border-radius:18px;text-align:left;font-weight:900;cursor:pointer}.nav button.active,.nav button:hover{background:#fff;color:var(--pink)}.main{padding:24px;overflow:hidden}.topbar{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:20px}.topbar h1{font-family:'Baloo 2';font-size:2.4rem;margin:0;color:var(--pink)}.status{display:flex;gap:8px;flex-wrap:wrap}.badge{display:inline-flex;align-items:center;gap:6px;border-radius:999px;padding:8px 12px;font-weight:900;font-size:.82rem;background:#f1f5f9;color:#334155}.badge.ok{background:#dcfce7;color:#166534}.badge.no{background:#fee2e2;color:#991b1b}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-bottom:18px}.card{background:var(--card);border:1px solid var(--line);border-radius:24px;padding:18px;box-shadow:var(--shadow)}.metric{font-size:2rem;font-weight:900;color:var(--pink);font-family:'Baloo 2'}.section{display:none}.section.active{display:block}.section h2{font-family:'Baloo 2';font-size:2rem;color:var(--pink);margin:8px 0 14px}.form{display:grid;grid-template-columns:repeat(12,1fr);gap:12px}.field{display:flex;flex-direction:column;gap:6px;grid-column:span 6}.field.full{grid-column:1/-1}.field.third{grid-column:span 4}.field label{font-weight:900;color:#4b2437;font-size:.88rem}.field input,.field select,.field textarea{border:2px solid var(--line);border-radius:16px;padding:12px;font-family:inherit;font-weight:700;outline:0;background:white}.field textarea{min-height:90px}.field input:focus,.field select:focus,.field textarea:focus{border-color:var(--pink2)}.checks{display:flex;gap:14px;align-items:center;flex-wrap:wrap}.checks label{background:#fff5f8;border:1px solid var(--line);border-radius:999px;padding:10px 12px;display:flex;align-items:center;gap:8px}.btn{border:0;border-radius:16px;padding:12px 16px;font-weight:900;cursor:pointer;font-family:Inter}.btn:hover{filter:brightness(.98);transform:translateY(-1px)}.primary{background:var(--pink);color:white}.green{background:var(--green);color:white}.red{background:var(--red);color:white}.orange{background:var(--orange);color:white}.blue{background:var(--blue);color:white}.ghost{background:#fff;color:var(--pink);border:2px solid var(--line)}.rowBtns{display:flex;gap:8px;flex-wrap:wrap}.list{display:grid;gap:12px;margin-top:16px}.item{display:grid;grid-template-columns:90px 1fr auto;gap:14px;align-items:center;background:#fff;border:1px solid var(--line);border-radius:22px;padding:12px;box-shadow:0 10px 28px rgba(194,61,115,.08)}.thumb{width:90px;height:80px;border-radius:18px;background:#fff0f5;display:grid;place-items:center;overflow:hidden;font-size:2rem}.thumb img{width:100%;height:100%;object-fit:cover}.item h3{margin:0 0 4px;font-size:1rem}.muted{color:var(--muted);font-weight:700;font-size:.9rem}.stockbox{margin-top:8px;display:flex;gap:8px;flex-wrap:wrap}.pill{display:inline-flex;border-radius:999px;padding:6px 10px;font-size:.78rem;font-weight:900;background:#f1f5f9;color:#334155}.pill.ok{background:#dcfce7;color:#166534}.pill.low{background:#fef3c7;color:#92400e}.pill.no{background:#fee2e2;color:#991b1b}.table{width:100%;border-collapse:collapse;background:#fff;border-radius:20px;overflow:hidden;box-shadow:var(--shadow)}.table th,.table td{padding:12px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}.table th{background:#fff0f5;color:#5c2540;font-size:.83rem}.table tr:last-child td{border-bottom:0}.order{background:#fff;border:1px solid var(--line);border-radius:24px;padding:16px;box-shadow:var(--shadow);margin-bottom:12px}.orderHead{display:flex;justify-content:space-between;gap:12px;align-items:flex-start}.orderCode{font-weight:900;font-size:1.1rem;color:var(--pink)}.orderItems{margin:12px 0;border:1px solid var(--line);border-radius:16px;overflow:hidden}.orderItems div{display:flex;justify-content:space-between;padding:9px 11px;border-bottom:1px solid var(--line);font-weight:800}.orderItems div:last-child{border-bottom:0}.warn{background:#fff7ed;border:1px solid #fed7aa;color:#9a3412;border-radius:18px;padding:12px;font-weight:800;margin:10px 0}.okmsg{background:#dcfce7;border:1px solid #86efac;color:#166534;border-radius:18px;padding:12px;font-weight:800;margin:10px 0}.dangerZone{border:2px dashed #fecaca;background:#fff1f2}.previewImgs{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}.previewImgs img{width:70px;height:60px;object-fit:cover;border-radius:12px;border:2px solid var(--line)}@media(max-width:900px){.app{grid-template-columns:1fr}.side{position:relative;height:auto}.main{padding:14px}.item{grid-template-columns:70px 1fr}.item .rowBtns{grid-column:1/-1}.thumb{width:70px;height:70px}.field,.field.third{grid-column:1/-1}.topbar{display:block}}
 .endpoint{background:#0f172a;color:#e2e8f0;border-radius:18px;padding:14px;margin:10px 0;display:grid;gap:8px}.endpoint code{color:#bae6fd;font-weight:900}.endpoint small{color:#cbd5e1;font-weight:700}.copy{background:#334155;color:#fff;border:0;border-radius:12px;padding:8px 10px;font-weight:900;cursor:pointer}.apiGrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px}.usage{height:10px;background:#f1dbe6;border-radius:99px;overflow:hidden;margin-top:8px}.usage b{display:block;height:100%;background:var(--pink)}
@@ -379,6 +379,125 @@ body.unlocked .loginScreen{
   .logoutNav{margin-bottom:4px}
 }
 
+/* ===== REFINAMIENTO ELEGANTE · tipografía fina + dorado + Android drawer ===== */
+:root{
+  --gold:#c9a15a;
+  --gold-light:#e9cf9a;
+  --wine:#4a1030;
+  --ease:cubic-bezier(.22,1,.36,1);
+}
+
+/* Tipografía fina: Fraunces para títulos, Inter se queda para datos */
+.logo,.loginLogo,.topbar h1,.section h2,.orderCode,.loginBadge+.loginLogo{
+  font-family:'Fraunces',ui-serif,Georgia,serif !important;
+  font-weight:600 !important;
+  letter-spacing:-.01em !important;
+}
+.metric{font-family:'Fraunces',ui-serif,Georgia,serif !important;font-weight:700 !important;letter-spacing:-.02em}
+.logo::after{font-family:Inter,Arial,sans-serif}
+
+/* Filete dorado bajo los títulos de sección, como cinta de caja de pastelería */
+.section h2{position:relative;padding-bottom:12px;margin-bottom:20px !important}
+.section h2::after{
+  content:"";position:absolute;left:0;bottom:0;width:46px;height:3px;border-radius:99px;
+  background:linear-gradient(90deg,var(--gold),var(--rose-400));
+}
+
+/* Sidebar más refinado, marca de agua dorada sutil */
+.side{position:relative}
+.side::before{
+  content:"";position:absolute;inset:0;pointer-events:none;opacity:.5;
+  background:radial-gradient(circle at 20% 90%, rgba(201,161,90,.14), transparent 55%);
+}
+.logo{font-size:1.9rem !important}
+.logo::after{background:linear-gradient(135deg,var(--gold-light),var(--gold)) !important;box-shadow:0 4px 12px rgba(201,161,90,.35)}
+.small{color:rgba(255,228,239,.72) !important;font-weight:600 !important;letter-spacing:.01em}
+.nav button{font-size:.92rem;letter-spacing:.01em}
+.nav button.active{box-shadow:0 12px 30px rgba(0,0,0,.14), inset 0 0 0 1px rgba(201,161,90,.35) !important}
+
+/* Topbar: acomoda el botón hamburguesa de Android sin tocar el markup existente */
+.topbar{gap:14px}
+.topbarLeft{display:flex;align-items:center;gap:12px}
+.menuBtn{
+  display:none;align-items:center;justify-content:center;
+  width:44px;height:44px;border-radius:14px;border:1px solid rgba(244,114,182,.28);
+  background:rgba(255,255,255,.9);color:var(--pink-700,#be185d);cursor:pointer;flex:0 0 auto;
+  box-shadow:0 8px 20px rgba(190,24,93,.10);transition:.2s var(--ease);
+}
+.menuBtn:hover{transform:translateY(-1px)}
+.menuBtn svg{width:20px;height:20px}
+.menuOverlay{
+  display:none;position:fixed;inset:0;z-index:998;background:rgba(45,10,32,.42);
+  backdrop-filter:blur(2px);opacity:0;transition:opacity .3s var(--ease);
+}
+.menuOverlay.show{display:block;opacity:1}
+
+/* Tarjetas: entrada escalonada más fina */
+.item,.order,.card{will-change:transform,opacity}
+.list .item{animation:fadeUp .5s var(--ease) both}
+.list .item:nth-child(1){animation-delay:.02s}
+.list .item:nth-child(2){animation-delay:.06s}
+.list .item:nth-child(3){animation-delay:.10s}
+.list .item:nth-child(4){animation-delay:.14s}
+.list .item:nth-child(5){animation-delay:.18s}
+.list .item:nth-child(n+6){animation-delay:.20s}
+
+/* Pedido con estilo de boleta / recibo de pastelería */
+.order{position:relative;overflow:hidden}
+.order::before{
+  content:"";position:absolute;left:16px;right:16px;top:0;height:2px;
+  background-image:linear-gradient(90deg, rgba(190,24,93,.28) 50%, transparent 50%);
+  background-size:10px 2px;
+}
+.orderItems div{font-family:Inter,monospace;font-variant-numeric:tabular-nums}
+.orderCode{letter-spacing:.02em}
+
+/* Botones: brillo fino al pasar el mouse, sin exagerar */
+.btn{letter-spacing:.01em;font-size:.9rem}
+.btn.primary{background:linear-gradient(135deg,var(--wine),#be185d 55%,#ec4899) !important;box-shadow:0 14px 30px rgba(74,16,48,.28)}
+
+/* Toast elegante (reemplaza visualmente al alert nativo) */
+#toastStack{position:fixed;right:18px;bottom:18px;z-index:99999;display:flex;flex-direction:column;gap:10px;pointer-events:none}
+.toastCard{
+  pointer-events:auto;min-width:220px;max-width:340px;background:linear-gradient(180deg,rgba(255,255,255,.96),rgba(255,246,250,.96));
+  border:1px solid rgba(244,114,182,.30);border-left:4px solid var(--pink,#c23d73);border-radius:16px;
+  padding:12px 14px;box-shadow:0 22px 50px rgba(74,16,48,.22);backdrop-filter:blur(10px);
+  font-weight:700;color:#5c2540;font-size:.9rem;animation:toastIn .38s var(--ease) both;
+}
+.toastCard.out{animation:toastOut .3s ease both}
+@keyframes toastIn{from{opacity:0;transform:translateY(14px) scale(.96)}to{opacity:1;transform:translateY(0) scale(1)}}
+@keyframes toastOut{to{opacity:0;transform:translateX(30px) scale(.96)}}
+
+/* Loader de carga suave sobre el panel */
+#loadOverlay{
+  position:fixed;inset:0;z-index:99998;display:none;place-items:center;
+  background:rgba(255,247,251,.72);backdrop-filter:blur(3px);
+}
+#loadOverlay.show{display:grid}
+.loaderRing{width:52px;height:52px;border-radius:50%;border:3px solid rgba(190,24,93,.15);border-top-color:var(--pink,#c23d73);border-right-color:var(--gold);animation:spin .8s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* Responsive Android: sidebar como panel deslizante */
+@media(max-width:900px){
+  .menuBtn{display:inline-flex}
+  .app{grid-template-columns:1fr}
+  .side{
+    position:fixed;inset:0 auto 0 0;width:82vw;max-width:300px;z-index:999;
+    transform:translateX(-104%);transition:transform .38s var(--ease);
+    box-shadow:24px 0 60px rgba(0,0,0,.28);
+  }
+  .side.openMenu{transform:translateX(0)}
+  .main{padding:14px 14px 90px}
+  .topbar{position:sticky;top:8px;z-index:5}
+  #toastStack{left:14px;right:14px;bottom:14px}
+  .toastCard{max-width:none}
+}
+@media(min-width:901px){.menuBtn{display:none !important}}
+
+/* Respeta accesibilidad de movimiento */
+@media (prefers-reduced-motion: reduce){
+  *{animation-duration:.001ms !important;animation-iteration-count:1 !important;transition-duration:.001ms !important}
+}
 </style>
 </head>
 <body class="locked">
@@ -405,7 +524,10 @@ body.unlocked .loginScreen{
   </form>
 </div>
 
-<div class="app"><aside class="side"><div class="logo">Antoja<span>2</span></div><div class="small">Panel profesional para productos, stock real, pedidos y delivery.</div><div class="nav" id="nav"><button class="active" data-tab="dash">📊 Dashboard</button><button data-tab="productos">📦 Productos</button><button data-tab="categorias">🗂 Categorías</button><button data-tab="pedidos">🧾 Pedidos</button><button data-tab="delivery">🛵 Delivery</button><button data-tab="cupones">🎟 Cupones</button><button data-tab="negocio">⚙️ Negocio</button><button data-tab="apis">🔌 APIs</button><button data-tab="tools">🧹 Limpiar</button></div><button type="button" class="logoutNav" onclick="cerrarSesion()">🔐 Salir</button></aside><main class="main"><div class="topbar"><h1 id="pageTitle">Dashboard</h1><div class="status" id="status"></div></div>
+<div class="menuOverlay" id="menuOverlay" onclick="closeMenu()"></div>
+<div id="toastStack"></div>
+<div id="loadOverlay"><div class="loaderRing"></div></div>
+<div class="app"><aside class="side" id="sideNav"><div class="logo">Antoja<span>2</span></div><div class="small">Panel profesional para productos, stock real, pedidos y delivery.</div><div class="nav" id="nav"><button class="active" data-tab="dash">📊 Dashboard</button><button data-tab="productos">📦 Productos</button><button data-tab="categorias">🗂 Categorías</button><button data-tab="pedidos">🧾 Pedidos</button><button data-tab="delivery">🛵 Delivery</button><button data-tab="cupones">🎟 Cupones</button><button data-tab="negocio">⚙️ Negocio</button><button data-tab="apis">🔌 APIs</button><button data-tab="tools">🧹 Limpiar</button></div><button type="button" class="logoutNav" onclick="cerrarSesion()">🔐 Salir</button></aside><main class="main"><div class="topbar"><div class="topbarLeft"><button type="button" class="menuBtn" id="menuBtn" aria-label="Abrir menú" onclick="toggleMenu()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button><h1 id="pageTitle">Dashboard</h1></div><div class="status" id="status"></div></div>
 <section id="dash" class="section active"><div class="grid"><div class="card"><div class="muted">Productos</div><div class="metric" id="mProductos">0</div></div><div class="card"><div class="muted">Stock total</div><div class="metric" id="mStock">0</div></div><div class="card"><div class="muted">Pedidos pendientes</div><div class="metric" id="mPendientes">0</div></div><div class="card"><div class="muted">Pedidos confirmados</div><div class="metric" id="mConfirmados">0</div></div></div><div class="card"><h2>Estado</h2><div id="dashInfo"></div></div></section>
 <section id="productos" class="section"><h2>Productos</h2><div class="card"><form id="productForm" class="form"><input type="hidden" id="pId"><div class="field"><label>Nombre *</label><input id="pNombre" required placeholder="Cheesecake de maracuyá"></div><div class="field"><label>Categoría *</label><select id="pCategoria" required></select></div><div class="field third"><label>Precio *</label><input id="pPrecio" type="number" min="0" step="0.01" required></div><div class="field third"><label>Stock *</label><input id="pStock" type="number" min="0" step="1" required></div><div class="field third"><label>Descuento %</label><input id="pDescuento" type="number" min="0" step="1" value="0"></div><div class="field full"><label>Descripción</label><textarea id="pDescripcion"></textarea></div><div class="field full"><label>Imágenes carrusel, máximo 5</label><input id="pImagenes" type="file" accept="image/*" multiple><span class="muted">Si editas un producto y eliges nuevas imágenes, reemplazan a las anteriores.</span><div class="previewImgs" id="pPreview"></div></div><div class="field full"><div class="checks"><label><input type="checkbox" id="pActivo" checked> Disponible</label><label><input type="checkbox" id="pDestacado"> Destacado</label></div></div><div class="field full"><div class="rowBtns"><button class="btn primary" type="submit">Guardar producto</button><button class="btn ghost" type="button" onclick="resetProductForm()">Nuevo / limpiar</button></div></div></form></div><div id="productList" class="list"></div></section>
 <section id="categorias" class="section"><h2>Categorías</h2><div class="card"><form id="catForm" class="form"><input type="hidden" id="catId"><div class="field"><label>Nombre *</label><input id="catNombre" placeholder="Cheesecakes"></div><div class="field third"><label>Icono</label><input id="catIcono" placeholder="🍰"></div><div class="field third"><label>Orden</label><input id="catOrden" type="number" value="0"></div><div class="field third"><label>Activo</label><select id="catActivo"><option value="true">Activo</option><option value="false">Inactivo</option></select></div><div class="field full"><button class="btn primary" type="submit">Guardar categoría</button></div></form></div><div id="catList" class="list"></div></section>
@@ -420,12 +542,22 @@ body.unlocked .loginScreen{
 const $=s=>document.querySelector(s); const $$=s=>[...document.querySelectorAll(s)]; const money=n=>'S/ '+(Number(n)||0).toFixed(2);
 let statusData={}, categorias=[], productos=[], pedidos=[], zonas=[], cupones=[], config={}, currentImages=[];
 async function api(url, opts={}){ const res=await fetch(url,{headers:{'Content-Type':'application/json'},...opts}); const data=await res.json().catch(()=>({ok:false,error:'Respuesta inválida'})); if(!res.ok||data.ok===false) throw new Error(data.error||'Error API'); return data.data??data; }
-function toast(m){ alert(m); }
+function toast(m){
+  const stack=$('#toastStack'); if(!stack){ alert(m); return; }
+  const el=document.createElement('div'); el.className='toastCard'; el.textContent=m;
+  stack.appendChild(el);
+  setTimeout(()=>{ el.classList.add('out'); setTimeout(()=>el.remove(),320); },3200);
+}
 function setTab(id){ $$('.section').forEach(s=>s.classList.toggle('active',s.id===id)); $$('#nav button').forEach(b=>b.classList.toggle('active',b.dataset.tab===id)); $('#pageTitle').textContent=$(`#nav button[data-tab="${id}"]`).textContent.replace(/^[^A-Za-zÁÉÍÓÚÑáéíóúñ]+/,'').trim(); if(id==='pedidos') loadAll(); }
 $('#nav').onclick=e=>{ if(e.target.matches('button')) setTab(e.target.dataset.tab); };
+function toggleMenu(){ $('#sideNav').classList.toggle('openMenu'); $('#menuOverlay').classList.toggle('show'); }
+function closeMenu(){ $('#sideNav').classList.remove('openMenu'); $('#menuOverlay').classList.remove('show'); }
+$('#nav').addEventListener('click',e=>{ if(e.target.matches('button') && window.innerWidth<=900) closeMenu(); });
 async function loadAll(){
+  $('#loadOverlay')?.classList.add('show');
   try{ [statusData, config, categorias, productos, pedidos, zonas, cupones] = await Promise.all([api('/api/status'),api('/api/configuracion'),api('/api/categorias'),api('/api/productos?admin=1'),api('/api/pedidos'),api('/api/delivery?admin=1'),api('/api/cupones?admin=1')]); renderAll(); }
   catch(e){ $('#status').innerHTML=`<span class="badge no">Error: ${e.message}</span>`; }
+  finally{ $('#loadOverlay')?.classList.remove('show'); }
 }
 function renderAll(){ renderStatus(); renderMetrics(); fillProductCats(); renderProducts(); renderCats(); renderOrders(); renderDelivery(); renderCoupons(); fillConfig(); renderApis(); }
 function renderStatus(){ $('#status').innerHTML=`<span class="badge ${statusData.mongoConectado?'ok':'no'}">Mongo: ${statusData.mongoConectado?'conectado':'no conectado'}</span><span class="badge ${statusData.cloudinaryConfigurado?'ok':'no'}">Cloudinary: ${statusData.cloudinaryConfigurado?'ok':'falta'}</span>`; $('#dashInfo').innerHTML=`<div class="${statusData.mongoConectado?'okmsg':'warn'}">${statusData.mensaje||''}${statusData.mongoError?'<br>'+statusData.mongoError:''}</div>`; }
