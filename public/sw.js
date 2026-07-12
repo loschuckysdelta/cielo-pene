@@ -1,7 +1,7 @@
-const CACHE_NAME = 'cielo-postres-pwa-v4-nozoom';
+const CACHE_NAME = 'cielo-postres-pwa-v5-android';
 const APP_SHELL = [
   '/', '/index.html', '/catalogo', '/cuenta', '/cuenta.html', '/admin', '/admin.html',
-  '/offline.html', '/manifest.webmanifest', '/pwa.js', '/favicon.svg',
+  '/offline.html', '/manifest.webmanifest', '/pwa.js', '/android.css', '/favicon.svg',
   '/icons/icon-192.png', '/icons/icon-512.png', '/icons/icon-maskable-512.png', '/icons/apple-touch-icon.png'
 ];
 

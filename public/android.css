@@ -1,0 +1,786 @@
+/* =========================================================
+   CIELO POSTRES · AJUSTES RESPONSIVE PARA ANDROID / PWA
+   Mantiene el diseño de escritorio y reorganiza la cuenta
+   del cliente en teléfonos, tablets y modo horizontal.
+   ========================================================= */
+
+html,
+body {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body.account-open {
+  min-height: 100dvh;
+  overscroll-behavior-y: contain;
+}
+
+body.account-open .dashboard,
+body.account-open .main,
+body.account-open .premium-grid,
+body.account-open .notification-card,
+body.account-open .right-rail,
+body.account-open .rail-card,
+body.account-open .content-card,
+body.account-open .notif,
+body.account-open .order {
+  min-width: 0;
+  max-width: 100%;
+}
+
+button,
+a,
+input,
+select,
+textarea {
+  touch-action: manipulation;
+}
+
+img,
+svg,
+video,
+canvas {
+  max-width: 100%;
+}
+
+@media (hover: none) and (pointer: coarse) {
+  .btn:hover,
+  .metric:hover,
+  .notif:hover,
+  .order:hover {
+    transform: none !important;
+    box-shadow: inherit;
+  }
+}
+
+/* Tablets Android y pantallas medianas */
+@media (max-width: 1024px) {
+  body.account-open .main {
+    padding-inline: 18px;
+  }
+
+  body.account-open .metrics {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  body.account-open .premium-grid {
+    grid-template-columns: 1fr;
+  }
+
+  body.account-open .right-rail {
+    position: static;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  body.account-open .help-card {
+    grid-column: 1 / -1;
+  }
+}
+
+/* Android vertical y tablets pequeñas */
+@media (max-width: 820px) {
+  body.account-open {
+    background: #f7f7fb;
+  }
+
+  body.account-open .shell {
+    width: 100%;
+    max-width: none;
+    min-height: 100dvh;
+    padding: 0 !important;
+    margin: 0;
+  }
+
+  body.account-open .dashboard {
+    display: block !important;
+    width: 100%;
+    min-height: 100dvh;
+  }
+
+  /* La barra lateral de PC no debe ocupar toda la pantalla en Android. */
+  body.account-open .side {
+    display: none !important;
+  }
+
+  body.account-open .main {
+    width: 100%;
+    max-width: none;
+    margin: 0;
+    padding:
+      max(14px, env(safe-area-inset-top))
+      12px
+      calc(96px + env(safe-area-inset-bottom)) !important;
+  }
+
+  body.account-open .welcome {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: start;
+    gap: 10px;
+    padding: 4px 2px 16px !important;
+    margin: 0;
+  }
+
+  body.account-open .welcome-copy {
+    min-width: 0;
+  }
+
+  body.account-open .welcome h1 {
+    max-width: 100%;
+    margin: 0;
+    font-size: clamp(23px, 7vw, 29px) !important;
+    line-height: 1.12;
+    overflow-wrap: anywhere;
+  }
+
+  body.account-open .welcome p {
+    margin-top: 7px;
+    font-size: 13px;
+    line-height: 1.45;
+  }
+
+  body.account-open .welcome-actions {
+    display: flex;
+    flex-direction: row !important;
+    gap: 7px;
+    flex: 0 0 auto;
+  }
+
+  body.account-open .icon-btn {
+    width: 43px;
+    height: 43px;
+    min-width: 43px;
+    border-radius: 14px;
+  }
+
+  body.account-open .metrics {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 10px;
+    margin: 0 0 14px;
+  }
+
+  body.account-open .metric {
+    min-width: 0;
+    min-height: 92px;
+    padding: 13px;
+    gap: 10px;
+    border-radius: 17px;
+    display: flex;
+    align-items: center;
+    text-align: left;
+  }
+
+  body.account-open .metric-icon {
+    width: 42px;
+    height: 42px;
+    min-width: 42px;
+    margin: 0;
+    border-radius: 13px;
+    font-size: 18px;
+  }
+
+  body.account-open .metric > div {
+    min-width: 0;
+  }
+
+  body.account-open .metric small,
+  body.account-open .metric strong,
+  body.account-open .metric em {
+    max-width: 100%;
+    overflow-wrap: anywhere;
+  }
+
+  body.account-open .metric small {
+    font-size: 11px;
+    line-height: 1.2;
+  }
+
+  body.account-open .metric strong {
+    font-size: 22px;
+    line-height: 1.1;
+  }
+
+  body.account-open .metric em {
+    display: none;
+  }
+
+  body.account-open .premium-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+  }
+
+  body.account-open .notification-card {
+    order: 1;
+    width: 100%;
+    padding: 14px;
+    border-radius: 19px;
+  }
+
+  body.account-open .right-rail {
+    order: 2;
+    position: static;
+    display: grid;
+    grid-template-columns: 1fr;
+    width: 100%;
+    gap: 12px;
+  }
+
+  body.account-open .rail-card,
+  body.account-open .content-card {
+    width: 100%;
+    padding: 15px;
+    border-radius: 19px;
+  }
+
+  body.account-open .card-head,
+  body.account-open .notification-card .card-head {
+    display: block;
+    margin-bottom: 13px;
+  }
+
+  body.account-open .card-head h2,
+  body.account-open .notification-card .card-head h2 {
+    font-size: 20px;
+  }
+
+  body.account-open .card-head p {
+    font-size: 12px;
+    line-height: 1.45;
+  }
+
+  body.account-open .notification-toolbar,
+  body.account-open .notification-card .notification-toolbar {
+    display: block;
+    width: 100%;
+    margin: 13px 0 0;
+  }
+
+  body.account-open .filter-group,
+  body.account-open .notification-card .filter-group {
+    display: flex;
+    flex-wrap: nowrap;
+    width: 100%;
+    max-width: 100%;
+    overflow-x: auto;
+    padding: 4px;
+    gap: 5px;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  body.account-open .filter-group::-webkit-scrollbar {
+    display: none;
+  }
+
+  body.account-open .filter-btn,
+  body.account-open .notification-card .filter-btn {
+    flex: 0 0 auto;
+    min-height: 38px;
+    padding: 9px 12px;
+  }
+
+  body.account-open .notification-count {
+    display: block;
+    margin-top: 8px;
+    font-size: 11px;
+  }
+
+  body.account-open .push-permission {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+    padding: 13px;
+    gap: 12px;
+    border-radius: 16px;
+  }
+
+  body.account-open .push-info {
+    min-width: 0;
+  }
+
+  body.account-open .push-info > div:last-child {
+    min-width: 0;
+  }
+
+  body.account-open .push-info b,
+  body.account-open .push-info p {
+    overflow-wrap: anywhere;
+  }
+
+  body.account-open .push-info p {
+    font-size: 12px;
+  }
+
+  body.account-open .push-actions {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+  }
+
+  body.account-open .push-actions .btn {
+    width: 100%;
+    min-width: 0;
+    min-height: 44px;
+    padding-inline: 10px;
+  }
+
+  body.account-open .notif-list,
+  body.account-open .order-list {
+    width: 100%;
+    gap: 9px;
+  }
+
+  body.account-open .notif {
+    width: 100%;
+    padding: 13px;
+    grid-template-columns: 42px minmax(0, 1fr);
+    gap: 10px;
+    border-radius: 16px;
+  }
+
+  body.account-open .notif-icon {
+    width: 42px;
+    height: 42px;
+    border-radius: 13px;
+  }
+
+  body.account-open .notif > div:nth-child(2) {
+    min-width: 0;
+  }
+
+  body.account-open .notif h3,
+  body.account-open .notif p,
+  body.account-open .notif-meta {
+    max-width: 100%;
+    overflow-wrap: anywhere;
+    word-break: normal;
+  }
+
+  body.account-open .notif h3 {
+    font-size: 14px;
+    line-height: 1.3;
+  }
+
+  body.account-open .notif p {
+    font-size: 12px;
+    line-height: 1.45;
+  }
+
+  body.account-open .notif-side {
+    grid-column: 2;
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 1px;
+  }
+
+  body.account-open .notif-link {
+    min-height: 38px;
+    padding: 7px 9px;
+    border-radius: 10px;
+    background: var(--pink-soft);
+  }
+
+  body.account-open .section-date {
+    padding-top: 8px;
+  }
+
+  body.account-open .tracking-line {
+    width: 100%;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    overflow: visible;
+    padding: 0;
+  }
+
+  body.account-open .track-step {
+    min-width: 0;
+    font-size: 8px;
+    line-height: 1.15;
+    overflow-wrap: anywhere;
+  }
+
+  body.account-open .track-step::before {
+    width: 21px;
+    height: 21px;
+  }
+
+  body.account-open .current-state {
+    grid-template-columns: minmax(0, 1fr) 42px;
+    padding: 12px;
+  }
+
+  body.account-open .current-state p {
+    overflow-wrap: anywhere;
+  }
+
+  body.account-open .last-order-code {
+    align-items: flex-start;
+  }
+
+  body.account-open .last-order-code > div {
+    min-width: 0;
+  }
+
+  body.account-open .last-order-code b,
+  body.account-open .last-order-code span {
+    overflow-wrap: anywhere;
+  }
+
+  body.account-open .product-previews {
+    max-width: 100%;
+    overflow-x: auto;
+    padding-bottom: 3px;
+    scrollbar-width: none;
+  }
+
+  body.account-open .product-previews::-webkit-scrollbar {
+    display: none;
+  }
+
+  body.account-open .order {
+    padding: 14px;
+    border-radius: 17px;
+  }
+
+  body.account-open .order-top {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  body.account-open .order h3,
+  body.account-open .order p {
+    overflow-wrap: anywhere;
+  }
+
+  body.account-open .order-progress {
+    width: 100%;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    overflow: visible;
+    margin-inline: 0;
+  }
+
+  body.account-open .progress-step {
+    min-width: 0;
+    font-size: 8px;
+    line-height: 1.1;
+    overflow-wrap: anywhere;
+  }
+
+  body.account-open .order-items div,
+  body.account-open .order-total {
+    align-items: flex-start;
+  }
+
+  body.account-open .order-items span,
+  body.account-open .order-items b {
+    min-width: 0;
+    overflow-wrap: anywhere;
+  }
+
+  body.account-open .profile-form {
+    width: 100%;
+    max-width: none;
+    grid-template-columns: 1fr;
+  }
+
+  body.account-open .profile-form .full {
+    grid-column: auto;
+  }
+
+  body.account-open input,
+  body.account-open select,
+  body.account-open textarea {
+    min-height: 46px;
+    font-size: 16px;
+  }
+
+  body.account-open .help-card {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  body.account-open .support-link {
+    width: 100%;
+    text-align: center;
+  }
+
+  /* Navegación inferior estable para Android y PWA instalada. */
+  body.account-open .mobile-nav {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    max-width: 100%;
+    z-index: 1000;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+    align-items: end;
+    gap: 2px;
+    padding:
+      8px
+      max(8px, env(safe-area-inset-right))
+      calc(8px + env(safe-area-inset-bottom))
+      max(8px, env(safe-area-inset-left));
+    margin: 0;
+    border-radius: 20px 20px 0 0;
+    background: rgba(17, 20, 38, .98);
+    border: 1px solid rgba(255,255,255,.08);
+    box-shadow: 0 -12px 34px rgba(15, 18, 34, .24);
+    backdrop-filter: blur(16px);
+  }
+
+  body.account-open .mobile-nav button,
+  body.account-open .mobile-nav a {
+    min-width: 0;
+    min-height: 54px;
+  }
+
+  body.account-open .mobile-nav button {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 3px;
+    padding: 7px 3px;
+    border-radius: 13px;
+    color: #d9dbea;
+    font-size: 10px;
+    line-height: 1.1;
+    text-align: center;
+  }
+
+  body.account-open .mobile-nav button span:last-child {
+    display: block;
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  body.account-open .mobile-nav .nav-icon {
+    width: 26px;
+    height: 26px;
+    min-width: 26px;
+    font-size: 16px;
+  }
+
+  body.account-open .mobile-shop {
+    width: 54px !important;
+    height: 54px !important;
+    min-height: 54px !important;
+    margin: -18px auto 0 !important;
+    border: 4px solid #f7f7fb;
+    font-size: 22px !important;
+  }
+
+  body.account-open .toast {
+    left: 12px;
+    right: 12px;
+    bottom: calc(88px + env(safe-area-inset-bottom));
+    width: auto;
+    max-width: none;
+    text-align: center;
+  }
+}
+
+/* Teléfonos Android normales: 360–480 px */
+@media (max-width: 480px) {
+  body:not(.account-open) .shell {
+    padding: 12px 10px 28px;
+  }
+
+  .top {
+    align-items: center;
+    gap: 8px;
+  }
+
+  .top .logo {
+    width: 46px;
+    height: 46px;
+    border-radius: 15px;
+    font-size: 23px;
+  }
+
+  .top .brand b {
+    font-size: 19px;
+  }
+
+  .top-actions .btn {
+    min-height: 42px;
+    padding: 9px 11px;
+    font-size: 12px;
+  }
+
+  .auth-wrap {
+    min-height: calc(100dvh - 90px);
+    align-items: start;
+    padding-top: 8px;
+  }
+
+  .auth-card {
+    width: 100%;
+    padding: 20px 16px;
+    border-radius: 22px;
+  }
+
+  .auth-card h1 {
+    font-size: 25px;
+  }
+
+  .auth-card > p {
+    font-size: 13px;
+  }
+
+  .field input {
+    min-height: 47px;
+    font-size: 16px;
+  }
+
+  .google-button,
+  .google-button > div {
+    max-width: 100% !important;
+    overflow: hidden;
+  }
+
+  body.account-open .main {
+    padding-inline: 10px !important;
+  }
+
+  body.account-open .metrics {
+    gap: 8px;
+  }
+
+  body.account-open .metric {
+    min-height: 84px;
+    padding: 10px;
+    gap: 8px;
+    border-radius: 15px;
+  }
+
+  body.account-open .metric-icon {
+    width: 38px;
+    height: 38px;
+    min-width: 38px;
+    font-size: 16px;
+  }
+
+  body.account-open .metric strong {
+    font-size: 20px;
+  }
+
+  body.account-open .metric small {
+    font-size: 10px;
+  }
+
+  body.account-open .notification-card,
+  body.account-open .rail-card,
+  body.account-open .content-card {
+    padding: 12px;
+    border-radius: 17px;
+  }
+
+  body.account-open .push-icon {
+    width: 40px;
+    height: 40px;
+    min-width: 40px;
+  }
+
+  body.account-open .push-actions {
+    grid-template-columns: 1fr;
+  }
+
+  body.account-open .notif {
+    padding: 11px;
+  }
+
+  body.account-open .notif-icon {
+    width: 39px;
+    height: 39px;
+  }
+
+  body.account-open .tracking-line {
+    margin-inline: -3px;
+  }
+
+  body.account-open .track-step {
+    font-size: 7.5px;
+    padding-top: 31px;
+  }
+
+  body.account-open .track-step::before {
+    width: 19px;
+    height: 19px;
+  }
+
+  body.account-open .current-state {
+    grid-template-columns: minmax(0, 1fr) 39px;
+  }
+
+  body.account-open .current-state-icon {
+    width: 39px;
+    height: 39px;
+    font-size: 19px;
+  }
+
+  body.account-open .product-preview {
+    width: 52px;
+    height: 47px;
+    min-width: 52px;
+    font-size: 23px;
+  }
+}
+
+/* Android muy pequeño */
+@media (max-width: 350px) {
+  body.account-open .metrics {
+    grid-template-columns: 1fr !important;
+  }
+
+  body.account-open .metric {
+    min-height: 72px;
+  }
+
+  body.account-open .mobile-nav button {
+    font-size: 9px;
+  }
+}
+
+/* Android en horizontal con poca altura */
+@media (max-width: 900px) and (orientation: landscape) and (max-height: 520px) {
+  body.account-open .main {
+    padding-top: 10px !important;
+  }
+
+  body.account-open .welcome p {
+    display: none;
+  }
+
+  body.account-open .metrics {
+    grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+  }
+
+  body.account-open .metric {
+    min-height: 72px;
+    padding: 9px;
+  }
+
+  body.account-open .metric-icon {
+    width: 36px;
+    height: 36px;
+    min-width: 36px;
+  }
+}

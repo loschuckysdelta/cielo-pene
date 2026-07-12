@@ -1,8 +1,8 @@
 {
   "name": "cielo-postres-api-admin",
-  "version": "6.3.0",
+  "version": "6.4.0",
   "private": true,
-  "description": "Cielo Postres PWA con notificaciones push reales, cookies seguras, panel administrador, clientes y seguimiento de pedidos.",
+  "description": "Cielo Postres PWA con panel de cliente responsive para Android, notificaciones push, cookies seguras y panel administrador.",
   "scripts": {
     "build": "echo \"Proyecto HTML + API Vercel listo\"",
     "start": "echo \"Usa Vercel para desplegar este proyecto\"",
