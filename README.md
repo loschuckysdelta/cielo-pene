@@ -89,3 +89,37 @@ Si `MONGO_URI` no está configurado, el proyecto usa memoria temporal y los dato
 4. Realiza un nuevo deployment.
 
 Node.js requerido: 24.x.
+
+## Corrección para Vercel
+
+Este paquete ya está corregido para que Vercel no se quede detenido en `Installing dependencies...`:
+
+- `package-lock.json` usa exclusivamente `https://registry.npmjs.org/`.
+- `.npmrc` obliga a npm a usar el registro público.
+- `vercel.json` ejecuta `npm ci` contra el registro público.
+
+No vuelvas a subir un `package-lock.json` que apunte a registros privados o internos.
+
+## Inicio de sesión con Google
+
+El botón **Continuar con Google** está disponible en `/cuenta` cuando existe esta variable en Vercel:
+
+```env
+GOOGLE_CLIENT_ID=tu-id.apps.googleusercontent.com
+```
+
+También debes configurar:
+
+```env
+CLIENT_AUTH_SECRET=una-clave-privada-larga-y-aleatoria
+```
+
+En Google Cloud agrega como origen autorizado:
+
+```text
+http://localhost:3000
+https://antoja2.vercel.app
+```
+
+Nunca subas `client_secret`, `.env` ni `.env.local` a GitHub.
+
