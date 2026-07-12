@@ -69,6 +69,68 @@ button:focus-visible,input:focus-visible{outline:3px solid rgba(243,63,120,.2);o
 @media(max-width:820px){.shell{padding:14px 12px 88px}.dashboard{grid-template-columns:1fr}.side{position:static;height:auto;min-height:0;border-radius:22px;padding:16px}.side .brand,.side-nav,.side-tip,.side-footer{display:none}.profile-mini{margin:0;grid-template-columns:48px minmax(0,1fr);padding:12px}.avatar{width:48px;height:48px}.main{width:100%}.welcome{padding:20px}.welcome h1{font-size:26px}.metrics{grid-template-columns:repeat(3,1fr)}.metric{display:block;text-align:center}.metric-icon{margin:0 auto 8px}.metric em{display:none}.content-card{padding:16px;border-radius:20px}.mobile-nav{display:grid;position:fixed;left:12px;right:12px;bottom:12px;grid-template-columns:repeat(3,1fr);background:rgba(24,27,47,.96);padding:7px;border-radius:18px;box-shadow:0 18px 45px rgba(20,22,39,.28);backdrop-filter:blur(14px);z-index:300}.mobile-nav button{justify-content:center;padding:10px 7px;font-size:11px;flex-direction:column;gap:4px;border-radius:13px}.mobile-nav .nav-icon{width:27px;height:27px}.mobile-nav button.active{background:linear-gradient(135deg,var(--pink),#ff6b9a);color:#fff}.card-head{align-items:flex-start}.push-permission{align-items:flex-start;flex-direction:column}.push-actions{width:100%}.push-actions .btn{flex:1}.profile-form{grid-template-columns:1fr}.profile-form .full{grid-column:auto}}
 @media(max-width:560px){.top{margin-bottom:12px}.top .brand b{font-size:20px}.top-actions .btn{padding:10px 12px}.welcome{align-items:flex-start}.welcome-actions{flex-direction:column}.metrics{grid-template-columns:1fr}.metric{display:flex;text-align:left}.metric-icon{margin:0}.card-head{flex-direction:column}.card-actions{width:100%;justify-content:flex-start}.card-actions .btn{flex:1}.notification-toolbar{align-items:flex-start;flex-direction:column}.notif{grid-template-columns:40px minmax(0,1fr)}.notif-side{grid-column:2;justify-content:flex-start}.order-progress{overflow-x:auto;grid-template-columns:repeat(5,minmax(72px,1fr));padding-bottom:5px}.order-top{flex-direction:column}.profile-mini small{font-size:10px}.auth-card{padding:23px}.auth-card h1{font-size:26px}}
 
+
+/* ===== Diseño premium inspirado en la vista aprobada ===== */
+body.account-open{background:#f8f8fb}
+body.account-open .shell{max-width:none;padding:0}
+body.account-open .dashboard{grid-template-columns:282px minmax(0,1fr);gap:0;min-height:100vh}
+body.account-open .side{top:0;min-height:100vh;border-radius:0;padding:28px 20px 24px;background:
+  radial-gradient(circle at 100% 22%,rgba(236,47,120,.18),transparent 22rem),
+  linear-gradient(180deg,#111426 0%,#14182c 58%,#0d1325 100%)}
+body.account-open .main{padding:25px 30px 110px;max-width:1400px;width:100%;margin:0 auto}
+body.account-open .welcome{border-radius:0;background:transparent;border:0;box-shadow:none;padding:0 2px 24px;overflow:visible}
+body.account-open .welcome:after{display:none}
+body.account-open .welcome h1{font-size:34px}
+body.account-open .eyebrow{display:none}
+.side-brand-logo{width:47px;height:47px;border-radius:16px;background:linear-gradient(145deg,#fff,#ffdce9);display:grid;place-items:center;font-size:27px;box-shadow:0 12px 28px rgba(243,63,120,.18)}
+.account-state{grid-column:2;color:#59d58f;background:rgba(30,167,104,.13);padding:5px 9px;border-radius:999px;font-size:10px;font-weight:800;width:max-content;margin-top:7px}
+.store-link{display:flex;align-items:center;gap:12px;color:#d9dbea;text-decoration:none;padding:13px 14px;border-radius:13px;font-weight:800;margin-top:2px;transition:.2s}
+.store-link:hover{background:rgba(255,255,255,.07);color:#fff}
+.side-push-card{margin-top:auto;padding:17px;border-radius:18px;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.055)}
+.side-push-card b{display:flex;align-items:center;gap:8px;font-size:13px}.side-push-card p{color:#c2c7d9;font-size:11px;line-height:1.55;margin:8px 0 12px}.side-push-card .mini-state{color:#6fe0a2;font-weight:800;font-size:11px}
+.side-footer{margin-top:14px;padding-top:0}
+.metrics{grid-template-columns:repeat(4,minmax(0,1fr));margin:0 0 18px;gap:16px}
+.metric{min-height:112px;padding:20px;border-radius:20px}
+.metric:nth-child(3) .metric-icon{background:var(--green-soft);color:var(--green)}
+.metric:nth-child(4) .metric-icon{background:var(--purple-soft);color:var(--purple)}
+.metric strong{font-size:28px}.metric small{font-size:13px}.metric em{font-size:11px}
+.premium-grid{display:grid;grid-template-columns:minmax(0,1.65fr) minmax(330px,.75fr);gap:18px;align-items:start}
+.notification-card{min-width:0;padding:20px;border-radius:22px}
+.notification-card .card-head{align-items:center;margin-bottom:14px}
+.notification-card .card-head h2{font-size:22px}
+.notification-card .notification-toolbar{margin:0;justify-content:flex-end;flex:1}
+.notification-card .filter-group{background:#f7f7fa;border-radius:14px;padding:4px}
+.notification-card .filter-btn{border:0;background:transparent;border-radius:10px;padding:9px 13px}
+.notification-card .filter-btn.active{background:var(--pink-soft);color:var(--pink-strong);box-shadow:none}
+.push-permission{padding:14px 16px;border-radius:17px;margin-bottom:16px}
+.push-icon{background:linear-gradient(145deg,#fff0f5,#ffe1ec)}
+.notif{border-radius:17px;padding:15px;grid-template-columns:46px minmax(0,1fr) auto}
+.notif.unread{background:#fff7fa}.notif h3{font-size:14px}.notif p{font-size:12px}.section-date{font-size:13px;text-transform:none;color:var(--ink);letter-spacing:0;padding:6px 2px 2px}
+.right-rail{display:grid;gap:16px;position:sticky;top:18px}
+.rail-card{background:#fff;border:1px solid var(--line);border-radius:22px;padding:18px;box-shadow:var(--shadow-sm)}
+.rail-head{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:15px}.rail-head h3{font-size:16px;margin:0}.rail-head button{border:0;background:transparent;color:var(--pink);font-weight:800;cursor:pointer}
+.tracking-line{display:grid;grid-template-columns:repeat(5,1fr);gap:0;margin:10px 0 17px}
+.track-step{position:relative;text-align:center;font-size:9px;font-weight:800;color:#9ba0b1;padding-top:34px;min-width:0}
+.track-step:before{content:"";position:absolute;top:4px;left:50%;width:23px;height:23px;border:2px solid #dfe2eb;background:#fff;border-radius:50%;transform:translateX(-50%);z-index:2}
+.track-step:after{content:"";position:absolute;left:-50%;right:50%;height:2px;top:15px;background:#e2e5ec}.track-step:first-child:after{display:none}
+.track-step.done{color:#22263a}.track-step.done:before{content:"✓";display:grid;place-items:center;color:#fff;background:#37c980;border-color:#37c980}.track-step.done:after{background:#66dca0}
+.track-step.current:before{content:"";background:#fff0f5;border-color:var(--pink);box-shadow:0 0 0 5px rgba(243,63,120,.10)}
+.track-step.cancelled:before{content:"×";display:grid;place-items:center;color:#fff;background:var(--red);border-color:var(--red)}
+.current-state{border:1px solid #f4cedb;background:linear-gradient(135deg,#fff7fa,#fff);border-radius:16px;padding:14px;display:grid;grid-template-columns:minmax(0,1fr) 45px;gap:12px;align-items:center}
+.current-state small{display:block;color:var(--pink);font-weight:800;margin-bottom:4px}.current-state b{display:block;font-size:15px}.current-state p{margin:5px 0 0;color:var(--muted);font-size:12px;line-height:1.45}.current-state-icon{width:45px;height:45px;border-radius:14px;background:var(--pink-soft);display:grid;place-items:center;font-size:22px}
+.last-order-code{display:flex;align-items:center;justify-content:space-between;gap:10px}.last-order-code b{font-size:15px}.last-order-code span{font-size:11px;color:var(--muted)}
+.last-order-meta{display:flex;justify-content:space-between;gap:12px;margin:11px 0;color:var(--muted);font-size:12px}.last-order-meta strong{color:var(--ink);font-size:16px}
+.product-previews{display:flex;align-items:center;gap:8px;margin:12px 0}.product-preview{width:64px;height:54px;border-radius:12px;background:linear-gradient(145deg,#fff0f5,#f4ecff);display:grid;place-items:center;font-size:28px;border:1px solid #f0e4ea}.product-more{font-size:12px;font-weight:800;color:var(--muted)}
+.rail-action{width:100%;border:0;border-radius:12px;background:linear-gradient(135deg,var(--pink),#ff6293);color:#fff;padding:11px;font-weight:800;cursor:pointer}
+.help-card{display:flex;align-items:center;justify-content:space-between;gap:12px}.help-card p{margin:4px 0 0;color:var(--muted);font-size:12px}.support-link{border:0;background:var(--pink-soft);color:var(--pink-strong);padding:10px 12px;border-radius:11px;font-weight:800;text-decoration:none;white-space:nowrap}
+.full-page-card{max-width:100%;min-height:420px}
+.mobile-nav{grid-template-columns:repeat(4,1fr)!important}
+.mobile-shop{display:flex!important;align-items:center!important;justify-content:center!important;text-decoration:none;color:#fff;background:linear-gradient(135deg,var(--pink),#ff6b9a)!important;border-radius:50%!important;width:58px!important;height:58px!important;margin:-24px auto 0!important;box-shadow:0 10px 28px rgba(243,63,120,.38)!important;font-size:24px!important}
+@media(max-width:1200px){.premium-grid{grid-template-columns:minmax(0,1fr) 330px}.metrics{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:980px){body.account-open .dashboard{grid-template-columns:235px minmax(0,1fr)}body.account-open .main{padding:22px 18px 100px}.premium-grid{grid-template-columns:1fr}.right-rail{position:static;grid-template-columns:1fr 1fr}.help-card{grid-column:1/-1}}
+@media(max-width:820px){body.account-open .shell{padding:0 0 90px}body.account-open .dashboard{grid-template-columns:1fr}.premium-grid{grid-template-columns:1fr}.right-rail{grid-template-columns:1fr}.help-card{grid-column:auto}.metrics{grid-template-columns:repeat(2,1fr)}body.account-open .main{padding:16px 12px 95px}.notification-card{padding:15px}.notification-card .card-head{align-items:flex-start}.notification-card .notification-toolbar{justify-content:flex-start}.side-push-card{display:none}.mobile-nav{grid-template-columns:repeat(4,1fr)!important}}
+@media(max-width:560px){.metrics{grid-template-columns:1fr 1fr}.metric{display:flex;text-align:left;min-height:95px;padding:14px}.metric strong{font-size:22px}.metric em{display:none}.metric-icon{width:43px;height:43px}.tracking-line{overflow-x:auto;grid-template-columns:repeat(5,minmax(68px,1fr));padding-bottom:5px}.welcome-actions{flex-direction:row}.welcome h1{font-size:26px!important}.premium-grid{gap:12px}.rail-card{padding:15px}.notification-card .notification-toolbar{display:block}.notification-count{display:block;margin-top:8px}.push-actions .btn{width:100%}}
+
 </style>
 </head>
 <body>
@@ -109,52 +171,104 @@ button:focus-visible,input:focus-visible{outline:3px solid rgba(243,63,120,.2);o
 
   <section class="dashboard hidden" id="dashboard">
     <aside class="side">
-      <a class="brand" href="/"><span class="logo">🧁</span><div><b>Cielo <span>Postres</span></b><p>Panel del cliente</p></div></a>
-      <div class="profile-mini"><div class="avatar" id="sideAvatar">C</div><b id="sideName">Cliente</b><small id="sideEmail"></small></div>
+      <a class="brand" href="/"><span class="side-brand-logo">🧁</span><div><b>Cielo <span>Postres</span></b><p>Panel del cliente</p></div></a>
+      <div class="profile-mini">
+        <div class="avatar" id="sideAvatar">C</div>
+        <b id="sideName">Cliente</b>
+        <small id="sideEmail"></small>
+        <span class="account-state">✓ Cuenta activa</span>
+      </div>
       <nav class="side-nav page-nav" aria-label="Navegación de cuenta">
-        <button class="active" data-page="notificaciones"><span class="nav-icon">🔔</span><span>Notificaciones</span></button>
+        <button class="active" data-page="notificaciones"><span class="nav-icon">⌂</span><span>Resumen y avisos</span></button>
         <button data-page="pedidos"><span class="nav-icon">🛍</span><span>Mis pedidos</span></button>
         <button data-page="perfil"><span class="nav-icon">👤</span><span>Mi perfil</span></button>
       </nav>
-      <div class="side-tip"><b>🔒 Tu cuenta está protegida</b><p>Tu sesión se mantiene iniciada de forma segura para que no tengas que ingresar a cada momento.</p></div>
+      <a class="store-link" href="/"><span class="nav-icon">🧁</span><span>Volver a la tienda</span></a>
+      <div class="side-push-card">
+        <b>✅ Notificaciones reales</b>
+        <p>Recibe avisos en tu celular cuando tu pedido cambie de estado.</p>
+        <span class="mini-state" id="sidePushBadge">Comprobando dispositivo…</span>
+      </div>
       <div class="side-footer"><button class="btn btn-outline btn-block" id="logoutBtn">Cerrar sesión</button></div>
     </aside>
+
     <main class="main">
       <section class="welcome">
-        <div class="welcome-copy"><span class="eyebrow">Panel del cliente</span><h1 id="welcomeTitle">Hola 👋</h1><p>Sigue tus pedidos y recibe avisos en tiempo real desde un solo lugar.</p></div>
-        <div class="welcome-actions"><button class="icon-btn" id="quickRefreshBtn" title="Actualizar información" aria-label="Actualizar">↻</button><button class="icon-btn" data-page-jump="notificaciones" title="Ver notificaciones" aria-label="Ver notificaciones">🔔<span class="badge hidden" id="headerBadge">0</span></button></div>
+        <div class="welcome-copy"><span class="eyebrow">Panel del cliente</span><h1 id="welcomeTitle">¡Hola! 👋</h1><p>Aquí puedes ver el estado de tus pedidos y tus notificaciones.</p></div>
+        <div class="welcome-actions">
+          <button class="icon-btn" id="quickRefreshBtn" title="Actualizar información" aria-label="Actualizar">↻</button>
+          <button class="icon-btn" data-page-jump="notificaciones" title="Ver notificaciones" aria-label="Ver notificaciones">🔔<span class="badge hidden" id="headerBadge">0</span></button>
+        </div>
       </section>
+
       <div class="metrics">
-        <div class="metric"><span class="metric-icon">🛍</span><div><small>Pedidos totales</small><strong id="metricOrders">0</strong><em>Historial de compras</em></div></div>
+        <div class="metric"><span class="metric-icon">🛍</span><div><small>Pedidos</small><strong id="metricOrders">0</strong><em>Total realizados</em></div></div>
         <div class="metric"><span class="metric-icon">◷</span><div><small>En proceso</small><strong id="metricProcess">0</strong><em>Pedidos activos</em></div></div>
-        <div class="metric"><span class="metric-icon">🔔</span><div><small>Sin leer</small><strong id="metricUnread">0</strong><em>Avisos nuevos</em></div></div>
+        <div class="metric"><span class="metric-icon">✓</span><div><small>Completados</small><strong id="metricCompleted">0</strong><em>Pedidos entregados</em></div></div>
+        <div class="metric"><span class="metric-icon">🔔</span><div><small>Notificaciones</small><strong id="metricUnread">0</strong><em>No leídas</em></div></div>
       </div>
 
-      <section class="content-card account-page" id="page-notificaciones">
-        <div class="card-head"><div><h2>Centro de notificaciones</h2><p>Todos los avisos importantes sobre tus pedidos.</p></div><div class="card-actions"><button class="btn btn-soft" id="readAllBtn">Marcar todo como leído</button></div></div>
-        <div class="push-permission" id="pushPanel">
-          <div class="push-info"><span class="push-icon">📲</span><div><b>Avisos reales en tu dispositivo</b><p id="pushStatus">Comprueba si tu dispositivo permite recibir avisos aunque la página esté cerrada.</p></div></div>
-          <div class="push-actions"><button class="btn btn-primary" id="enablePushBtn" type="button">Activar avisos</button><button class="btn btn-outline hidden" id="disablePushBtn" type="button">Desactivar</button></div>
+      <section class="account-page" id="page-notificaciones">
+        <div class="premium-grid">
+          <section class="content-card notification-card">
+            <div class="card-head">
+              <div><h2>Notificaciones</h2><p>Te avisamos cada vez que cambia el estado de tu pedido.</p></div>
+              <div class="notification-toolbar">
+                <div class="filter-group">
+                  <button class="filter-btn active" data-notif-filter="all">Todas</button>
+                  <button class="filter-btn" data-notif-filter="unread">No leídas</button>
+                  <button class="filter-btn" data-notif-filter="orders">Pedidos</button>
+                </div>
+                <span class="notification-count" id="notificationCount">0 notificaciones</span>
+              </div>
+            </div>
+            <div class="push-permission" id="pushPanel">
+              <div class="push-info"><span class="push-icon">📲</span><div><b>Notificaciones reales en tu celular</b><p id="pushStatus">Comprueba si tu dispositivo permite recibir avisos aunque la página esté cerrada.</p></div></div>
+              <div class="push-actions"><button class="btn btn-primary" id="enablePushBtn" type="button">Activar avisos</button><button class="btn btn-outline hidden" id="disablePushBtn" type="button">Desactivar</button></div>
+            </div>
+            <div class="card-actions" style="justify-content:flex-start;margin-bottom:10px"><button class="btn btn-soft" id="readAllBtn">Marcar todas como leídas</button></div>
+            <div class="notif-list" id="notificationList"></div>
+          </section>
+
+          <aside class="right-rail">
+            <section class="rail-card">
+              <div class="rail-head"><h3>Seguimiento de tu pedido</h3><button type="button" onclick="goPage('pedidos')">Ver todos</button></div>
+              <div id="currentOrderTrack" class="tracking-line"></div>
+              <div class="current-state">
+                <div><small>Estado actual</small><b id="currentOrderState">Sin pedidos activos</b><p id="currentOrderMessage">Cuando realices un pedido, podrás seguirlo aquí.</p></div>
+                <span class="current-state-icon" id="currentOrderIcon">🧁</span>
+              </div>
+            </section>
+
+            <section class="rail-card">
+              <div class="rail-head"><h3>Último pedido</h3><button type="button" onclick="goPage('pedidos')">Ver todos</button></div>
+              <div id="lastOrderCard"><div class="empty"><b>Aún no hay pedidos</b>Tu último pedido aparecerá aquí.</div></div>
+            </section>
+
+            <section class="rail-card help-card">
+              <div><b>Centro de ayuda</b><p>¿Tienes dudas sobre tu pedido?</p></div>
+              <a class="support-link" href="https://wa.me/51999999999" target="_blank" rel="noopener">🎧 Contactar</a>
+            </section>
+          </aside>
         </div>
-        <div class="notification-toolbar"><div class="filter-group"><button class="filter-btn active" data-notif-filter="all">Todas</button><button class="filter-btn" data-notif-filter="unread">No leídas</button><button class="filter-btn" data-notif-filter="orders">Pedidos</button></div><span class="notification-count" id="notificationCount">0 notificaciones</span></div>
-        <div class="notif-list" id="notificationList"></div>
       </section>
 
-      <section class="content-card account-page hidden" id="page-pedidos">
+      <section class="content-card account-page full-page-card hidden" id="page-pedidos">
         <div class="card-head"><div><h2>Mis pedidos</h2><p>Consulta el avance, contenido y total de cada compra.</p></div><div class="card-actions"><button class="btn btn-outline" id="refreshBtn">↻ Actualizar</button></div></div>
         <div class="order-list" id="orderList"></div>
       </section>
 
-      <section class="content-card account-page hidden" id="page-perfil">
+      <section class="content-card account-page full-page-card hidden" id="page-perfil">
         <div class="card-head"><div><h2>Mi perfil</h2><p>Administra tus datos personales y seguridad.</p></div></div>
         <form class="profile-form" id="profileForm"><div class="field"><label>Nombre</label><input id="profileName" required></div><div class="field"><label>Teléfono</label><input id="profilePhone" required></div><div class="field full"><label>Correo</label><input id="profileEmail" disabled></div><div class="field full"><label>Nueva contraseña (opcional)</label><input id="profilePassword" type="password" minlength="8" placeholder="Déjala vacía para conservarla"></div><div class="field full"><div class="help">Tu sesión se guarda en una cookie segura y privada. Permanecerás conectado hasta 30 días, salvo que cierres sesión.</div></div><div class="field full"><button class="btn btn-primary">Guardar cambios</button></div></form>
       </section>
     </main>
   </section>
   <nav class="mobile-nav page-nav hidden" id="mobileNav" aria-label="Navegación móvil">
-    <button class="active" data-page="notificaciones"><span class="nav-icon">🔔</span><span>Avisos</span></button>
+    <button class="active" data-page="notificaciones"><span class="nav-icon">⌂</span><span>Inicio</span></button>
     <button data-page="pedidos"><span class="nav-icon">🛍</span><span>Pedidos</span></button>
-    <button data-page="perfil"><span class="nav-icon">👤</span><span>Perfil</span></button>
+    <a class="mobile-shop" href="/" aria-label="Ir a la tienda">🧁</a>
+    <button data-page="perfil"><span class="nav-icon">👤</span><span>Mi cuenta</span></button>
   </nav>
 </div>
 <div class="toast" id="toast"></div>
@@ -168,19 +282,23 @@ function toast(msg){const el=$('#toast');el.textContent=msg;el.classList.add('sh
 async function api(url,opts={}){const legacyToken=localStorage.getItem(legacyTokenKey)||'';const headers={'Content-Type':'application/json',...(legacyToken?{Authorization:'Bearer '+legacyToken}:{}),...(opts.headers||{})};const res=await fetch(url,{...opts,headers,credentials:'same-origin'});const data=await res.json().catch(()=>({ok:false,error:'Respuesta inválida'}));if(!res.ok||data.ok===false){const err=new Error(data.error||'Error de servidor');err.status=res.status;throw err}return data.data??data}
 function initials(name){return String(name||'C').split(/\s+/).slice(0,2).map(x=>x[0]).join('').toUpperCase()||'C'}
 function statusLabel(s){return ({pendiente:'Pendiente',confirmado:'Confirmado',preparando:'Preparando',listo:'Listo',en_camino:'En camino',entregado:'Entregado',cancelado:'Cancelado'})[s]||s}
-function showAuth(tab='login'){$('#authWrap').classList.remove('hidden');$('#dashboard').classList.add('hidden');$('#mobileNav').classList.add('hidden');switchAuth(tab)}
-function showDashboard(){$('#authWrap').classList.add('hidden');$('#dashboard').classList.remove('hidden');$('#mobileNav').classList.remove('hidden')}
+function showAuth(tab='login'){document.body.classList.remove('account-open');$('.top').classList.remove('hidden');$('#authWrap').classList.remove('hidden');$('#dashboard').classList.add('hidden');$('#mobileNav').classList.add('hidden');switchAuth(tab)}
+function showDashboard(){document.body.classList.add('account-open');$('.top').classList.add('hidden');$('#authWrap').classList.add('hidden');$('#dashboard').classList.remove('hidden');$('#mobileNav').classList.remove('hidden')}
 function switchAuth(tab){$$('[data-auth-tab]').forEach(b=>b.classList.toggle('active',b.dataset.authTab===tab));$('#loginForm').classList.toggle('hidden',tab!=='login');$('#registerForm').classList.toggle('hidden',tab!=='registro');$('#authError').textContent=''}
 function goPage(page){$$('.account-page').forEach(x=>x.classList.toggle('hidden',x.id!=='page-'+page));$$('.page-nav button').forEach(x=>x.classList.toggle('active',x.dataset.page===page));if(innerWidth<821)scrollTo({top:0,behavior:'smooth'})}
 function renderClient(){const name=client?.nombre||'Cliente';const avatar=$('#sideAvatar');$('#sideName').textContent=name;$('#sideEmail').textContent=client?.email||'';avatar.textContent=initials(name);avatar.classList.toggle('photo',Boolean(client?.foto));avatar.style.backgroundImage=client?.foto?`url("${String(client.foto).replace(/["'()]/g,'')}")`:'';$('#welcomeTitle').textContent=`Hola, ${name.split(/\s+/)[0]} 👋`;$('#profileName').value=client?.nombre||'';$('#profilePhone').value=client?.telefono||'';$('#profileEmail').value=client?.email||''}
-function renderMetrics(){const unread=notifications.filter(n=>!n.read).length;const process=orders.filter(o=>!['entregado','cancelado'].includes(o.estado)).length;$('#metricOrders').textContent=orders.length;$('#metricProcess').textContent=process;$('#metricUnread').textContent=unread;$('#headerBadge').textContent=unread;$('#headerBadge').classList.toggle('hidden',unread===0);$('#notificationCount').textContent=`${notifications.length} ${notifications.length===1?'notificación':'notificaciones'}`}
+function renderMetrics(){const unread=notifications.filter(n=>!n.read).length;const process=orders.filter(o=>!['entregado','cancelado'].includes(o.estado)).length;const completed=orders.filter(o=>o.estado==='entregado').length;$('#metricOrders').textContent=orders.length;$('#metricProcess').textContent=process;$('#metricCompleted').textContent=completed;$('#metricUnread').textContent=unread;$('#headerBadge').textContent=unread;$('#headerBadge').classList.toggle('hidden',unread===0);$('#notificationCount').textContent=`${notifications.length} ${notifications.length===1?'notificación':'notificaciones'}`}
 function notificationIcon(n){const t=String(n.type||'').toLowerCase(),title=String(n.title||'').toLowerCase();if(t==='personalizada')return '💌';if(title.includes('camino'))return '🛵';if(title.includes('recoger')||title.includes('listo'))return '✅';if(title.includes('cancel'))return '✕';if(title.includes('recibido'))return '🧾';return '🔔'}
 function dayLabel(dateValue){const d=new Date(dateValue),today=new Date(),yesterday=new Date();yesterday.setDate(today.getDate()-1);const same=(a,b)=>a.toDateString()===b.toDateString();if(same(d,today))return 'Hoy';if(same(d,yesterday))return 'Ayer';return d.toLocaleDateString('es-PE',{weekday:'long',day:'numeric',month:'long'})}
 function filteredNotifications(){return notifications.filter(n=>notificationFilter==='all'||(notificationFilter==='unread'&&!n.read)||(notificationFilter==='orders'&&Boolean(n.orderCode)))}
 function renderNotifications(){const el=$('#notificationList'),list=filteredNotifications();$$('[data-notif-filter]').forEach(b=>b.classList.toggle('active',b.dataset.notifFilter===notificationFilter));$('#notificationCount').textContent=`${list.length} ${list.length===1?'notificación':'notificaciones'}`;if(!list.length){el.innerHTML='<div class="empty"><b>No hay notificaciones aquí</b>Cambia el filtro o espera una nueva actualización de tus pedidos.</div>';return}let lastDay='';el.innerHTML=list.map(n=>{const day=dayLabel(n.createdAt),heading=day!==lastDay?`<div class="section-date">${esc(day)}</div>`:'';lastDay=day;return `${heading}<article class="notif ${n.read?'':'unread'}" onclick="readOne('${n.id}')"><span class="notif-icon">${notificationIcon(n)}</span><div><h3>${esc(n.title)}</h3><p>${esc(n.message)}</p><div class="notif-meta"><span>${new Date(n.createdAt).toLocaleTimeString('es-PE',{hour:'2-digit',minute:'2-digit'})}</span>${n.orderCode?`<span class="order-chip">${esc(n.orderCode)}</span>`:''}</div></div><div class="notif-side">${n.orderCode?'<button class="notif-link" type="button" onclick="event.stopPropagation();goPage(\'pedidos\')">Ver pedido</button>':''}${n.read?'':'<span class="dot" title="No leída"></span>'}</div></article>`}).join('')}
 function orderProgress(status){const steps=[['pendiente','Recibido'],['confirmado','Confirmado'],['preparando','Preparando'],['listo','Listo'],['en_camino','En camino'],['entregado','Entregado']];if(status==='cancelado')return '<div class="status st-cancelado">Pedido cancelado</div>';const index=steps.findIndex(x=>x[0]===status),visible=status==='entregado'?steps:[...steps.slice(0,4),status==='en_camino'?steps[4]:['entregado','Entregado']];return `<div class="order-progress">${visible.map((x,i)=>`<div class="progress-step ${i<=Math.max(index,0)?'done':''}">${esc(x[1])}</div>`).join('')}</div>`}
+function dessertEmoji(name){const n=String(name||'').toLowerCase();if(n.includes('café')||n.includes('cafe'))return '☕';if(n.includes('helado'))return '🍨';if(n.includes('cup'))return '🧁';if(n.includes('galleta'))return '🍪';if(n.includes('chocolate')||n.includes('brownie'))return '🍫';if(n.includes('fresa'))return '🍓';return '🍰'}
+function dashboardTrack(order){const el=$('#currentOrderTrack');if(!order){el.innerHTML=['Recibido','Confirmado','Preparando','Listo','Entregado'].map(x=>`<div class="track-step">${x}</div>`).join('');return}if(order.estado==='cancelado'){el.innerHTML=['Recibido','Confirmado','Preparando','Cancelado','Final'].map((x,i)=>`<div class="track-step ${i<3?'done':i===3?'cancelled':''}">${x}</div>`).join('');return}const status=order.estado;const labels=status==='en_camino'?['Recibido','Confirmado','Preparando','En camino','Entregado']:['Recibido','Confirmado','Preparando','Listo','Entregado'];const states=status==='en_camino'?['pendiente','confirmado','preparando','en_camino','entregado']:['pendiente','confirmado','preparando','listo','entregado'];let idx=states.indexOf(status);if(status==='entregado')idx=4;if(idx<0)idx=0;el.innerHTML=labels.map((x,i)=>`<div class="track-step ${i<idx?'done':i===idx?'current':''}">${x}</div>`).join('')}
+function renderDashboardExtras(){const active=orders.find(o=>!['entregado','cancelado'].includes(o.estado));const current=active||orders[0]||null;dashboardTrack(current);const state=$('#currentOrderState'),message=$('#currentOrderMessage'),icon=$('#currentOrderIcon');if(!current){state.textContent='Sin pedidos activos';message.textContent='Cuando realices un pedido, podrás seguirlo aquí.';icon.textContent='🧁'}else{const messages={pendiente:'Recibimos tu pedido. Te avisaremos cuando sea confirmado.',confirmado:'Tu pedido fue confirmado y pronto comenzaremos a prepararlo.',preparando:'Estamos preparando tus postres con mucho cuidado.',listo:'¡Tu pedido ya está listo! Puedes venir a recogerlo.',en_camino:'Tu pedido ya salió y está en camino.',entregado:'Tu pedido fue entregado. ¡Gracias por comprar!',cancelado:'Este pedido fue cancelado.'};state.textContent=statusLabel(current.estado);message.textContent=messages[current.estado]||'Revisa el avance de tu pedido.';icon.textContent=current.estado==='en_camino'?'🛵':current.estado==='listo'?'🎁':current.estado==='entregado'?'✅':current.estado==='cancelado'?'✕':'🧁'}const last=orders[0];const box=$('#lastOrderCard');if(!last){box.innerHTML='<div class="empty"><b>Aún no hay pedidos</b>Tu último pedido aparecerá aquí.</div>';return}const items=last.items||[];box.innerHTML=`<div class="last-order-code"><div><b>${esc(last.codigo||'Pedido')}</b><br><span>${new Date(last.createdAt).toLocaleString('es-PE')}</span></div><span class="status st-${esc(last.estado)}">${esc(statusLabel(last.estado))}</span></div><div class="last-order-meta"><span>${items.length} ${items.length===1?'producto':'productos'}</span><strong>${money(last.total)}</strong></div><div class="product-previews">${items.slice(0,3).map(i=>`<span class="product-preview" title="${esc(i.nombre)}">${dessertEmoji(i.nombre)}</span>`).join('')}${items.length>3?`<span class="product-more">+${items.length-3}</span>`:''}</div><button class="rail-action" type="button" onclick="goPage('pedidos')">Ver detalle del pedido</button>`}
+
 function renderOrders(){const el=$('#orderList');if(!orders.length){el.innerHTML='<div class="empty"><b>Aún no tienes pedidos</b>Inicia sesión antes de finalizar tu próxima compra para ver aquí todo el seguimiento.</div>';return}el.innerHTML=orders.map(o=>`<article class="order"><div class="order-top"><div><h3>${esc(o.codigo||'Pedido')}</h3><p>${new Date(o.createdAt).toLocaleString('es-PE')} · ${esc(o.cliente?.entrega==='delivery'?'Delivery':'Recojo en tienda')}</p></div><span class="status st-${esc(o.estado)}">${esc(statusLabel(o.estado))}</span></div>${orderProgress(o.estado)}<div class="order-items">${(o.items||[]).map(i=>`<div><span>${esc(i.nombre)} × ${Number(i.cantidad||0)}</span><b>${money(i.subtotal)}</b></div>`).join('')}</div><div class="order-total"><span>Total</span><span>${money(o.total)}</span></div></article>`).join('')}
-async function loadAccount(show=true){try{client=await api('/api/clientes-auth');localStorage.removeItem(legacyTokenKey);[orders,notifications]=await Promise.all([api('/api/mis-pedidos'),api('/api/notificaciones')]);orders=Array.isArray(orders)?orders:[];notifications=Array.isArray(notifications)?notifications:[];renderClient();renderMetrics();renderNotifications();renderOrders();if(show)showDashboard();initPushStatus(true).catch(()=>null)}catch(e){client=null;localStorage.removeItem(legacyTokenKey);showAuth();if(show&&e.status!==401&&e.message)$('#authError').textContent=e.message}}
+async function loadAccount(show=true){try{client=await api('/api/clientes-auth');localStorage.removeItem(legacyTokenKey);[orders,notifications]=await Promise.all([api('/api/mis-pedidos'),api('/api/notificaciones')]);orders=Array.isArray(orders)?orders:[];notifications=Array.isArray(notifications)?notifications:[];renderClient();renderMetrics();renderNotifications();renderOrders();renderDashboardExtras();if(show)showDashboard();initPushStatus(true).catch(()=>null)}catch(e){client=null;localStorage.removeItem(legacyTokenKey);showAuth();if(show&&e.status!==401&&e.message)$('#authError').textContent=e.message}}
 async function waitForGoogle(maxMs=8000){const start=Date.now();while(Date.now()-start<maxMs){if(window.google?.accounts?.id)return true;await new Promise(r=>setTimeout(r,120))}return false}
 async function handleGoogleCredential(response){try{$('#authError').textContent='';if(!response?.credential)throw new Error('Google no devolvió una credencial.');const data=await api('/api/clientes-auth',{method:'POST',body:JSON.stringify({accion:'google',credential:response.credential,remember:$('#loginRemember').checked})});client=data.client;await loadAccount();toast('Sesión iniciada con Google y guardada.')}catch(err){$('#authError').textContent=err.message}}
 async function initGoogle(){const wrap=$('#googleWrap');try{const cfg=await api('/api/clientes-auth?action=config');if(!cfg.googleEnabled||!cfg.googleClientId){wrap.classList.add('hidden');return}const loaded=await waitForGoogle();if(!loaded)throw new Error('No se pudo cargar el botón de Google.');google.accounts.id.initialize({client_id:cfg.googleClientId,callback:handleGoogleCredential,auto_select:false,cancel_on_tap_outside:true});const target=$('#googleButton');target.innerHTML='';google.accounts.id.renderButton(target,{theme:'outline',size:'large',shape:'rectangular',text:'continue_with',width:Math.min(390,target.clientWidth||390),logo_alignment:'left'});googleReady=true}catch(err){$('#googleButton').innerHTML='';$('#googleHelp').textContent=err.message||'Google no está disponible en este momento.'}}
@@ -190,7 +308,7 @@ async function readOne(id){const item=notifications.find(n=>n.id===id);if(!item|
 async function readAll(){try{await api('/api/notificaciones',{method:'PUT',body:JSON.stringify({accion:'leer_todas'})});notifications.forEach(n=>n.read=true);renderMetrics();renderNotifications();toast('Notificaciones marcadas como leídas.')}catch(e){toast(e.message)}}
 async function updateProfile(e){e.preventDefault();try{const payload={nombre:$('#profileName').value,telefono:$('#profilePhone').value,password:$('#profilePassword').value};if(!payload.password)delete payload.password;client=await api('/api/clientes-auth',{method:'PUT',body:JSON.stringify(payload)});$('#profilePassword').value='';renderClient();toast('Perfil actualizado.')}catch(err){toast(err.message)}}
 function base64ToUint8Array(value){const padding='='.repeat((4-value.length%4)%4);const base64=(value+padding).replace(/-/g,'+').replace(/_/g,'/');const raw=atob(base64);return Uint8Array.from([...raw].map(ch=>ch.charCodeAt(0)))}
-function setPushUI(mode,message){const status=$('#pushStatus'),on=$('#enablePushBtn'),off=$('#disablePushBtn');status.textContent=message;status.classList.toggle('push-ok',mode==='on');status.classList.toggle('push-warn',mode==='warn');on.classList.toggle('hidden',mode==='on'||mode==='unsupported'||mode==='blocked');off.classList.toggle('hidden',mode!=='on')}
+function setPushUI(mode,message){const status=$('#pushStatus'),on=$('#enablePushBtn'),off=$('#disablePushBtn'),side=$('#sidePushBadge');status.textContent=message;status.classList.toggle('push-ok',mode==='on');status.classList.toggle('push-warn',mode==='warn');on.classList.toggle('hidden',mode==='on'||mode==='unsupported'||mode==='blocked');off.classList.toggle('hidden',mode!=='on');if(side){side.textContent=mode==='on'?'● Avisos activados':mode==='blocked'?'● Permiso bloqueado':mode==='warn'?'● Falta configuración':'● Avisos disponibles';side.style.color=mode==='on'?'#6fe0a2':mode==='blocked'?'#ff8c9b':'#ffd36b'}}
 async function getServiceWorkerRegistration(){if(!('serviceWorker' in navigator))return null;await navigator.serviceWorker.register('/sw.js',{scope:'/'});return navigator.serviceWorker.ready}
 async function initPushStatus(sync=false){if(!client)return;if(!('Notification' in window)||!('PushManager' in window)){setPushUI('unsupported','Este navegador no permite notificaciones push. En iPhone instala primero la PWA desde “Agregar a pantalla de inicio”.');return}pushConfig=await api('/api/notificaciones?action=config');if(!pushConfig.enabled||!pushConfig.publicKey){setPushUI('warn','Falta configurar las claves VAPID en Vercel para activar los avisos reales.');return}if(Notification.permission==='denied'){setPushUI('blocked','Las notificaciones están bloqueadas. Actívalas desde los permisos del navegador.');return}const reg=await getServiceWorkerRegistration();const sub=await reg.pushManager.getSubscription();if(sub){if(sync)await api('/api/notificaciones?action=subscribe',{method:'POST',body:JSON.stringify({subscription:sub.toJSON()})}).catch(()=>null);setPushUI('on','Activadas: recibirás avisos de pedidos aunque la página esté cerrada.')}else{setPushUI('off',Notification.permission==='granted'?'Pulsa “Activar avisos” para conectar este dispositivo.':'Activa los avisos para saber cuándo tu pedido está listo o en camino.')}}
 async function enablePush(){try{if(!client)return;const permission=await Notification.requestPermission();if(permission!=='granted')throw new Error('Debes permitir las notificaciones en el navegador.');pushConfig=pushConfig||await api('/api/notificaciones?action=config');if(!pushConfig.enabled)throw new Error('Las claves VAPID todavía no están configuradas en Vercel.');const reg=await getServiceWorkerRegistration();let sub=await reg.pushManager.getSubscription();if(!sub)sub=await reg.pushManager.subscribe({userVisibleOnly:true,applicationServerKey:base64ToUint8Array(pushConfig.publicKey)});await api('/api/notificaciones?action=subscribe',{method:'POST',body:JSON.stringify({subscription:sub.toJSON()})});setPushUI('on','Activadas: te avisaremos aunque la aplicación esté cerrada.');toast('Notificaciones reales activadas.')}catch(e){toast(e.message);initPushStatus(false).catch(()=>null)}}

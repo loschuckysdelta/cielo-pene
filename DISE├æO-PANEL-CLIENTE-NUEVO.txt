@@ -1,0 +1,26 @@
+CIELO POSTRES - PANEL DEL CLIENTE NUEVO
+
+Se rediseñó public/cuenta.html para quedar como la imagen aprobada:
+- Barra lateral oscura y profesional.
+- Encabezado con saludo y campana de notificaciones.
+- Cuatro tarjetas: pedidos, en proceso, completados y notificaciones.
+- Centro de notificaciones con filtros.
+- Seguimiento visual del pedido actual.
+- Resumen del último pedido.
+- Diseño adaptable para celular, tablet y computadora.
+- Navegación inferior móvil.
+
+Se conservan:
+- Inicio de sesión normal y con Google.
+- Cookie segura para mantener la sesión.
+- Notificaciones push reales.
+- PWA instalable.
+- Pedidos, perfil y API existentes.
+- 12 funciones compatibles con Vercel Hobby.
+
+PARA SUBIR:
+1. Reemplaza todos los archivos del repositorio con los de esta carpeta.
+2. Verifica que /api tenga solo 12 archivos JS principales.
+3. Haz Commit changes en GitHub.
+4. Espera el despliegue automático de Vercel.
+5. En el celular, cierra y vuelve a abrir la PWA para actualizar el diseño.
