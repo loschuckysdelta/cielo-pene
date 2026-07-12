@@ -1,8 +1,8 @@
 {
   "name": "cielo-postres-api-admin",
-  "version": "4.0.0",
+  "version": "5.0.0",
   "private": true,
-  "description": "Cielo Postres con panel admin, APIs visibles, cupones limitados/ilimitados, pedidos, stock real, delivery, MongoDB y Cloudinary.",
+  "description": "Cielo Postres con vista previa de productos, usuarios, administradores, gestores, permisos, reseñas, pedidos, MongoDB y Cloudinary.",
   "scripts": {
     "build": "echo \"Proyecto HTML + API Vercel listo\"",
     "start": "echo \"Usa Vercel para desplegar este proyecto\""

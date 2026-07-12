@@ -22,7 +22,7 @@ async function findCategoriaName(categoriaId, categoriaNombre) {
 async function clean(body, oldDoc) {
   const nuevos = Array.isArray(body.imagenesNuevas) ? body.imagenesNuevas : [];
   let imagenes = Array.isArray(body.imagenes) ? body.imagenes.filter(Boolean) : (oldDoc?.imagenes || []);
-  if (nuevos.length > 0) imagenes = await uploadMany(nuevos);
+  if (nuevos.length > 0) imagenes = [...imagenes, ...await uploadMany(nuevos)];
 
   const stock = Math.max(0, Math.floor(toNumber(body.stock, oldDoc?.stock || 0)));
   const categoriaId = normalizeText(body.categoriaId || body.categoria || oldDoc?.categoriaId);

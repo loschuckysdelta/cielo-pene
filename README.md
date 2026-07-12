@@ -1,39 +1,43 @@
-# Cielo Postres · Catálogo + API + Panel administrador
+# Cielo Postres · Catálogo, API y panel administrador
 
-Proyecto listo para desplegar en Vercel con catálogo público, panel administrativo, MongoDB y Cloudinary.
+Proyecto listo para Vercel con catálogo público, panel administrativo, MongoDB, Cloudinary, reseñas, usuarios, administradores y gestores.
 
-## Accesos
+## Accesos iniciales
 
-- Catálogo: `/` o `/catalogo`
-- Panel: `/admin`
-- Credencial inicial del panel: `Chucky123`
+- Catálogo público: `/` o `/catalogo`
+- Panel administrador: `/admin`
+- Correo inicial: `admin@cielopostres.com`
+- Contraseña inicial: `Chucky123`
 
-> La credencial del HTML es una protección básica del panel. Para una tienda en producción se recomienda agregar autenticación en el servidor.
+El primer acceso crea automáticamente la cuenta de **Administrador principal**. En producción cambia el correo, la contraseña y el secreto mediante variables de entorno.
 
-## Funciones del panel
+## Novedades incluidas
 
-- Dashboard con ventas de hoy, ventas del mes, clientes, stock y cupones usados.
-- Gráfico de ventas de los últimos 7 días.
-- Pedidos recientes y productos más vendidos.
-- Productos con hasta 5 imágenes, precio, descuento, stock, categoría y estado.
-- Pedidos con confirmación, descuento de stock y restauración al cancelar.
-- Reseñas pendientes, aprobadas u ocultas.
-- Cupones limitados o ilimitados.
-- Zonas de delivery con precio fijo o por coordinar.
-- Datos del negocio, redes sociales, WhatsApp, ubicación y horario.
-- Vista adaptable para computadora y celular.
+- Vista previa en tiempo real al editar un producto.
+- Vista de imagen principal y miniaturas.
+- Posibilidad de quitar imágenes antiguas y agregar nuevas, hasta un máximo de cinco.
+- Usuarios con inicio de sesión por correo y contraseña.
+- Administrador principal con acceso total.
+- Administradores con permisos configurables.
+- Gestores con acceso únicamente a las áreas seleccionadas.
+- Permiso especial **Usuarios y administradores**, para crear otro administrador que pueda registrar admins y gestores.
+- Activar, desactivar, editar y eliminar usuarios.
+- Contraseñas almacenadas con hash `scrypt`.
+- Sesiones firmadas con vencimiento de 12 horas.
 
-## Reseñas
+## Roles
 
-El cliente puede enviar una reseña desde el catálogo. La reseña se guarda como `pendiente` y no aparece públicamente hasta que el administrador la aprueba desde `/admin`.
+### Administrador principal
 
-API:
+Existe una sola cuenta principal. Tiene acceso total y no puede ser eliminada por otro usuario.
 
-- `GET /api/resenas` — reseñas aprobadas.
-- `GET /api/resenas?admin=1` — todas las reseñas.
-- `POST /api/resenas` — enviar reseña.
-- `PUT /api/resenas?id=ID` — aprobar u ocultar.
-- `DELETE /api/resenas?id=ID` — eliminar.
+### Administrador
+
+Puede recibir permisos amplios. Para permitirle crear usuarios, activa el permiso **Usuarios y administradores**.
+
+### Gestor
+
+Tiene permisos específicos, por ejemplo solo productos, pedidos, reseñas o delivery.
 
 ## Variables de entorno en Vercel
 
@@ -43,15 +47,30 @@ MONGO_DB_NAME=antoja2
 CLOUDINARY_CLOUD_NAME=...
 CLOUDINARY_API_KEY=...
 CLOUDINARY_API_SECRET=...
+
+ADMIN_EMAIL=admin@cielopostres.com
+ADMIN_PASSWORD=UnaClaveSegura123
+AUTH_SECRET=un_secreto_largo_y_aleatorio
 ```
 
-Si `MONGO_URI` no está configurado, el proyecto funciona en memoria temporal y los cambios se pierden cuando Vercel reinicia la función.
+`ADMIN_EMAIL` y `ADMIN_PASSWORD` se usan únicamente cuando todavía no existe el administrador principal.
+
+Si `MONGO_URI` no está configurado, el proyecto funciona en memoria temporal. Los productos, usuarios y demás cambios pueden desaparecer cuando Vercel reinicie la función.
+
+## APIs nuevas
+
+- `POST /api/auth` — iniciar sesión.
+- `GET /api/auth` — obtener la cuenta de la sesión.
+- `GET /api/usuarios` — listar usuarios autorizados.
+- `POST /api/usuarios` — crear administrador o gestor.
+- `PUT /api/usuarios?id=ID` — editar usuario, permisos o contraseña.
+- `DELETE /api/usuarios?id=ID` — eliminar usuario.
 
 ## Despliegue
 
 1. Sube la carpeta completa a GitHub.
 2. Importa el repositorio en Vercel.
 3. Agrega las variables de entorno.
-4. Ejecuta un nuevo deployment.
+4. Realiza un nuevo deployment.
 
 Node.js requerido: 24.x.

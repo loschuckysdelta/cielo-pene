@@ -10,7 +10,8 @@ if (!memory) {
     delivery: [],
     cupones: [],
     pedidos: [],
-    resenas: []
+    resenas: [],
+    usuarios: []
   };
 }
 
@@ -73,7 +74,9 @@ async function ensureIndexes() {
     database.collection('pedidos').createIndex({ createdAt: -1 }),
     database.collection('cupones').createIndex({ codigo: 1 }, { unique: true }),
     database.collection('resenas').createIndex({ createdAt: -1 }),
-    database.collection('resenas').createIndex({ estado: 1, createdAt: -1 })
+    database.collection('resenas').createIndex({ estado: 1, createdAt: -1 }),
+    database.collection('usuarios').createIndex({ email: 1 }, { unique: true }),
+    database.collection('usuarios').createIndex({ role: 1, activo: 1 })
   ]).catch(() => null);
 }
 
