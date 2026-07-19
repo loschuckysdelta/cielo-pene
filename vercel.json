@@ -80,6 +80,6 @@
       ]
     }
   ],
-  "installCommand": "npm ci --no-audit --no-fund --prefer-offline=false",
+  "installCommand": "corepack npm ci --ignore-scripts --no-audit --no-fund",
   "buildCommand": "npm run build"
 }
