@@ -133,6 +133,109 @@ body.account-open .eyebrow{display:none}
 
 </style>
 <link rel="stylesheet" href="/android.css?v=9-reportes">
+
+<!-- TEMA OSCURO CIELO POSTRES -->
+<style>
+:root{
+  --pink:#ff2f78;
+  --pink-strong:#ff1668;
+  --pink-soft:rgba(255,47,120,.12);
+  --pink-pale:#16060e;
+  --ink:#ffffff;
+  --ink-2:#f2f2f6;
+  --muted:#a9abb8;
+  --muted-2:#747785;
+  --line:#2b2d36;
+  --line-strong:#393b46;
+  --surface:#111217;
+  --bg:#050506;
+  --green:#38d487;
+  --green-soft:rgba(56,212,135,.12);
+  --blue:#6d91ff;
+  --blue-soft:rgba(109,145,255,.12);
+  --orange:#ffab4a;
+  --orange-soft:rgba(255,171,74,.12);
+  --red:#ff5b70;
+  --red-soft:rgba(255,91,112,.12);
+  --purple:#bc6cff;
+  --purple-soft:rgba(188,108,255,.12);
+  --shadow-sm:0 12px 35px rgba(0,0,0,.35);
+  --shadow:0 24px 80px rgba(0,0,0,.55);
+}
+html,body{background:#050506!important;color:#fff!important}
+body{
+  background:
+    radial-gradient(circle at 12% 0%,rgba(255,47,120,.16),transparent 28rem),
+    radial-gradient(circle at 90% 30%,rgba(153,64,255,.10),transparent 30rem),
+    linear-gradient(180deg,#050506 0%,#09090c 100%)!important;
+}
+body:before{
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:-1;
+  background-image:linear-gradient(rgba(255,255,255,.015) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.015) 1px,transparent 1px);
+  background-size:42px 42px;
+}
+.top,.auth-card,.content-card,.rail-card,.metric,.order,.notif,.field input,.google-loading{
+  background:rgba(14,15,20,.92)!important;
+  border-color:#2a2c34!important;
+  color:#fff!important;
+}
+.top{
+  border:1px solid rgba(255,47,120,.35);border-radius:22px;padding:14px 18px;
+  box-shadow:0 0 30px rgba(255,47,120,.08);
+}
+.logo,.side-brand-logo{
+  background:radial-gradient(circle at 30% 20%,#fff 0%,#ffd0e2 28%,#ff2f78 100%)!important;
+  box-shadow:0 0 26px rgba(255,47,120,.45)!important;
+}
+.brand b,.auth-card h1,.welcome h1,.card-head h2,.rail-head h3,.order h3,.notif h3{color:#fff!important}
+.brand p,.brand small,.auth-card>p,.welcome p,.card-head p,.rail-card p,.help,.field label,.remember,.google-help,.metric small,.metric em,.notif p,.notif-meta,.order p,.profile-mini small,.empty,.last-order-meta{color:#a9abb8!important}
+.auth-card{
+  border:1px solid rgba(255,47,120,.35)!important;
+  box-shadow:0 0 0 1px rgba(255,255,255,.02),0 30px 80px rgba(0,0,0,.65),0 0 35px rgba(255,47,120,.08)!important;
+}
+.tabs,.notification-card .filter-group{background:#18191f!important}
+.tab-btn{color:#a9abb8!important}.tab-btn.active{background:linear-gradient(135deg,rgba(255,47,120,.25),rgba(255,47,120,.08))!important;color:#fff!important;box-shadow:inset 0 0 0 1px rgba(255,47,120,.55),0 0 18px rgba(255,47,120,.13)!important}
+.field input{
+  background:#0d0e12!important;color:#fff!important;border:1px solid #343640!important;
+}
+.field input::placeholder{color:#6f7280!important}.field input:focus{border-color:#ff2f78!important;box-shadow:0 0 0 4px rgba(255,47,120,.12),0 0 20px rgba(255,47,120,.10)!important}
+.btn-primary,.rail-action{
+  background:linear-gradient(135deg,#ff1264,#c71456)!important;color:#fff!important;
+  box-shadow:0 12px 28px rgba(255,22,104,.25)!important;
+}
+.btn-primary:hover,.rail-action:hover{filter:brightness(1.08)}
+.btn-outline{background:#111217!important;color:#fff!important;border:1px solid #353741!important}
+.btn-soft{background:rgba(255,47,120,.12)!important;color:#ff5d98!important;border:1px solid rgba(255,47,120,.22)!important}
+.google-button>div,.google-loading{background:#0e0f13!important}
+.divider:before,.divider:after{background:#2b2d36!important}
+.divider{color:#7d808d!important}
+.side{
+  background:
+    radial-gradient(circle at 95% 15%,rgba(255,47,120,.22),transparent 22rem),
+    linear-gradient(180deg,#090a0f 0%,#11121a 58%,#090a0f 100%)!important;
+  border-right:1px solid rgba(255,47,120,.22)!important;
+}
+.profile-mini,.side-push-card{background:rgba(255,255,255,.045)!important;border-color:rgba(255,255,255,.08)!important}
+.side-nav button,.store-link{color:#d5d6df!important}.side-nav button.active,.side-nav button:hover{background:linear-gradient(135deg,#ff1768,#c81658)!important;box-shadow:0 10px 28px rgba(255,23,104,.25)!important}
+body.account-open{background:#060608!important}
+body.account-open .main{background:transparent!important}
+.welcome{background:transparent!important;border:0!important}
+.metric{box-shadow:0 12px 35px rgba(0,0,0,.28)!important}.metric:hover{border-color:rgba(255,47,120,.35)!important;box-shadow:0 18px 45px rgba(0,0,0,.42),0 0 24px rgba(255,47,120,.07)!important}
+.metric-icon,.push-icon,.current-state-icon{background:rgba(255,47,120,.12)!important;color:#ff5d98!important;border:1px solid rgba(255,47,120,.18)}
+.notification-card,.rail-card,.full-page-card{box-shadow:0 18px 55px rgba(0,0,0,.36)!important}
+.filter-btn{background:transparent!important;color:#a9abb8!important;border-color:#30323a!important}.filter-btn.active{background:rgba(255,47,120,.14)!important;color:#ff5d98!important}
+.push-permission,.current-state{background:linear-gradient(135deg,rgba(255,47,120,.10),rgba(255,255,255,.02))!important;border-color:rgba(255,47,120,.25)!important}
+.notif.unread{background:linear-gradient(135deg,rgba(255,47,120,.10),#111217)!important;border-color:rgba(255,47,120,.30)!important}
+.notif:hover,.order:hover{border-color:rgba(255,47,120,.35)!important;box-shadow:0 14px 35px rgba(0,0,0,.34),0 0 22px rgba(255,47,120,.07)!important}
+.order-product{background:#0d0e12!important;border-color:#292b33!important}.order-product-image,.product-preview{background:linear-gradient(145deg,#151019,#23101a)!important;border-color:#342530!important}
+.status{border:1px solid rgba(255,255,255,.05)}
+.empty{background:#0d0e12!important;border-color:#2f3139!important}.empty b{color:#fff!important}
+.mobile-nav{background:rgba(8,9,13,.96)!important;border:1px solid rgba(255,47,120,.25)!important}.mobile-nav button{color:#d8d9e1!important}.mobile-nav button.active,.mobile-shop{background:linear-gradient(135deg,#ff1768,#c81658)!important}
+.toast{background:#0c0d11!important;border:1px solid rgba(255,47,120,.35)!important;box-shadow:0 18px 45px rgba(0,0,0,.55),0 0 20px rgba(255,47,120,.12)!important}
+a{color:inherit}
+@media(max-width:820px){.top{border-radius:16px}.auth-card{border-radius:22px}.shell{background:transparent!important}}
+</style>
+
 </head>
 <body>
 <div class="shell">

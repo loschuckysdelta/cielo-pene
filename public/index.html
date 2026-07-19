@@ -52,13 +52,141 @@ body{background:#fff;color:var(--dark);padding-bottom:100px}.storeHeader{positio
 @media(max-width:900px){.headerTop{grid-template-columns:1fr auto;padding:12px 16px}.headerSearch{grid-column:1/-1;grid-row:2}.mainNav{justify-content:flex-start;overflow:auto;padding:0 14px}.hero{grid-template-columns:1fr;min-height:660px}.heroBackdrop{grid-column:1;grid-row:1}.heroBackdrop:after{background:linear-gradient(0deg,#ffeef3 0%,rgba(255,238,243,.78) 54%,rgba(255,238,243,.08) 100%)}.hero-content{grid-column:1;grid-row:1;align-self:end;padding:42px 24px 58px}.categoryShowcase{margin:-24px 14px 12px}.desireGrid{grid-template-columns:1fr}.cartbar{right:12px;bottom:12px;width:calc(100% - 24px)}}
 @media(max-width:620px){.headerActions a span{display:none}.storeBrand small{display:none}.hero{min-height:600px}.brandTitle{font-size:3rem}.categoryBubble span{width:66px;height:66px}.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:11px}.card{min-height:390px}.imgbox{height:170px}.desc{display:none}.body{padding:12px}.qty{flex-direction:column;align-items:stretch}.qtybox{justify-content:center}.title{display:block}.title p{margin-top:8px}.aboutFeatures{grid-template-columns:1fr}.reviewsLayout{grid-template-columns:1fr}}
 </style>
+
+<style id="cielo-dark-mobile-2026">
+:root{
+  --pink:#ff2f78;--pink2:#ff5f95;--pink3:#36101f;--soft:#0d0d0f;--cream:#111114;
+  --white:#ffffff;--dark:#f8f8fa;--muted:#aaa4ac;--gold:#f1b642;--gold2:#ffd064;
+  --line:rgba(255,255,255,.10);--shadow:0 22px 55px rgba(0,0,0,.48);
+}
+html{background:#000;color-scheme:dark}
+body{background:#000!important;color:#fff!important;padding-bottom:110px}
+.storeHeader{background:rgba(0,0,0,.92)!important;border-bottom:1px solid var(--line);box-shadow:0 10px 32px rgba(0,0,0,.5)}
+.storeBrand b{color:var(--pink)!important}.storeBrand small{color:#d7bd8a!important}
+.cupcakeLogo{background:#10070b!important;border:1px solid rgba(255,47,120,.35)!important}
+.headerSearch{background:#0d0d0f!important;border-color:var(--line)!important;box-shadow:none!important}
+.headerSearch input{color:#fff!important}.headerSearch input::placeholder{color:#777!important}
+.headerActions a{color:#fff!important}.headerActions a:last-child{background:linear-gradient(135deg,var(--pink),#d90f59)!important}
+.mainNav{background:#030303!important;border-top:1px solid var(--line)!important}.mainNav a{color:#bbb!important}.mainNav a:hover,.mainNav a.active{color:var(--pink)!important}
+.hero{background:#050505!important;border:1px solid var(--line);border-radius:0 0 28px 28px}
+.heroBackdrop:after{background:linear-gradient(90deg,#050505 0%,rgba(5,5,5,.88) 25%,rgba(5,5,5,.18) 64%,rgba(5,5,5,.02) 100%)!important}
+.brandTitle{color:#fff!important}.brandTitle span{color:var(--pink)!important}.tagline{color:#c9c4c7!important}
+.btn{border-radius:14px!important}.btn-primary,.btn-green{background:linear-gradient(135deg,var(--pink),#d91158)!important;color:#fff!important;box-shadow:0 14px 30px rgba(255,47,120,.25)!important}.btn-outline{background:rgba(0,0,0,.45)!important;color:#fff!important;border-color:rgba(255,255,255,.22)!important}.btn-soft{background:#1a1116!important;color:#ff7ba9!important}.btn-danger{background:#38101c!important;color:#ff6f9e!important}
+.categoryShowcase{background:#070708!important;border-color:var(--line)!important;box-shadow:var(--shadow)!important}.categoryShowcase>div{background:transparent!important}.categoryBubble{color:#fff!important}.categoryBubble span{background:#0c0c0f!important;border-color:#111!important;outline-color:rgba(255,47,120,.35)!important;box-shadow:0 10px 24px rgba(0,0,0,.5)!important}
+.wrap{background:#000!important}.title h2,.catName{color:#fff!important}.title p{color:#9f98a0!important}.proTools,.searchBox{background:#0c0c0f!important;border-color:var(--line)!important}.searchBox input{color:#fff!important}.catNav{background:linear-gradient(180deg,#000 0%,rgba(0,0,0,.95) 70%,transparent 100%)!important}.catPill{background:#0b0b0d!important;color:#ddd!important;border-color:var(--line)!important}.catPill:hover{background:var(--pink)!important;color:#fff!important}
+.card{background:#101012!important;border-color:var(--line)!important;box-shadow:0 14px 34px rgba(0,0,0,.42)!important}.card:hover{border-color:rgba(255,47,120,.65)!important;box-shadow:0 24px 54px rgba(0,0,0,.62)!important}.imgbox{background:#17171a!important}.name{color:#fff!important}.price{color:#fff!important}.oldPrice{color:#777!important}.desc{color:#a9a3aa!important}.badge{background:#232328!important;color:#ddd!important}.badge.ok{background:#082d1a!important;color:#61e99b!important}.badge.low{background:#392a04!important;color:#ffd76c!important}.badge.no{background:#3b0914!important;color:#ff8cab!important}.badge.hot{background:#3b0d21!important;color:#ff78aa!important}.qtybox{background:#08080a!important}.qtybox button{background:#19191d!important;color:#ff4c88!important}.subtotal{color:#ff699a!important}
+.desireCard{border:1px solid rgba(255,255,255,.08)!important}.desireCard:nth-child(1){background:linear-gradient(135deg,#3a071b,#d21759)!important}.desireCard:nth-child(2){background:linear-gradient(135deg,#171118,#30111d)!important}.desireCard:nth-child(3){background:linear-gradient(135deg,#4d2400,#b26100)!important;color:#fff!important}
+.aboutSection{background:linear-gradient(135deg,#12090d,#070708)!important;border-color:var(--line)!important}.aboutSection h2{color:#fff!important}.aboutSection p,.aboutFeatures span{color:#aaa3aa!important}.aboutFeatures article{background:#121216!important;color:#fff!important;border:1px solid var(--line)}
+.faqSection details,.reviewsPanel,.publicReview,.footerCard,.items,.panel{background:#0e0e11!important;color:#fff!important;border-color:var(--line)!important}.faqSection summary,.reviewsPanel h3,.panel h3{color:#fff!important}.faqSection p,.reviewsPanel>p,.publicReview p,.publicReview small{color:#aaa3aa!important}.reviewsSection{background:#000!important}.reviewField input,.reviewField select,.reviewField textarea,.field input,.field select,.field textarea{background:#09090b!important;color:#fff!important;border-color:var(--line)!important}.reviewField label,.field label{color:#ddd!important}
+.footer{background:#050506!important;border-top:1px solid var(--line)!important}.footer h3{color:#fff!important}.footer p{color:#aaa!important}.social{background:#121216!important;color:#fff!important;border-color:var(--line)!important}.social:hover{background:var(--pink)!important}
+.cartbar{background:rgba(10,10,12,.96)!important;border-color:rgba(255,255,255,.13)!important;box-shadow:0 20px 60px rgba(0,0,0,.72)!important}.cartbar strong{color:#fff!important}.cartInfo span{color:#aaa!important}.cartProgress{background:#242429!important}.floatingHelp .floatBtn{background:#111115!important;color:#fff!important;border-color:var(--line)!important}.floatingHelp .floatBtn:hover{background:var(--pink)!important}.drawer{background:rgba(0,0,0,.78)!important}.close{background:#1a1a1f!important;color:#fff!important}.totals{background:#131318!important;border-color:#333!important}.warning{background:#24160b!important;border-color:#6f451f!important;color:#ffd39b!important}.coupon-status.info{background:#101a2a!important;color:#93b9ff!important;border-color:#273d63!important}.empty,.errorBox,.emptySearch{background:#0f0f12!important;color:#aaa!important;border-color:#333!important}
+.productTag{background:#ff2f78!important;color:#fff!important}.favBtn{background:rgba(10,10,12,.88)!important;color:#fff!important}.favBtn.on{background:var(--pink)!important}.detailImage{background:#17171a!important}.detailName{color:#fff!important}.detailDesc{color:#aaa!important}.detailPrice{color:#ff5d92!important}
+@media(max-width:900px){.hero{border-radius:0;min-height:640px}.heroBackdrop:after{background:linear-gradient(0deg,#050505 0%,rgba(5,5,5,.95) 42%,rgba(5,5,5,.08) 100%)!important}.hero-content{padding-bottom:48px!important}.categoryShowcase{border-radius:22px!important}}
+@media(max-width:620px){body{padding-bottom:106px}.storeHeader{position:sticky}.headerTop{padding:10px 14px!important}.storeBrand b{font-size:1.35rem!important}.mainNav{gap:24px!important}.hero{min-height:590px!important}.brandTitle{font-size:2.75rem!important;line-height:1!important}.tagline{font-size:.96rem!important}.hero-actions{gap:10px}.hero-actions .btn{width:auto!important;flex:1;min-width:145px;padding:13px 14px!important}.categoryShowcase{margin:-18px 10px 10px!important;padding:14px 8px!important}.categoryBubble{min-width:92px!important}.categoryBubble span{width:62px!important;height:62px!important}.grid{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:10px!important;padding:0 10px!important}.card{min-height:370px!important;border-radius:17px!important}.imgbox{height:165px!important}.body{padding:12px!important}.name{font-size:.93rem!important}.price{font-size:1rem!important}.qty .btn{border-radius:12px!important}.desireSection{padding:0 10px!important}.desireCard{min-height:150px!important}.aboutSection{margin:10px!important;padding:24px!important}.reviewsSection{padding-left:10px!important;padding-right:10px!important}.footer{padding-left:10px!important;padding-right:10px!important}.cartbar{left:10px!important;right:10px!important;width:auto!important;bottom:10px!important}.panel{border-radius:24px!important}}
+</style>
+
+
+<style id="custom-logo-image">
+.cupcakeLogo{
+  width:58px!important;
+  height:58px!important;
+  min-width:58px!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  overflow:hidden!important;
+  padding:0!important;
+  background:transparent!important;
+  border:0!important;
+  border-radius:14px!important;
+}
+.cupcakeLogo img{
+  width:100%!important;
+  height:100%!important;
+  object-fit:contain!important;
+  display:block!important;
+}
+@media(max-width:620px){
+  .cupcakeLogo{width:50px!important;height:50px!important;min-width:50px!important}
+}
+</style>
+
+<style id="startup-loader-style">
+  html.loading-page, html.loading-page body{overflow:hidden!important}
+  #startupLoader{position:fixed;inset:0;z-index:999999;display:grid;place-items:center;background:#050505;color:#fff;transition:opacity .55s ease,visibility .55s ease;font-family:'Inter',Arial,sans-serif}
+  #startupLoader::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 50% 35%,rgba(244,47,120,.18),transparent 42%),radial-gradient(circle at 18% 78%,rgba(244,47,120,.08),transparent 28%);pointer-events:none}
+  #startupLoader.loader-hidden{opacity:0;visibility:hidden;pointer-events:none}
+  .startupLoaderCard{position:relative;width:min(88vw,390px);padding:34px 28px 28px;text-align:center;border:1px solid rgba(255,255,255,.10);border-radius:28px;background:rgba(16,16,18,.92);box-shadow:0 30px 90px rgba(0,0,0,.55);backdrop-filter:blur(18px)}
+  .startupLogoWrap{width:112px;height:112px;margin:0 auto 18px;border-radius:26px;display:grid;place-items:center;background:linear-gradient(145deg,rgba(244,47,120,.18),rgba(255,255,255,.04));border:1px solid rgba(244,47,120,.32);box-shadow:0 18px 45px rgba(244,47,120,.18);animation:startupPulse 1.8s ease-in-out infinite}
+  .startupLogoWrap img{width:86px;height:86px;object-fit:contain;display:block;filter:drop-shadow(0 10px 20px rgba(244,47,120,.22))}
+  .startupLoaderCard h2{margin:0;color:#fff;font-family:'Fraunces',serif;font-size:1.9rem;font-style:italic;font-weight:600}
+  .startupLoaderCard p{margin:8px 0 22px;color:#aaa;font-size:.92rem;line-height:1.5}
+  .startupProgressTrack{height:9px;width:100%;overflow:hidden;border-radius:999px;background:#27272b;border:1px solid rgba(255,255,255,.06)}
+  .startupProgressBar{height:100%;width:4%;border-radius:inherit;background:linear-gradient(90deg,#f42f78,#ff77a7,#ffb3ca);box-shadow:0 0 18px rgba(244,47,120,.65);transition:width .35s ease}
+  .startupProgressMeta{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:12px;color:#bbb;font-size:.82rem}
+  .startupPercent{color:#ff77a7;font-weight:900;font-size:.92rem}
+  .startupDots{display:inline-flex;gap:5px;margin-left:5px;vertical-align:middle}.startupDots i{width:5px;height:5px;border-radius:50%;background:#ff5b92;animation:startupDot 1s infinite}.startupDots i:nth-child(2){animation-delay:.16s}.startupDots i:nth-child(3){animation-delay:.32s}
+  @keyframes startupPulse{0%,100%{transform:translateY(0) scale(1)}50%{transform:translateY(-5px) scale(1.025)}}
+  @keyframes startupDot{0%,80%,100%{opacity:.25;transform:translateY(0)}40%{opacity:1;transform:translateY(-4px)}}
+  @media(max-width:520px){.startupLoaderCard{width:calc(100vw - 34px);padding:30px 22px 24px;border-radius:24px}.startupLogoWrap{width:96px;height:96px}.startupLogoWrap img{width:74px;height:74px}}
+</style>
+
+
+<style id="cielo-pink-soft-2026">
+:root{
+  --pink:#f04f87!important;--pink2:#ff8fb5!important;--pink3:#ffe3ed!important;--soft:#fff7fa!important;--cream:#ffffff!important;
+  --white:#ffffff!important;--dark:#2f1d26!important;--muted:#806c75!important;--gold:#c7933f!important;--gold2:#ad792d!important;
+  --line:#f3d6e1!important;--shadow:0 18px 48px rgba(173,74,111,.14)!important;
+}
+html{background:#fff8fb!important;color-scheme:light!important}
+body{background:linear-gradient(180deg,#fff8fb 0%,#ffffff 54%,#fff5f8 100%)!important;color:var(--dark)!important}
+.storeHeader{background:rgba(255,255,255,.94)!important;border-bottom:1px solid #f4dce5!important;box-shadow:0 10px 32px rgba(128,54,82,.10)!important}
+.storeBrand b{color:var(--pink)!important}.storeBrand small{color:#9c7281!important}
+.headerSearch{background:#fff8fb!important;border-color:#f1d3df!important;box-shadow:0 8px 22px rgba(165,69,106,.07)!important}
+.headerSearch input{color:#2f1d26!important}.headerSearch input::placeholder{color:#ad8d99!important}
+.headerActions{gap:12px!important}.headerActions a{color:#6f5060!important;background:#fff7fa!important;border:1px solid #f1d5e0!important;padding:10px 13px!important;border-radius:14px!important;transition:.25s ease!important}
+.headerActions a:hover{transform:translateY(-2px)!important;background:#ffe8f0!important;color:#d93670!important}
+.headerActions .accountLink{background:linear-gradient(135deg,#ffecf3,#ffd9e7)!important;color:#c92f68!important;border-color:#ffc7da!important;box-shadow:0 10px 24px rgba(240,79,135,.17)!important;font-weight:800!important}
+.headerActions .accountLink:hover{background:linear-gradient(135deg,#f04f87,#e23b78)!important;color:#fff!important}
+.accountIcon{width:27px;height:27px;display:inline-grid;place-items:center;border-radius:50%;background:#fff;color:#e13d78;margin-right:6px;font-size:.9rem;box-shadow:0 4px 12px rgba(193,54,107,.16)}
+.mainNav{background:#fff!important;border-top:1px solid #faedf2!important}.mainNav a{color:#775b67!important}.mainNav a:hover,.mainNav a.active{color:var(--pink)!important}
+.hero{background:#fff0f5!important;border:1px solid #f6d8e4!important}
+.heroBackdrop:after{background:linear-gradient(90deg,#fff0f5 0%,rgba(255,240,245,.86) 26%,rgba(255,240,245,.20) 68%,rgba(255,240,245,.02) 100%)!important}
+.brandTitle{color:#2f1d26!important}.brandTitle span{color:var(--pink)!important}.tagline{color:#6f5863!important}
+.btn-primary,.btn-green{background:linear-gradient(135deg,#f04f87,#df3f78)!important;color:#fff!important;box-shadow:0 14px 30px rgba(240,79,135,.24)!important}.btn-outline{background:#fff!important;color:#d83e76!important;border-color:#f2a8c2!important}.btn-soft{background:#ffeaf2!important;color:#c93069!important}
+.categoryShowcase{background:#fff!important;border-color:#f2d7e1!important;box-shadow:var(--shadow)!important}.categoryShowcase>div{background:transparent!important}.categoryBubble{color:#3b2730!important}.categoryBubble span{background:linear-gradient(145deg,#fff,#ffeaf2)!important;border-color:#fff!important;outline-color:#ffc7da!important;box-shadow:0 10px 24px rgba(172,70,107,.12)!important}
+.wrap{background:transparent!important}.title h2,.catName{color:#34212a!important}.title p{color:#8b707a!important}.proTools,.searchBox{background:#fff!important;border-color:#f0d4df!important}.searchBox input{color:#34212a!important}.catNav{background:linear-gradient(180deg,#fff8fb 0%,rgba(255,248,251,.96) 72%,transparent 100%)!important}.catPill{background:#fff!important;color:#c23a6d!important;border-color:#f0d4df!important}.catPill:hover{background:var(--pink)!important;color:#fff!important}
+.card{background:#fff!important;border-color:#f0d8e1!important;box-shadow:0 14px 36px rgba(131,51,82,.10)!important}.card:hover{border-color:#f3a9c3!important;box-shadow:0 24px 52px rgba(131,51,82,.17)!important}.imgbox{background:#fff0f5!important}.name{color:#34212a!important}.price{color:#e23f78!important}.oldPrice{color:#b594a0!important}.desc{color:#806b74!important}.badge{background:#f6f2f4!important;color:#5e4a53!important}.qtybox{background:#fff2f7!important}.qtybox button{background:#fff!important;color:#dc3d75!important}.subtotal{color:#d83d73!important}
+.aboutSection{background:linear-gradient(135deg,#fff0f5,#fff)!important;border-color:#f2d5e0!important}.aboutSection h2{color:#34212a!important}.aboutSection p,.aboutFeatures span{color:#806b74!important}.aboutFeatures article{background:#fff!important;color:#34212a!important;border:1px solid #f0d8e1!important}
+.faqSection details,.reviewsPanel,.publicReview,.footerCard,.items,.panel{background:#fff!important;color:#34212a!important;border-color:#f0d8e1!important}.faqSection summary,.reviewsPanel h3,.panel h3{color:#34212a!important}.faqSection p,.reviewsPanel>p,.publicReview p,.publicReview small{color:#806b74!important}.reviewsSection{background:#fff7fa!important}.reviewField input,.reviewField select,.reviewField textarea,.field input,.field select,.field textarea{background:#fffafd!important;color:#34212a!important;border-color:#efd3de!important}.reviewField label,.field label{color:#5e414e!important}
+.footer{background:linear-gradient(180deg,#fff0f5,#f8dce7)!important;border-top:1px solid #f0d5df!important}.footer h3{color:#c8346c!important}.footer p{color:#745b66!important}.social{background:#fff!important;color:#c83b6d!important;border-color:#efcfdb!important}.social:hover{background:var(--pink)!important;color:#fff!important}
+.cartbar{background:rgba(255,255,255,.97)!important;border-color:#f0d4df!important;box-shadow:0 20px 55px rgba(120,44,73,.20)!important}.cartbar strong{color:#34212a!important}.cartInfo span{color:#806b74!important}.cartProgress{background:#ffe8f0!important}.floatingHelp .floatBtn{background:#fff!important;color:#d83d73!important;border-color:#efcfdb!important}.floatingHelp .floatBtn:hover{background:var(--pink)!important;color:#fff!important}.drawer{background:rgba(72,26,44,.35)!important}.close{background:#fff0f5!important;color:#d83d73!important}.totals{background:#fff4f8!important;border-color:#edc8d7!important}.empty,.errorBox,.emptySearch{background:#fff!important;color:#806b74!important;border-color:#e8c8d5!important}
+#startupLoader{background:linear-gradient(145deg,#fff7fa,#ffe8f1)!important;color:#34212a!important}
+#startupLoader::before{background:radial-gradient(circle at 50% 30%,rgba(240,79,135,.22),transparent 40%),radial-gradient(circle at 20% 80%,rgba(255,165,195,.25),transparent 32%)!important}
+.startupLoaderCard{background:rgba(255,255,255,.92)!important;border-color:#f0d4df!important;box-shadow:0 30px 80px rgba(133,48,81,.18)!important}
+.startupLoaderCard h2{color:#c9366d!important}.startupLoaderCard p{color:#8a6d78!important}
+.startupTrack{background:#ffe3ed!important}.startupTrack i{background:linear-gradient(90deg,#f04f87,#ff8fb5)!important}
+.startupPercent,.startupStatus{color:#c9366d!important}
+@media(max-width:620px){.headerActions a{padding:9px 10px!important}.headerActions .accountLink span:last-child{display:none!important}.accountIcon{margin-right:0!important}.storeHeader{background:rgba(255,255,255,.97)!important}.heroBackdrop:after{background:linear-gradient(0deg,#fff0f5 0%,rgba(255,240,245,.94) 44%,rgba(255,240,245,.12) 100%)!important}}
+</style>
 </head>
 <body>
+
+  <div id="startupLoader" role="status" aria-live="polite" aria-label="Cargando Cielo Postres">
+    <div class="startupLoaderCard">
+      <div class="startupLogoWrap"><img src="https://i.postimg.cc/3JzmtRgP/image.png" alt="Logo Cielo Postres"></div>
+      <h2>Cielo Postres</h2>
+      <p id="startupStatus">Preparando la tienda<span class="startupDots"><i></i><i></i><i></i></span></p>
+      <div class="startupProgressTrack"><div class="startupProgressBar" id="startupProgressBar"></div></div>
+      <div class="startupProgressMeta"><span id="startupTask">Conectando con las APIs</span><strong class="startupPercent" id="startupPercent">4%</strong></div>
+    </div>
+  </div>
+
   <header class="storeHeader">
     <div class="headerTop">
-      <a class="storeBrand" href="#inicio"><span class="cupcakeLogo">🧁</span><span><b>Cielo Postres</b><small>Hecho con amor ♥</small></span></a>
+      <a class="storeBrand" href="#inicio"><span class="cupcakeLogo"><img src="https://i.postimg.cc/3JzmtRgP/image.png" alt="Logo Cielo Postres" loading="eager"></span><span><b>Cielo Postres</b><small>Hecho con amor ♥</small></span></a>
       <label class="headerSearch"><input placeholder="Buscar productos..." oninput="document.getElementById('searchInput').value=this.value;setSearch(this.value)"><span>⌕</span></label>
-      <div class="headerActions"><a href="/cuenta">♙ <span>Mi cuenta</span></a><a href="#catalogo" onclick="filtros.destacado=true;renderCatalog()">♡ <span>Favoritos</span></a><a href="#cartbar">🛒 <span>Carrito</span></a></div>
+      <div class="headerActions"><a class="accountLink" href="/cuenta"><span class="accountIcon">👤</span><span>Mi cuenta</span></a><a href="#catalogo" onclick="filtros.destacado=true;renderCatalog()">♡ <span>Favoritos</span></a><a href="#cartbar">🛒 <span>Carrito</span></a></div>
     </div>
     <nav class="mainNav"><a class="active" href="#inicio">Inicio</a><a href="#catalogo">Productos</a><a href="#nosotros">Nosotros</a><a href="#resenas">Reseñas</a><a href="#preguntas">Preguntas Frecuentes</a><a href="#contacto">Contacto</a></nav>
   </header>
@@ -199,12 +327,49 @@ function renderVisualCategories(){
   const first=productos.find(p=>Array.isArray(p.imagenes)&&p.imagenes[0]); if(first){document.getElementById('heroBackdrop').style.backgroundImage=`url("${first.imagenes[0].replace(/"/g,'')}")`;}
 }
 
+document.documentElement.classList.add('loading-page');
+let startupProgress=4;
+function setStartupProgress(value,text){
+  startupProgress=Math.max(startupProgress,Math.min(100,Number(value)||0));
+  const bar=$('#startupProgressBar'), percent=$('#startupPercent'), task=$('#startupTask');
+  if(bar)bar.style.width=startupProgress+'%';
+  if(percent)percent.textContent=Math.round(startupProgress)+'%';
+  if(task&&text)task.textContent=text;
+}
+function finishStartupLoader(){
+  setStartupProgress(100,'Tienda lista');
+  const status=$('#startupStatus'); if(status)status.textContent='Todo está listo';
+  setTimeout(()=>{const loader=$('#startupLoader');if(loader)loader.classList.add('loader-hidden');document.documentElement.classList.remove('loading-page');setTimeout(()=>loader?.remove(),650);},350);
+}
+async function trackedApi(url,label,index,total){
+  const data=await api(url);
+  setStartupProgress(12+Math.round(((index+1)/total)*68),label+' cargado');
+  return data;
+}
 async function init(){
+  const endpoints=[
+    ['/api/configuracion','Configuración'],['/api/categorias','Categorías'],['/api/productos','Productos'],
+    ['/api/delivery','Delivery'],['/api/resenas','Reseñas'],['/api/metodos-pago','Métodos de pago']
+  ];
+  const emergency=setTimeout(()=>{setStartupProgress(96,'Terminando de preparar la página');finishStartupLoader();},15000);
   try{
-    [config,cats,productos,zonas,resenas,metodosPago] = await Promise.all([api('/api/configuracion'),api('/api/categorias'),api('/api/productos'),api('/api/delivery'),api('/api/resenas'),api('/api/metodos-pago')]);
-    config = config || {}; cats = Array.isArray(cats)?cats:[]; productos=Array.isArray(productos)?productos:[]; zonas=Array.isArray(zonas)?zonas:[]; resenas=Array.isArray(resenas)?resenas:[]; metodosPago=Array.isArray(metodosPago)?metodosPago:[];
-    await loadClientSession(); renderHero(); renderBusiness(); fillZones(); fillPaymentMethods(); fillReviewProducts(); renderCatalog(); renderCart(); renderPublicReviews(); renderVisualCategories();
-  }catch(e){ $('#catalog').innerHTML = `<div class="errorBox">Error cargando catálogo: ${esc(e.message)}<br>Revisa MongoDB en Vercel y las APIs.</div>`; renderHero(); renderBusiness(); }
+    setStartupProgress(8,'Conectando con las APIs');
+    [config,cats,productos,zonas,resenas,metodosPago]=await Promise.all(endpoints.map((e,i)=>trackedApi(e[0],e[1],i,endpoints.length)));
+    config=config||{};cats=Array.isArray(cats)?cats:[];productos=Array.isArray(productos)?productos:[];zonas=Array.isArray(zonas)?zonas:[];resenas=Array.isArray(resenas)?resenas:[];metodosPago=Array.isArray(metodosPago)?metodosPago:[];
+    setStartupProgress(84,'Cargando tu cuenta');
+    await loadClientSession();
+    setStartupProgress(91,'Dibujando productos y categorías');
+    renderHero();renderBusiness();fillZones();fillPaymentMethods();fillReviewProducts();renderCatalog();renderCart();renderPublicReviews();renderVisualCategories();
+    setStartupProgress(97,'Cargando imágenes');
+    await Promise.allSettled(Array.from(document.images).map(img=>img.complete?Promise.resolve():new Promise(resolve=>{img.addEventListener('load',resolve,{once:true});img.addEventListener('error',resolve,{once:true});setTimeout(resolve,3500)})));
+  }catch(e){
+    $('#catalog').innerHTML=`<div class="errorBox">Error cargando catálogo: ${esc(e.message)}<br>Revisa MongoDB en Vercel y las APIs.</div>`;
+    renderHero();renderBusiness();
+    const status=$('#startupStatus');if(status)status.textContent='Entrando en modo disponible';
+    setStartupProgress(96,'Algunas APIs no respondieron');
+  }finally{
+    clearTimeout(emergency);finishStartupLoader();
+  }
 }
 function whatsappNumber(){ return String(config.whatsapp || DEFAULT_WA).replace(/\D/g,'') || DEFAULT_WA; }
 function whatsappLink(text='Hola Cielo Postres 👋 Quiero hacer un pedido.'){ return `https://wa.me/${whatsappNumber()}?text=${encodeURIComponent(text)}`; }
