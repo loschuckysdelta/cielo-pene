@@ -4,7 +4,7 @@
   "private": true,
   "description": "Cielo Postres PWA con panel de cliente responsive para Android, notificaciones push, cookies seguras y panel administrador.",
   "scripts": {
-    "build": "node scripts/verificar-build.js",
+    "build": "node scripts/verificar-build.js && node scripts/verificar-funciones.js",
     "start": "echo \"Usa Vercel para desplegar este proyecto\"",
     "check:functions": "node scripts/verificar-funciones.js",
     "generate:vapid": "node scripts/generar-vapid.js"
