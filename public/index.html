@@ -57,7 +57,7 @@ body{padding-bottom:95px;background:#fffaf9;color:#2b1715}.storeHeader{position:
     <div class="heroBackdrop" id="heroBackdrop"></div>
     <div class="hero-content">
       <div class="pillTop" id="heroPill">Repostería artesanal</div>
-      <h1 class="brandTitle">Endulza tu día con <span>nuestros postres</span></h1>
+      <h1 class="brandTitle" id="brandTitle">Endulza tu día con <span>nuestros postres</span></h1>
       <p class="tagline" id="slogan">Postres artesanales hechos con ingredientes de la mejor calidad y mucho amor.</p>
       <div class="hero-actions">
         <button class="btn btn-primary" onclick="document.getElementById('catalogo').scrollIntoView({behavior:'smooth'})">🛍 Ver productos</button>
@@ -195,7 +195,7 @@ function socialItems(){ return [['📸 Instagram',config.instagram],['👍 Faceb
 function brandHtml(name){ const n=esc(name || 'Cielo Postres'); return n.includes('2') ? n.replace('2','<span>2</span>') : n; }
 function slugName(v){ return String(v||'categoria').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'') || 'categoria'; }
 function renderCatNav(grupos){ const nav=$('#catNav'); if(!nav)return; nav.innerHTML=(grupos||[]).map(g=>`<a class="catPill" href="#cat-${slugName(g.cat.nombre||'categoria')}">${esc(g.cat.icono||'🍰')} ${esc(g.cat.nombre||'Categoría')}</a>`).join(''); }
-function renderHero(){ $('#brandTitle').innerHTML=brandHtml(config.negocio); $('#slogan').textContent=config.slogan||'.'; $('#footerTitle').innerHTML=brandHtml(config.negocio); $('#heroWhats').href=whatsappLink(); }
+function renderHero(){ const brand=$('#brandTitle'); if(brand && config.negocio) brand.innerHTML=brandHtml(config.negocio); const slogan=$('#slogan'); if(slogan && config.slogan) slogan.textContent=config.slogan; const footer=$('#footerTitle'); if(footer) footer.innerHTML=brandHtml(config.negocio); const heroWhats=$('#heroWhats'); if(heroWhats) heroWhats.href=whatsappLink(); }
 function renderBusiness(){
   const direccion=config.direccion||'Lima, Perú';
   const horario=config.horario||'Lunes a sábado de 9am a 8pm';
