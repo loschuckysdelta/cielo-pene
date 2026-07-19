@@ -169,6 +169,60 @@ body{background:linear-gradient(180deg,#fff8fb 0%,#ffffff 54%,#fff5f8 100%)!impo
 .startupPercent,.startupStatus{color:#c9366d!important}
 @media(max-width:620px){.headerActions a{padding:9px 10px!important}.headerActions .accountLink span:last-child{display:none!important}.accountIcon{margin-right:0!important}.storeHeader{background:rgba(255,255,255,.97)!important}.heroBackdrop:after{background:linear-gradient(0deg,#fff0f5 0%,rgba(255,240,245,.94) 44%,rgba(255,240,245,.12) 100%)!important}}
 </style>
+
+<style id="mobile-app-shell">
+  :root{--app-pink:#f42f78;--app-pink-2:#ff7aa8;--app-soft:#fff1f6;--app-dark:#25151d;}
+  .mobileAppNav{display:none}
+  .mobileTopBar{display:none}
+  @media(max-width:760px){
+    body{padding-bottom:94px!important;background:#fff8fb!important}
+    .storeHeader{position:sticky;top:0;z-index:70;background:rgba(255,255,255,.94)!important;backdrop-filter:blur(18px);box-shadow:0 5px 24px rgba(105,35,67,.09)!important}
+    .headerTop{min-height:64px!important;padding:9px 14px!important;grid-template-columns:1fr auto!important;gap:10px!important}
+    .storeBrand{gap:9px!important}
+    .cupcakeLogo{width:44px!important;height:44px!important;border-radius:14px!important;overflow:hidden;background:#fff0f5!important}
+    .cupcakeLogo img{width:100%!important;height:100%!important;object-fit:cover!important}
+    .storeBrand b{font-size:1.22rem!important;color:var(--app-pink)!important}
+    .storeBrand small{display:block!important;font-size:.62rem!important;color:#856b77!important}
+    .headerActions{display:none!important}
+    .headerSearch{grid-column:1/-1!important;grid-row:2!important;height:44px!important;border-radius:16px!important;background:#fff!important;border:1px solid #f0d7e1!important;box-shadow:0 8px 22px rgba(90,34,60,.06)!important}
+    .headerSearch input{color:var(--app-dark)!important}
+    .headerSearch input::placeholder{color:#9f8894!important}
+    .mainNav{display:none!important}
+    .hero{min-height:520px!important;border-radius:0 0 28px 28px!important;overflow:hidden!important}
+    .hero-content{padding:34px 20px 42px!important}
+    .brandTitle{font-size:2.7rem!important;line-height:.95!important}
+    .tagline{font-size:.96rem!important;line-height:1.55!important}
+    .hero-actions{display:grid!important;grid-template-columns:1fr 1fr!important;gap:10px!important}
+    .hero-actions .btn{width:100%!important;min-height:48px!important;border-radius:16px!important;padding:12px 14px!important}
+    .categoryShowcase{margin:-18px 12px 10px!important;padding:14px 12px!important;border-radius:22px!important}
+    .categoryShowcase>div{gap:14px!important;padding:0!important}
+    .categoryBubble{min-width:78px!important;font-size:.78rem!important}
+    .categoryBubble span{width:60px!important;height:60px!important}
+    .wrap{padding-top:10px!important}
+    .title{padding:0 16px!important;margin-top:24px!important}
+    .title h2{font-size:1.55rem!important}
+    .proTools{margin:0 14px 18px!important;padding:9px!important;border-radius:18px!important}
+    .searchBox{border-radius:16px!important}
+    .cat{margin-bottom:38px!important}
+    .cat-head{justify-content:flex-start!important;padding:0 16px!important}
+    .catName{font-size:1.3rem!important}
+    .grid{display:flex!important;overflow-x:auto!important;grid-template-columns:none!important;gap:14px!important;padding:0 16px 14px!important;scroll-snap-type:x mandatory!important}
+    .card{flex:0 0 82vw!important;max-width:330px!important;min-height:410px!important;border-radius:22px!important;scroll-snap-align:start!important;box-shadow:0 14px 34px rgba(80,31,52,.10)!important}
+    .imgbox{height:205px!important}
+    .body{padding:15px!important}
+    .aboutSection,.desireSection,.reviewsSection,.faqSection{margin-left:12px!important;margin-right:12px!important;border-radius:22px!important}
+    .floatingHelp{bottom:98px!important;right:12px!important}
+    .cartbar{bottom:86px!important;left:12px!important;right:12px!important;width:auto!important;border-radius:22px!important}
+    .footer{padding-bottom:120px!important}
+    .mobileAppNav{position:fixed;left:10px;right:10px;bottom:10px;z-index:120;display:grid;grid-template-columns:repeat(5,1fr);gap:4px;padding:8px;background:rgba(255,255,255,.96);backdrop-filter:blur(20px);border:1px solid rgba(239,205,220,.9);border-radius:24px;box-shadow:0 18px 44px rgba(72,24,45,.18)}
+    .mobileAppNav a,.mobileAppNav button{appearance:none;border:0;background:transparent;text-decoration:none;color:#8d7480;min-width:0;padding:7px 3px 5px;border-radius:16px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;font-family:inherit;font-weight:700;font-size:.66rem}
+    .mobileAppNav .appIcon{font-size:1.28rem;line-height:1}
+    .mobileAppNav a.active,.mobileAppNav a:active,.mobileAppNav button:active{background:var(--app-soft);color:var(--app-pink);transform:scale(.97)}
+    .mobileAppNav .cartTab{position:relative}
+    .mobileAppNav .cartDot{position:absolute;top:1px;right:20%;min-width:18px;height:18px;padding:0 4px;border-radius:999px;background:var(--app-pink);color:#fff;font-size:.62rem;display:grid;place-items:center;border:2px solid #fff}
+  }
+</style>
+
 </head>
 <body>
 
@@ -507,5 +561,34 @@ const publicReviewForm=$('#publicReviewForm'); if(publicReviewForm) publicReview
 init();
 </script>
 <script src="/pwa.js?v=9-reportes" defer></script>
+
+<nav class="mobileAppNav" aria-label="Navegación principal móvil">
+  <a href="#inicio" class="active"><span class="appIcon">⌂</span><span>Inicio</span></a>
+  <a href="#catalogo"><span class="appIcon">▦</span><span>Productos</span></a>
+  <a href="#resenas"><span class="appIcon">★</span><span>Reseñas</span></a>
+  <button class="cartTab" type="button" onclick="openCheckout()"><span class="appIcon">🛒</span><span>Carrito</span><span class="cartDot" id="mobileCartCount">0</span></button>
+  <a href="/cuenta"><span class="appIcon">◉</span><span>Mi cuenta</span></a>
+</nav>
+<script id="mobile-app-nav-script">
+(function(){
+  const tabs=[...document.querySelectorAll('.mobileAppNav a[href^="#"]')];
+  const sections=tabs.map(a=>document.querySelector(a.getAttribute('href'))).filter(Boolean);
+  function updateActive(){
+    let current='inicio';
+    sections.forEach(s=>{ if(window.scrollY >= s.offsetTop-180) current=s.id; });
+    tabs.forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='#'+current));
+  }
+  window.addEventListener('scroll',updateActive,{passive:true});
+  updateActive();
+  const source=document.getElementById('cartCount');
+  const target=document.getElementById('mobileCartCount');
+  if(source&&target){
+    const sync=()=>{const m=(source.textContent||'').match(/\d+/);target.textContent=m?m[0]:'0';};
+    sync();
+    new MutationObserver(sync).observe(source,{childList:true,subtree:true,characterData:true});
+  }
+})();
+</script>
+
 </body>
 </html>
