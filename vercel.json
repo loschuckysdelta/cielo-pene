@@ -80,6 +80,6 @@
       ]
     }
   ],
-  "installCommand": "corepack npm ci --ignore-scripts --no-audit --no-fund",
+  "installCommand": "npm install --no-audit --no-fund --registry=https://registry.npmjs.org",
   "buildCommand": "npm run build"
 }
