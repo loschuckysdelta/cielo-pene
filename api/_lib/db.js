@@ -14,7 +14,8 @@ if (!memory) {
     usuarios: [],
     clientes: [],
     notificaciones: [],
-    pushSubscriptions: []
+    pushSubscriptions: [],
+    metodosPago: [], comprobantesPago: [], imagenesMenu: []
   };
 }
 
@@ -86,7 +87,10 @@ async function ensureIndexes() {
     database.collection('notificaciones').createIndex({ clienteId: 1, read: 1 }),
     database.collection('notificaciones').createIndex({ orderId: 1, status: 1 }),
     database.collection('pushSubscriptions').createIndex({ endpoint: 1 }, { unique: true }),
-    database.collection('pushSubscriptions').createIndex({ clienteId: 1, activo: 1 })
+    database.collection('pushSubscriptions').createIndex({ clienteId: 1, activo: 1 }),
+    database.collection('metodosPago').createIndex({ activo: 1, orden: 1 }),
+    database.collection('comprobantesPago').createIndex({ estado: 1, createdAt: -1 }),
+    database.collection('imagenesMenu').createIndex({ ubicacion: 1, orden: 1 })
   ]).catch(() => null);
 }
 

@@ -24,17 +24,31 @@ function setup() {
   return true;
 }
 
-async function uploadBase64(dataUrl) {
+async function uploadBase64(dataUrl, folder = 'antoja2_productos') {
   if (!dataUrl || typeof dataUrl !== 'string') return null;
   if (!dataUrl.startsWith('data:image/')) return dataUrl;
   if (!setup()) return dataUrl;
 
   const result = await cloudinary.uploader.upload(dataUrl, {
-    folder: 'antoja2_productos',
+    folder,
     resource_type: 'image',
     overwrite: false
   });
   return result.secure_url;
+}
+
+async function uploadBase64WithMeta(dataUrl, folder = 'cielo_postres') {
+  if (!dataUrl || typeof dataUrl !== 'string') return { url: '', publicId: '' };
+  if (!dataUrl.startsWith('data:image/')) return { url: dataUrl, publicId: '' };
+  if (!setup()) return { url: dataUrl, publicId: '' };
+  const result = await cloudinary.uploader.upload(dataUrl, { folder, resource_type: 'image', overwrite: false });
+  return { url: result.secure_url, publicId: result.public_id };
+}
+
+async function destroy(publicId) {
+  if (!publicId || !setup()) return false;
+  await cloudinary.uploader.destroy(publicId, { invalidate: true });
+  return true;
 }
 
 async function uploadMany(list) {
@@ -46,4 +60,4 @@ async function uploadMany(list) {
   return urls.slice(0, 5);
 }
 
-module.exports = { configured, uploadBase64, uploadMany };
+module.exports = { configured, uploadBase64, uploadBase64WithMeta, destroy, uploadMany };
