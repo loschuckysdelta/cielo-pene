@@ -79,6 +79,5 @@
         }
       ]
     }
-  ],
-  "installCommand": "npm install --no-audit --no-fund --registry=https://registry.npmjs.org"
+  ]
 }
