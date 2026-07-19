@@ -192,7 +192,7 @@ body{background:linear-gradient(180deg,#fff8fb 0%,#ffffff 54%,#fff5f8 100%)!impo
   </header>
 
   <section class="hero" id="inicio">
-    <div class="heroBackdrop" id="heroBackdrop"></div>
+    <div class="heroBackdrop" id="heroBackdrop" style="background-image:url('https://i.postimg.cc/3JzmtRgP/image.png');"></div>
     <div class="hero-content">
       <div class="pillTop" id="heroPill">Repostería artesanal</div>
       <h1 class="brandTitle" id="brandTitle">Endulza tu día con <span>nuestros postres</span></h1>
@@ -324,7 +324,7 @@ function renderVisualCategories(){
   const box=document.getElementById('categoryShowcaseInner'); if(!box)return;
   const groups=(cats||[]).filter(c=>c.activo!==false).slice(0,7);
   box.innerHTML=groups.map(c=>{const prod=productos.find(p=>String(p.categoriaId||'')===String(c.id||'') || p.categoriaNombre===c.nombre);const productImg=prod&&Array.isArray(prod.imagenes)?prod.imagenes[0]:'';const img=c.imagen||productImg||'';return `<a class="categoryBubble" href="#cat-${slugName(c.nombre)}"><span>${img?`<img src="${esc(img)}" alt="${esc(c.nombre)}">`:esc(c.icono||'🍰')}</span><b>${esc(c.nombre)}</b></a>`}).join('');
-  const first=productos.find(p=>Array.isArray(p.imagenes)&&p.imagenes[0]); if(first){document.getElementById('heroBackdrop').style.backgroundImage=`url("${first.imagenes[0].replace(/"/g,'')}")`;}
+  const first=productos.find(p=>Array.isArray(p.imagenes)&&p.imagenes[0]); /* Imagen fija del hero configurada en el HTML */
 }
 
 document.documentElement.classList.add('loading-page');
