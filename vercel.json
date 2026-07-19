@@ -3,15 +3,19 @@
   "rewrites": [
     {
       "source": "/api/status",
-      "destination": "/api/configuracion?action=status"
+      "destination": "/api/router?endpoint=configuracion&action=status"
     },
     {
       "source": "/api/limpiar",
-      "destination": "/api/configuracion?action=limpiar"
+      "destination": "/api/router?endpoint=configuracion&action=limpiar"
     },
     {
       "source": "/api/mis-pedidos",
-      "destination": "/api/pedidos?action=mis-pedidos"
+      "destination": "/api/router?endpoint=pedidos&action=mis-pedidos"
+    },
+    {
+      "source": "/api/:endpoint",
+      "destination": "/api/router?endpoint=:endpoint"
     },
     {
       "source": "/admin",
