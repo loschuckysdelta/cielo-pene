@@ -79,5 +79,7 @@
         }
       ]
     }
-  ]
+  ],
+  "installCommand": "npm ci --no-audit --no-fund --prefer-offline=false",
+  "buildCommand": "npm run build"
 }
