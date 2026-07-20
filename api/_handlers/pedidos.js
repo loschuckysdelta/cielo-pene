@@ -3,6 +3,7 @@ const { collection, oid, publicDoc, publicList, memory, memoryId, ensureIndexes 
 const { requireAuth } = require('../_lib/auth');
 const { currentClient, requireClient } = require('../_lib/client-auth');
 const { createOrderNotification, createNotification } = require('../_lib/notifications');
+const { createReceipt } = require('../_lib/boletas');
 
 const ORDER_STATUSES = ['pendiente', 'confirmado', 'preparando', 'listo', 'en_camino', 'entregado', 'cancelado'];
 
@@ -521,6 +522,33 @@ module.exports = async function handler(req, res) {
       } else {
         saved = { ...pedido, id: memoryId() };
         memory.pedidos.push(saved);
+      }
+      let boleta = null;
+      try {
+        boleta = await createReceipt(saved);
+        const boletaInfo = {
+          id: boleta.id,
+          numero: boleta.numero,
+          nombreArchivo: boleta.nombreArchivo,
+          createdAt: boleta.createdAt
+        };
+        saved.boleta = boletaInfo;
+        if (pedidosCol) {
+          await pedidosCol.updateOne({ _id: saved._id }, { $set: { boleta: boletaInfo, updatedAt: new Date().toISOString() } });
+        }
+        if (saved.clienteId) {
+          await createNotification({
+            clienteId: saved.clienteId,
+            orderId: String(saved._id || saved.id || ''),
+            orderCode: saved.codigo || '',
+            status: 'boleta_generada',
+            title: 'Tu boleta electrónica está lista',
+            message: `La boleta ${boleta.numero} de tu compra ${saved.codigo} ya está disponible para descargar.`,
+            type: 'boleta'
+          });
+        }
+      } catch (receiptError) {
+        console.error('No se pudo generar la boleta:', receiptError);
       }
       await createOrderNotification(saved, 'pendiente');
       return send(res, 201, { ok: true, data: publicDoc(saved) });

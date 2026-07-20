@@ -3,6 +3,7 @@ const { setCors, send, error } = require('./_lib/http');
 
 const ALLOWED_ENDPOINTS = new Set([
   'auth',
+  'boletas',
   'categorias',
   'clientes-auth',
   'clientes',
