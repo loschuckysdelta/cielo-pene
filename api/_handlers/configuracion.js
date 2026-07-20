@@ -5,6 +5,10 @@ const cloud = require('../_lib/cloudinary');
 
 const DEFAULT_CONFIG = {
   negocio: 'Cielo Postres',
+  logoBoleta: 'https://i.postimg.cc/3JzmtRgP/image.png',
+  tituloBoleta: 'BOLETA ELECTRÓNICA DE COMPRA',
+  rucBoleta: '',
+  telefonoBoleta: '',
   slogan: 'Cada postre cuenta una historia',
   whatsapp: '51992855508',
   direccion: 'Perú',
@@ -38,6 +42,10 @@ function clean(body = {}, current = {}) {
   const source = { ...DEFAULT_CONFIG, ...(current || {}), ...(body || {}) };
   return {
     negocio: normalizeText(source.negocio) || DEFAULT_CONFIG.negocio,
+    logoBoleta: normalizeText(source.logoBoleta) || DEFAULT_CONFIG.logoBoleta,
+    tituloBoleta: normalizeText(source.tituloBoleta) || DEFAULT_CONFIG.tituloBoleta,
+    rucBoleta: normalizeText(source.rucBoleta),
+    telefonoBoleta: normalizeText(source.telefonoBoleta || source.whatsapp),
     slogan: normalizeText(source.slogan),
     whatsapp: normalizeText(source.whatsapp) || DEFAULT_CONFIG.whatsapp,
     direccion: normalizeText(source.direccion),

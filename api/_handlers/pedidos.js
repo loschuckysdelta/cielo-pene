@@ -147,6 +147,7 @@ async function buildPedido(body) {
   const direccion = normalizeText(cliente.direccion || body.direccion);
   const zonaId = normalizeText(cliente.zonaId || body.zonaId);
   const nota = normalizeText(cliente.nota || body.nota);
+  const metodoPago = normalizeText(body.metodoPago || 'Efectivo');
 
   if (!nombre) throw new Error('El cliente debe llenar su nombre.');
   if (!telefono) throw new Error('El cliente debe llenar su teléfono.');
@@ -220,7 +221,7 @@ async function buildPedido(body) {
     items, subtotal,
     delivery: { texto: deliveryTexto, zonaId: zona ? String(zona._id || zona.id) : '', zonaNombre: zona ? zona.nombre : '', precio: deliveryPrecio, porCoordinar: zona ? zona.tipoPrecio === 'coordinar' : false },
     cupon: cuponCodigo, cuponModoUso, cuponLimiteUsos, cuponUsosAlCrear, cuponDescontado: false,
-    descuento, total, estado: 'pendiente', stockDescontado: false,
+    descuento, total, metodoPago, estado: 'pendiente', stockDescontado: false,
     historialStock: [], historialEstados: [historyEntry('pendiente', null)],
     createdAt: now, updatedAt: now
   };

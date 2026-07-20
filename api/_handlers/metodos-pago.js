@@ -6,7 +6,7 @@ const cloud = require('../_lib/cloudinary');
 function clean(body={}){
   return {
     nombre: normalizeText(body.nombre),
-    tipo: normalizeText(body.tipo || 'otro').toLowerCase(),
+    tipo: ['yape','efectivo'].includes(normalizeText(body.tipo).toLowerCase()) ? normalizeText(body.tipo).toLowerCase() : 'efectivo',
     titular: normalizeText(body.titular),
     numero: normalizeText(body.numero),
     instrucciones: normalizeText(body.instrucciones),
@@ -28,6 +28,7 @@ module.exports=async function(req,res){ if(setCors(req,res))return; try{
   const body=await readBody(req);
   if(req.method==='POST'){
     let data=await uploadQr(clean(body)); if(!data.nombre)return error(res,400,'El nombre del método es obligatorio.');
+    if(!['yape','efectivo'].includes(data.tipo)) return error(res,400,'Solo se permite Yape o Efectivo.');
     data.createdAt=new Date().toISOString(); if(col){const r=await col.insertOne(data);data._id=r.insertedId}else{data.id=memoryId();memory.metodosPago=memory.metodosPago||[];memory.metodosPago.push(data)}
     return send(res,201,{ok:true,data:publicDoc(data)});
   }
